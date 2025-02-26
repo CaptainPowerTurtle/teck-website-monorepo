@@ -1,0 +1,16 @@
+{
+  "extends": "@repo/tsconfig/react-library.json",
+  "compilerOptions": {
+    "verbatimModuleSyntax": false,
+    "outDir": "dist",
+  },
+  "include": [
+    "."
+  ],
+  "exclude": [
+    "dist",
+    "dist/**/*",
+    "build",
+    "node_modules"
+  ]
+}

@@ -1,0 +1,68 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "Node.js & TypeScript",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "runServices": [
+    "db"
+  ],
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "forwardPorts": [
+    4000,
+    4001,
+    6006
+  ],
+  "portsAttributes": {
+    "4000": {
+      "label": "web"
+    },
+    "4001": {
+      "label": "docs"
+    },
+    "6006": {
+      "label": "storybook"
+    }
+  },
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/shyim/devcontainers-features/bun:0": {},
+    "ghcr.io/devcontainers-extra/features/turborepo-npm:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "yarn install",
+  // Configure tool-specific properties.
+  // "customizations": {},
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "vitest.explorer",
+        "oven.bun-vscode",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "tal7aouy.rainbow-bracket",
+        "christian-kohler.path-intellisense",
+        "PulkitGangwar.nextjs-snippets",
+        "oderwat.indent-rainbow",
+        "formulahendry.auto-close-tag",
+        "aaron-bond.better-comments",
+        "streetsidesoftware.code-spell-checker",
+        "streetsidesoftware.code-spell-checker-danish",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "VisualStudioExptTeam.vscodeintellicode-completions",
+        "github.vscode-pull-request-github"
+      ]
+    }
+  },
+  "postCreateCommand": "bun install && bun turbo build --filter=@repo/utils"
+}

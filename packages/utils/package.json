@@ -1,0 +1,37 @@
+{
+  "name": "@repo/utils",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "private": true,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
+    "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@repo/tsconfig": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
+    "react": "19.0.0",
+    "tsup": "8.3.6",
+    "typescript": "5.7.3"
+  },
+  "dependencies": {
+    "clsx": "2.1.1",
+    "tailwind-merge": "3.0.1"
+  },
+  "overrides": {
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

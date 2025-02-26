@@ -1,0 +1,17 @@
+{
+  "recommendations": ["dbaeumer.vscode-eslint",
+  "vitest.explorer",
+  "oven.bun-vscode",
+  "esbenp.prettier-vscode",
+  "bradlc.vscode-tailwindcss",
+  "tal7aouy.rainbow-bracket",
+  "christian-kohler.path-intellisense",
+  "PulkitGangwar.nextjs-snippets",
+  "oderwat.indent-rainbow",
+  "formulahendry.auto-close-tag",
+  "aaron-bond.better-comments",
+  "streetsidesoftware.code-spell-checker",
+  "streetsidesoftware.code-spell-checker-danish",
+  "VisualStudioExptTeam.vscodeintellicode",
+  "VisualStudioExptTeam.vscodeintellicode-completions"],
+}
