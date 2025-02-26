@@ -14,7 +14,7 @@
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
     "next": "15.1.6",
-    "nextra": "4.2.7",
+    "nextra": "4.2.13",
     "nextra-theme-blog": "4.2.7",
     "nextra-theme-docs": "4.2.7",
     "react": "19.0.0",
