@@ -16,7 +16,7 @@
     "next": "15.1.6",
     "nextra": "4.2.7",
     "nextra-theme-blog": "4.2.7",
-    "nextra-theme-docs": "4.2.7",
+    "nextra-theme-docs": "4.2.13",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
