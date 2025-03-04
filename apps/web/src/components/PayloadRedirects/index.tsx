@@ -1,5 +1,5 @@
 import type React from "react";
-import type { Page, Post } from "@/payload-types";
+import type { Page, Article } from "@/payload-types";
 
 import { getCachedDocument } from "@/libs/utils/getDocument";
 import { getCachedRedirects } from "@/libs/utils/getRedirects";
@@ -32,7 +32,7 @@ export const PayloadRedirects: React.FC<Props> = async ({
 
       const document = (await getCachedDocument(collection, id)()) as
         | Page
-        | Post;
+        | Article;
       redirectUrl = `${redirectItem.to?.reference?.relationTo !== "pages" ? `/${redirectItem.to?.reference?.relationTo}` : ""}/${
         document?.slug
       }`;

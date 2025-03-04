@@ -15,6 +15,8 @@ const nextConfig = {
   transpilePackages: ["@repo/ui"],
   reactStrictMode: true,
   experimental: {
+    reactCompiler: true,
+    ppr: true,
     turbo: {
       rules: {
         "*.svg": {

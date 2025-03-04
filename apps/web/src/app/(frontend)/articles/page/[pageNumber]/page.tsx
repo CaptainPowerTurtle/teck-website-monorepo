@@ -24,10 +24,14 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   if (!Number.isInteger(sanitizedPageNumber)) notFound();
 
-  const posts = await payload.find({
-    collection: "posts",
-    depth: 1,
-    limit: 12,
+  const articles = await payload.find({
+    collection: "articles",
+    // where: {
+    //   "categories.slug": {
+    //     equals: "net",
+    //   },
+    // },
+    limit: 2,
     page: sanitizedPageNumber,
     overrideAccess: false,
   });
@@ -36,24 +40,24 @@ export default async function Page({ params: paramsPromise }: Args) {
     <div className="pt-24 pb-24">
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+          <h1>Articles</h1>
         </div>
       </div>
 
       <div className="container mb-8">
         <PageRange
-          collection="posts"
-          currentPage={posts.page}
+          collection="articles"
+          currentPage={articles.page}
           limit={12}
-          totalDocs={posts.totalDocs}
+          totalDocs={articles.totalDocs}
         />
       </div>
 
-      <CollectionArchive posts={posts.docs} />
+      <CollectionArchive articles={articles.docs} />
 
       <div className="container">
-        {posts?.page && posts?.totalPages > 1 && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
+        {articles?.page && articles?.totalPages > 1 && (
+          <Pagination page={articles.page} totalPages={articles.totalPages} />
         )}
       </div>
     </div>
@@ -65,14 +69,14 @@ export async function generateMetadata({
 }: Args): Promise<Metadata> {
   const { pageNumber } = await paramsPromise;
   return {
-    title: `Payload Website Template Posts Page ${pageNumber || ""}`,
+    title: `Articles Page ${pageNumber || ""} | Teck`,
   };
 }
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
   const { totalDocs } = await payload.count({
-    collection: "posts",
+    collection: "articles",
     overrideAccess: false,
   });
 

@@ -1,4 +1,7 @@
-import type { Post, ArchiveBlock as ArchiveBlockProps } from "@/payload-types";
+import type {
+  ArchiveBlock as ArchiveBlockProps,
+  Article,
+} from "@/payload-types";
 
 import configPromise from "@payload-config";
 import { getPayload } from "payload";
@@ -23,7 +26,7 @@ export const ArchiveBlock: React.FC<
 
   const limit = limitFromProps || 3;
 
-  let posts: Post[] = [];
+  let articles: Article[] = [];
 
   if (populateBy === "collection") {
     const payload = await getPayload({ config: configPromise });
@@ -33,8 +36,8 @@ export const ArchiveBlock: React.FC<
       else return category;
     });
 
-    const fetchedPosts = await payload.find({
-      collection: "posts",
+    const fetchedArticles = await payload.find({
+      collection: "articles",
       depth: 1,
       limit,
       ...(flattenedCategories && flattenedCategories.length > 0
@@ -48,14 +51,14 @@ export const ArchiveBlock: React.FC<
         : {}),
     });
 
-    posts = fetchedPosts.docs;
+    articles = fetchedArticles.docs;
   } else {
     if (selectedDocs?.length) {
-      const filteredSelectedPosts = selectedDocs.map((post) => {
-        if (typeof post.value === "object") return post.value;
-      }) as Post[];
+      const filteredSelectedArticles = selectedDocs.map((article) => {
+        if (typeof article.value === "object") return article.value;
+      }) as Article[];
 
-      posts = filteredSelectedPosts;
+      articles = filteredSelectedArticles;
     }
   }
 
@@ -70,7 +73,7 @@ export const ArchiveBlock: React.FC<
           />
         </div>
       )}
-      <CollectionArchive posts={posts} />
+      <CollectionArchive articles={articles} />
     </div>
   );
 };

@@ -11,7 +11,7 @@ import { plugins } from "./libs/plugins";
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { Pages } from "./collections/Pages";
-import { Posts } from "./collections/Posts";
+import { Articles } from "./collections/Articles";
 import { Categories } from "./collections/Categories";
 import { Header } from "./components/Header/config";
 import { Footer } from "./components/Footer/config";
@@ -49,7 +49,7 @@ export default buildConfig({
       ],
     },
   },
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Pages, Articles, Media, Categories, Users],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
@@ -65,7 +65,6 @@ export default buildConfig({
   sharp,
   plugins: [
     ...plugins,
-    payloadCloudPlugin(),
     // storage-adapter-placeholder
   ],
 });

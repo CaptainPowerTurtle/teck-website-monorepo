@@ -2,18 +2,18 @@ import clsx from "clsx";
 import React from "react";
 import RichText from "@/components/RichText";
 
-import type { Post } from "@/payload-types";
+import type { Article } from "@/payload-types";
 
 import { Card } from "@/components/Card";
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
-export type RelatedPostsProps = {
+export type RelatedArticlesProps = {
   className?: string;
-  docs?: Post[];
+  docs?: Article[];
   introContent?: SerializedEditorState;
 };
 
-export const RelatedPosts: React.FC<RelatedPostsProps> = (props) => {
+export const RelatedArticles: React.FC<RelatedArticlesProps> = (props) => {
   const { className, docs, introContent } = props;
 
   return (
@@ -25,7 +25,7 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = (props) => {
           if (typeof doc === "string") return null;
 
           return (
-            <Card key={index} doc={doc} relationTo="posts" showCategories />
+            <Card key={index} doc={doc} relationTo="articles" showCategories />
           );
         })}
       </div>

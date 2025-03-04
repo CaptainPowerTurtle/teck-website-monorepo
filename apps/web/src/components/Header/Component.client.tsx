@@ -21,6 +21,13 @@ import { Button } from "@ui/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { CMSLink } from "../Link";
 import { Separator } from "@ui/components/ui/separator";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@ui/components/ui/tooltip";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 
 interface HeaderClientProps {
   data: Header;
@@ -108,6 +115,25 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             </div>
             <div className="md:flex items-center">
               <ThemeToggle />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="ghost" size="icon" asChild>
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://github.com/CaptainPowerTurtle/teck-website-monorepo"
+                      >
+                        <SiGithub className="h-4 w-4" />
+                        <span className="sr-only">Github</span>
+                      </a>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>View the code!</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
         </div>

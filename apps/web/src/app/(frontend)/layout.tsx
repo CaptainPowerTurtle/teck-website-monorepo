@@ -4,11 +4,11 @@ import { RootProviders } from "@/libs/providers/root-providers";
 import { getServerSideURL } from "@/libs/utils/getURL";
 import { mergeOpenGraph } from "@/libs/utils/mergeOpenGraph";
 import "@repo/ui/globals.css";
-import { cn } from "@repo/utils";
 import { AnimatedGridPattern } from "@repo/ui/components/ui/animated-grid";
 import "@/styles/global.css";
 import { InitTheme } from "@/libs/providers/Theme/InitTheme";
 import { Header } from "@/components/Header/Component";
+import { Footer } from "@/components/Footer/Component";
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props;
@@ -20,6 +20,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <RootProviders>
           <Header />
           {children}
+          <Footer />
         </RootProviders>
       </body>
     </html>
@@ -29,8 +30,13 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
   openGraph: mergeOpenGraph(),
+  icons: {
+    icon: ["/favicon.ico?v=4"],
+    apple: ["/apple-touch-icon.png?v=4"],
+    shortcut: ["/apple-touch-icon.png"],
+  },
   twitter: {
     card: "summary_large_image",
-    creator: "@payloadcms",
+    creator: "@powerturtle",
   },
 };

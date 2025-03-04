@@ -1,15 +1,16 @@
 import { formatDateTime } from "@repo/utils";
 import React from "react";
 
-import type { Post } from "@/payload-types";
+import type { Article } from "@/payload-types";
 
 import { Media } from "@/components/Media";
 import { formatAuthors } from "@/libs/utils/formatAuthors";
 
-export const PostHero: React.FC<{
-  post: Post;
-}> = ({ post }) => {
-  const { categories, heroImage, populatedAuthors, publishedAt, title } = post;
+export const ArticleHero: React.FC<{
+  article: Article;
+}> = ({ article }) => {
+  const { categories, heroImage, populatedAuthors, publishedAt, title } =
+    article;
 
   const hasAuthors =
     populatedAuthors &&

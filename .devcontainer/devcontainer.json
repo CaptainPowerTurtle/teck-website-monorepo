@@ -6,13 +6,15 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "runServices": [
-    "db"
+    "db",
+    "minio"
   ],
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "forwardPorts": [
     4000,
     4001,
-    6006
+    6006,
+    9001
   ],
   "portsAttributes": {
     "4000": {
@@ -23,6 +25,9 @@
     },
     "6006": {
       "label": "storybook"
+    },
+    "9001": {
+      "label": "minio"
     }
   },
   // Features to add to the dev container. More info: https://containers.dev/features.

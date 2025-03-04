@@ -2,7 +2,7 @@
 import { cn } from "@repo/utils";
 import Image from "next/image";
 
-import type { Post } from "@/payload-types";
+import type { Article } from "@/payload-types";
 
 import { Media } from "@/components/Media";
 import { Fragment } from "react";
@@ -11,16 +11,16 @@ import Link from "next/link";
 import { formatAuthors } from "@/libs/utils/formatAuthors";
 import { Badge, badgeVariants } from "@repo/ui/components/ui/badge";
 
-export type CardPostData = Pick<
-  Post,
+export type CardArticleData = Pick<
+  Article,
   "slug" | "categories" | "meta" | "title" | "populatedAuthors" | "authors"
 >;
 
 export const ContentCard: React.FC<{
   alignItems?: "center";
   className?: string;
-  doc?: CardPostData;
-  relationTo?: "posts";
+  doc?: CardArticleData;
+  relationTo?: "articles";
   showCategories?: boolean;
   title?: string;
 }> = (props) => {
