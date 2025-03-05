@@ -7,20 +7,17 @@ import React, { useEffect, useState } from "react";
 import type { Header } from "@/payload-types";
 
 import { Logo } from "@/components/Logo/Logo";
-import { HeaderNav } from "./Nav";
 import { ThemeToggle } from "../ThemeToggle";
 import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@repo/ui/components/ui/sheet";
 import { Button } from "@ui/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { CMSLink } from "../Link";
-import { Separator } from "@ui/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,

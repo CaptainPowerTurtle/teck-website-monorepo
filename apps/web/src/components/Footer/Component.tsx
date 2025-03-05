@@ -1,10 +1,8 @@
-import { getCachedGlobal } from "@/libs/utils/getGlobals";
-import Link from "next/link";
 import React from "react";
 import type { Footer } from "@/payload-types";
 import { Button } from "@ui/components/ui/button";
 import { Input } from "@ui/components/ui/input";
-import { Facebook, Instagram, Linkedin, Send, Twitter } from "lucide-react";
+import { Linkedin, Send } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -14,16 +12,7 @@ import {
 import { LogoCarousel } from "@ui/components/ui/logo-carousel";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 
-import { ThemeSelector } from "@/libs/providers/Theme/ThemeSelector";
-import { CMSLink } from "@/components/Link";
-import { Logo } from "@/components/Logo/Logo";
-import { FooterClient } from "./Component.client";
-
 export async function Footer() {
-  const footerData: Footer = await getCachedGlobal("footer", 1)();
-
-  const navItems = footerData?.navItems || [];
-
   // return <FooterClient data={footerData} />;
 
   return (

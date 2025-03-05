@@ -32,7 +32,7 @@ export default function WelcomeCard({
       </CardHeader>
       <CardContent className="p-4 text-center">
         <p className="text-sm">
-          We hope you find this useful. If you have any questions, don't
+          We hope you find this useful. If you have any questions, don&apos;t
           hesitate to reach out.
         </p>
       </CardContent>

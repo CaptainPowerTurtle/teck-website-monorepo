@@ -1,15 +1,13 @@
 "use client";
 import { cn } from "@repo/utils";
-import Image from "next/image";
-
+import React from "react";
 import type { Article } from "@/payload-types";
 
 import { Media } from "@/components/Media";
-import { Fragment } from "react";
 import useClickableCard from "@/libs/utils/useClickableCard";
 import Link from "next/link";
 import { formatAuthors } from "@/libs/utils/formatAuthors";
-import { Badge, badgeVariants } from "@repo/ui/components/ui/badge";
+import { badgeVariants } from "@repo/ui/components/ui/badge";
 
 export type CardArticleData = Pick<
   Article,
@@ -102,8 +100,6 @@ export const ContentCard: React.FC<{
               const { title: titleFromCategory } = category;
 
               const categoryTitle = titleFromCategory || "Untitled category";
-
-              const isLast = index === categories.length - 1;
 
               return (
                 <Link

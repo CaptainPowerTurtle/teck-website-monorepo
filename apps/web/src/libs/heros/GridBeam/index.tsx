@@ -5,26 +5,11 @@ import type { Page } from "@/payload-types";
 
 import RichText from "@/components/RichText";
 import { GridBeam } from "@repo/ui/components/ui/grid-beam";
-import { WordRotate } from "@repo/ui/components/ui/word-rotate";
 import { Spotlight } from "@repo/ui/components/ui/spotlight-new";
 import { CMSLink } from "@/components/Link";
 import { useHeaderTheme } from "@/libs/providers/HeaderTheme";
 
-type GridBeamHeroType =
-  | {
-      children?: React.ReactNode;
-      richText?: never;
-    }
-  | (Omit<Page["hero"], "richText"> & {
-      children?: never;
-      richText?: Page["hero"]["richText"];
-    });
-
-export const GridBeamHero: React.FC<Page["hero"]> = ({
-  links,
-  media,
-  richText,
-}) => {
+export const GridBeamHero: React.FC<Page["hero"]> = ({ links, richText }) => {
   const { setHeaderTheme } = useHeaderTheme();
 
   useEffect(() => {

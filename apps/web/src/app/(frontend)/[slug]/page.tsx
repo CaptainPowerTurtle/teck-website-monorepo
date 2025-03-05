@@ -10,8 +10,6 @@ import { RenderBlocks } from "@/libs/blocks/RenderBlocks";
 import { RenderHero } from "@/libs/heros/RenderHero";
 import { generateMeta } from "@/libs/utils/generateMeta";
 import { LivePreviewListener } from "@/components/LivePreviewListener";
-import { cn } from "@repo/utils";
-import { AnimatedGridPattern } from "@ui/components/ui/animated-grid";
 import PageClient from "./page.client";
 
 export async function generateStaticParams() {
@@ -51,6 +49,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   let page: RequiredDataFromCollectionSlug<"pages"> | null;
 
+  // eslint-disable-next-line prefer-const
   page = await queryPageBySlug({
     slug,
   });

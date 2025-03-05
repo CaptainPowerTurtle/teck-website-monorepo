@@ -1,5 +1,6 @@
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod';
+/* eslint-disable turbo/no-undeclared-env-vars */
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
 export const env = createEnv({
   /**
@@ -8,8 +9,8 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z
-      .enum(['development', 'test', 'production'])
-      .default('development'),
+      .enum(["development", "test", "production"])
+      .default("development"),
   },
   /**
    * Specify your client-side environment variables schema here. This way you can ensure the app

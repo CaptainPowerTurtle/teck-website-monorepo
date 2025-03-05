@@ -2,13 +2,12 @@
 import { cn } from "@repo/utils";
 import useClickableCard from "@/libs/utils/useClickableCard";
 import Link from "next/link";
-import React, { Fragment } from "react";
+import React from "react";
 
 import type { Article } from "@/payload-types";
 
 import { Media } from "@/components/Media";
 import { badgeVariants } from "@ui/components/ui/badge";
-import { Separator } from "@ui/components/ui/separator";
 
 export type CardArticleData = Pick<
   Article,
@@ -84,8 +83,6 @@ export const Card: React.FC<{
 
                     const categoryTitle =
                       titleFromCategory || "Untitled category";
-
-                    const isLast = index === categories.length - 1;
 
                     return (
                       <Link

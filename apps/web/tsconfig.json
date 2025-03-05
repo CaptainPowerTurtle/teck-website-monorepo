@@ -5,6 +5,7 @@
   "compilerOptions": {
     "declaration": false,
     "declarationMap": false,
+    "verbatimModuleSyntax": false,
     "types": [
       "vitest/globals"
     ],

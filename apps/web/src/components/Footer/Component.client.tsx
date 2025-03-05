@@ -2,7 +2,7 @@
 import type { Footer } from "@/payload-types";
 import { Button } from "@ui/components/ui/button";
 import { Input } from "@ui/components/ui/input";
-import { Facebook, Instagram, Linkedin, Send, Twitter } from "lucide-react";
+import { Linkedin, Send } from "lucide-react";
 import React from "react";
 import {
   Tooltip,
@@ -11,16 +11,12 @@ import {
   TooltipTrigger,
 } from "@ui/components/ui/tooltip";
 import { LogoCarousel } from "@ui/components/ui/logo-carousel";
-import { CMSLink } from "../Link";
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import Link from "next/link";
 interface FooterClientProps {
   data: Footer;
 }
 
-export const FooterClient: React.FC<FooterClientProps> = ({ data }) => {
-  const navItems = data?.navItems || [];
-
+export const FooterClient: React.FC<FooterClientProps> = () => {
   return (
     <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-12 md:px-6 lg:px-8">

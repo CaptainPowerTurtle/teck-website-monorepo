@@ -18,11 +18,9 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({
           )}
         </div>
         <div className="flex flex-col gap-8">
-          {(links || []).map(
-            ({ link }: any, i: React.Key | null | undefined) => {
-              return <CMSLink key={i} size="lg" {...link} />;
-            }
-          )}
+          {(links || []).map(({ link }, i: React.Key | null | undefined) => {
+            return <CMSLink key={i} size="lg" {...link} />;
+          })}
         </div>
       </div>
     </div>

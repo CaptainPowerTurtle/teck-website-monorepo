@@ -2,7 +2,6 @@ import { cn } from "@repo/utils";
 import React from "react";
 
 import { Card, type CardArticleData } from "@/components/Card";
-import { ContentCard } from "../ContentCard";
 
 export type Props = {
   articles: CardArticleData[];

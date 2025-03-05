@@ -1,5 +1,5 @@
 echo "Installing project dependencies... "
-bun install
+pnpm install
 echo "Building utillities package..."
-bun turbo build --filter=@repo/utils
+pnpm turbo build --filter=@repo/utils
 echo "Done! 🎉"

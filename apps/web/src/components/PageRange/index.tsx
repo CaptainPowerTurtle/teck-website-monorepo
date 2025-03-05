@@ -14,7 +14,7 @@ const defaultCollectionLabels = {
 
 export const PageRange: React.FC<{
   className?: string;
-  collection?: string;
+  collection?: keyof typeof defaultCollectionLabels;
   collectionLabels?: {
     plural?: string;
     singular?: string;
@@ -40,7 +40,7 @@ export const PageRange: React.FC<{
 
   const { plural, singular } =
     collectionLabelsFromProps ||
-    defaultCollectionLabels[collection || ""] ||
+    (collection ? defaultCollectionLabels[collection] : undefined) ||
     defaultLabels ||
     {};
 

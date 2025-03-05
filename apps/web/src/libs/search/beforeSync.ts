@@ -36,6 +36,7 @@ export const beforeSyncWithSearch: BeforeSync = async ({
       });
 
       modifiedDoc.categories = mappedCategories;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (_err) {
       console.error(
         `Failed. Category not found when syncing collection '${collection}' with id: '${id}' to search.`

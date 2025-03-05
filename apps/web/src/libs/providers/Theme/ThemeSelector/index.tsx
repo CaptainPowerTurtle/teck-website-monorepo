@@ -11,8 +11,8 @@ import React, { useState } from "react";
 
 import type { Theme } from "./types";
 
-import { useTheme } from "..";
 import { themeLocalStorageKey } from "./types";
+import { useTheme } from "next-themes";
 
 export const ThemeSelector: React.FC = () => {
   const { setTheme } = useTheme();
@@ -20,7 +20,7 @@ export const ThemeSelector: React.FC = () => {
 
   const onThemeChange = (themeToSet: Theme & "auto") => {
     if (themeToSet === "auto") {
-      setTheme(null);
+      setTheme("auto");
       setValue("auto");
     } else {
       setTheme(themeToSet);

@@ -4,7 +4,7 @@
   "description": "UI",
   "private": true,
   "scripts": {
-    "ui:add": "bunx --bun shadcn@canary add",
+    "ui:add": "pnpm dlx shadcn@canary add",
     "lint": "eslint src --max-warnings 0",
     "lint:fix": "eslint --fix --ext .js,.jsx,.tsx,.ts src",
     "clean": "rm -rf .turbo && rm -rf node_modules"
@@ -58,5 +58,6 @@
     "@types/react-dom": "19.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
-  }
+  },
+  "packageManager": "pnpm@10.5.2"
 }
