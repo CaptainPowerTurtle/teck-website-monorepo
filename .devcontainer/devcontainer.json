@@ -35,7 +35,7 @@
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
-    "ghcr.io/shyim/devcontainers-features/bun:0": {},
+    // "ghcr.io/shyim/devcontainers-features/bun:0": {},
     "ghcr.io/devcontainers-extra/features/turborepo-npm:1": {},
     "ghcr.io/devcontainers/features/node:1": {}
   },
@@ -52,7 +52,7 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "vitest.explorer",
-        "oven.bun-vscode",
+        // "oven.bun-vscode",
         "esbenp.prettier-vscode",
         "bradlc.vscode-tailwindcss",
         "tal7aouy.rainbow-bracket",
@@ -69,5 +69,5 @@
       ]
     }
   },
-  "postCreateCommand": "bun install && bun turbo build --filter=@repo/utils"
+  "postCreateCommand": "pnpm install && pnpm turbo build --filter=@repo/utils"
 }
