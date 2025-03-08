@@ -7,7 +7,7 @@
     "ui:add": "pnpm dlx shadcn@canary add",
     "lint": "eslint src --max-warnings 0",
     "lint:fix": "eslint --fix --ext .js,.jsx,.tsx,.ts src",
-    "clean": "rm -rf .turbo && rm -rf node_modules"
+    "clean": "rimraf .turbo node_modules"
   },
   "license": "MIT",
   "devDependencies": {

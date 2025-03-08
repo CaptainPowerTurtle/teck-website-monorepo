@@ -33,6 +33,7 @@ import { getServerSideURL } from "@/libs/utils/getURL";
 
 import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 import { Page, Article } from "@/payload-types";
+import { migrations } from "./migrations";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -85,6 +86,7 @@ export default buildConfig({
   },
   // database-adapter-config-start
   db: postgresAdapter({
+    prodMigrations: migrations,
     pool: {
       connectionString: process.env.DATABASE_URI || "",
     },
