@@ -110,7 +110,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 return <CMSLink key={i} {...link} appearance={"ghost"} />;
               })}
             </div>
-            <div className="md:flex items-center">
+            <div className="flex items-center">
               <ThemeToggle />
               <TooltipProvider>
                 <Tooltip>

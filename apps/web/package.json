@@ -2,6 +2,7 @@
   "name": "@repo/web",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev -p 4000 --turbopack",
     "dev:test": "next dev -p 4000",
@@ -74,5 +75,8 @@
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3"
   },
-  "packageManager": "pnpm@10.5.2"
+  "packageManager": "pnpm@10.5.2",
+  "engines": {
+    "node": "^18.20.2 || >=20.9.0"
+  }
 }

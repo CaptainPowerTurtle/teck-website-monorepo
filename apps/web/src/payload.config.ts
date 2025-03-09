@@ -31,8 +31,8 @@ import { searchFields } from "@/libs/search/fieldOverrides";
 import { beforeSyncWithSearch } from "@/libs/search/beforeSync";
 import { getServerSideURL } from "@/libs/utils/getURL";
 
-import { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
-import { Page, Article } from "@/payload-types";
+import type { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
+import type { Page, Article } from "@/payload-types";
 import { migrations } from "./migrations";
 
 const filename = fileURLToPath(import.meta.url);

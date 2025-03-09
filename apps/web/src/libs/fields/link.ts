@@ -1,6 +1,6 @@
-import type { Field } from "payload";
+import type { Field, GroupField } from "payload";
 
-import { deepMerge } from "@repo/utils/";
+import deepMerge from "@/libs/utils/deepMerge";
 
 export type LinkAppearances = "default" | "outline";
 

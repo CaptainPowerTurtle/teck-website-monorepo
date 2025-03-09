@@ -5,7 +5,6 @@
   "compilerOptions": {
     "declaration": false,
     "declarationMap": false,
-    "verbatimModuleSyntax": false,
     "types": [
       "vitest/globals"
     ],
@@ -23,7 +22,10 @@
       ],
       "@ui/*": [
         "../../packages/ui/src/*"
-      ]
+      ],
+      "react": [
+        "./node_modules/@types/react"
+      ],
     }
   },
   "include": [
