@@ -22,7 +22,7 @@
     "@storybook/addon-links": "8.5.3",
     "@storybook/addon-onboarding": "8.5.3",
     "@storybook/addon-styling-webpack": "1.0.1",
-    "@storybook/addon-themes": "8.5.3",
+    "@storybook/addon-themes": "8.5.8",
     "@storybook/nextjs": "8.5.3",
     "@storybook/react-vite": "8.5.3",
     "@types/node": "22.13.1",
