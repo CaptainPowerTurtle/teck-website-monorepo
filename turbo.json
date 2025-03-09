@@ -13,7 +13,15 @@
   "tasks": {
     "build": {
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "env": ["PAYLOAD_SECRET", "DATABASE_URI"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
     },
     "test:e2e": {
       "outputs": ["tests/coverage/e2e/**"]
