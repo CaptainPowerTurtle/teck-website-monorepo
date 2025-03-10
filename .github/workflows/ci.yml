@@ -15,6 +15,7 @@ jobs:
       PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
     #  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     #  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+    container: node:22-bookworm-slim
 
     services:
       # Label used to access the service container
@@ -41,12 +42,12 @@ jobs:
 
       - uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 10
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: "pnpm"
 
       - name: Install dependencies
@@ -55,7 +56,7 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          DATABASE_URI: postgres://postgres:postgres@postgres:5432/postgres
+          DATABASE_URI: "postgres://postgres:postgres@postgres:5432/postgres"
           # The default PostgreSQL port
           POSTGRES_PORT: 5432
           # Hardcoded for testing, should be retrived from either the vault, or env secrets on github.
