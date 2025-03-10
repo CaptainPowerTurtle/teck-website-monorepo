@@ -16,7 +16,9 @@
     "test:cov": "vitest --coverage",
     "test:cov:ui": "vitest --ui --coverage",
     "generate:types": "pnpm run payload generate:types",
-    "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload"
+    "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload",
+    "ci": "payload migrate && next build",
+    "payload:migrate": "pnpm run payload migrate"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.750.0",

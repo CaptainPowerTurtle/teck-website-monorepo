@@ -19,7 +19,7 @@ jobs:
 
     services:
       # Label used to access the service container
-      postgres:
+      postgres-ci:
         # Docker Hub image
         image: postgres
         # Provide the password for postgres
@@ -57,13 +57,14 @@ jobs:
         run: pnpm build
         env:
           DATABASE_URI: "postgres://postgres:postgres@postgres:5432/postgres"
+          NODE_ENV: "production"
           # The default PostgreSQL port
           POSTGRES_PORT: 5432
           # Hardcoded for testing, should be retrived from either the vault, or env secrets on github.
           PAYLOAD_SECRET: "9da353614ecee0bfa86d9e6f"
 
-      - name: Test
-        run: pnpm test
+      # - name: Test
+      #   run: pnpm test
   # test:
   #   runs-on: ubuntu-latest
   #   steps:

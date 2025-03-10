@@ -15,7 +15,7 @@
     "nextjs"
   ],
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo run build",
     "dev": "turbo dev",
     "lint": "turbo run lint",
     "lint:fix": "turbo lint:fix",
@@ -34,7 +34,9 @@
     "test:e2e:build": "turbo test:e2e:with-build",
     "test:ui": "turbo test -- --ui",
     "test:cov": "turbo test:cov",
-    "test:cov:ui": "turbo test:cov:ui"
+    "test:cov:ui": "turbo test:cov:ui",
+    "ci": "turbo run ci",
+    "payload:migrate": "turbo run payload:migrate --filter=@repo/web"
   },
   "devDependencies": {
     "@changesets/cli": "2.27.12",
