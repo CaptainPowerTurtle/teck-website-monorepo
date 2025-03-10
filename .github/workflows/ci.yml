@@ -24,6 +24,8 @@ jobs:
         # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -53,7 +55,7 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          DATABASE_URI: postgres
+          DATABASE_URI: postgres://postgres:postgres@postgres:5432/postgres
           # The default PostgreSQL port
           POSTGRES_PORT: 5432
           # Hardcoded for testing, should be retrived from either the vault, or env secrets on github.
