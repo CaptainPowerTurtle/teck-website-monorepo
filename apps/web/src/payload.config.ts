@@ -1,7 +1,5 @@
 // storage-adapter-import-placeholder
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import { sqliteAdapter } from "@payloadcms/db-sqlite";
-import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
 import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
