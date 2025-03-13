@@ -6,7 +6,6 @@
   "plugins": ["node-workspace"],
   "packages": {
     "apps/web": {
-      "path": "apps/web",
       "release-type": "node"
     },
     "apps/storybook": {
