@@ -17,11 +17,12 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     outputs:
-      web--tag_name: ${{ steps.release.outputs['apps/web-tag_name']}}
-      web--version: ${{ steps.release.outputs['apps/web-version']}}
+      web--tag_name: ${{ steps.release.outputs['apps/web--tag_name']}}
+      web--version: ${{ steps.release.outputs['apps/web--version']}}
       web--release_created: ${{ steps.release.outputs['apps/web--release_create']}}
     steps:
       - uses: googleapis/release-please-action@v4
+        id: release
         with:
           # this assumes that you have created a personal access token
           # (PAT) and configured it as a GitHub action secret named
