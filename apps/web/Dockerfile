@@ -25,8 +25,6 @@ RUN apk update
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-ENV SKIP_ENV_VALIDATION=1 \
-    NODE_ENV=production
 # First install the dependencies (as they change less often)
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
@@ -39,12 +37,15 @@ ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
 ARG DATABASE_URI
 ENV DATABASE_URI=$DATABASE_URI
 
+
 # Build the project
 COPY --from=builder /app/out/full/ .
 RUN pnpm turbo run build --filter=@repo/web...
 
 FROM base AS runner
 WORKDIR /app
+
+ENV NODE_ENV=production
 
 # Don't run production as root
 RUN addgroup --system --gid 1001 nodejs

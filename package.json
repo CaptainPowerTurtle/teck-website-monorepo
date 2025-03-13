@@ -36,7 +36,7 @@
     "test:cov": "turbo test:cov",
     "test:cov:ui": "turbo test:cov:ui",
     "ci": "turbo run ci",
-    "payload:migrate": "turbo run payload:migrate --filter=@repo/web"
+    "payload:migrate": "turbo payload:migrate --filter=@repo/web"
   },
   "devDependencies": {
     "@changesets/cli": "2.27.12",
