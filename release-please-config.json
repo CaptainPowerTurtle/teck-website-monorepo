@@ -3,7 +3,6 @@
   "include-v-in-tag": true,
   "tag-separator": "@",
   "separate-pull-requests": false,
-  "plugins": ["node-workspace"],
   "packages": {
     "apps/web": {
       "release-type": "node"
