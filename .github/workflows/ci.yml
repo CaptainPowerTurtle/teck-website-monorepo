@@ -63,7 +63,7 @@ jobs:
         env:
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
           # DATABASE_URI: "postgres://postgres:postgres@postgres:5432/postgres"
-          PAYLOAD_SECRET: ${{ env.PAYLOAD_SECRET }}
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
           # The default PostgreSQL port
           # Hardcoded for testing, should be retrived from either the vault, or env secrets on github.
           # PAYLOAD_SECRET: "9da353614ecee0bfa86d9e6f"
