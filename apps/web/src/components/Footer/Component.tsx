@@ -1,7 +1,6 @@
 import React from "react";
 import type { Footer } from "@/payload-types";
 import { Button } from "@ui/components/ui/button";
-import { Input } from "@ui/components/ui/input";
 import { Linkedin, Send } from "lucide-react";
 import {
   Tooltip,
