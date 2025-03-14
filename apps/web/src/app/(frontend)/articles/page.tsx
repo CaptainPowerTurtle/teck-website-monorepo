@@ -9,7 +9,7 @@ import React from "react";
 
 export const dynamic = "force-static";
 export const revalidate = 600;
-
+// Test release
 export default async function Page() {
   const payload = await getPayload({ config: configPromise });
 
