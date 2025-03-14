@@ -43,7 +43,7 @@
     "framer-motion": "^12.4.1",
     "lucide-react": "^0.469.0",
     "mini-svg-data-uri": "^1.4.4",
-    "motion": "12.4.2",
+    "motion": "12.4.13",
     "tailwind-merge": "3.0.1",
     "tailwindcss-animate": "1.0.7"
   },
