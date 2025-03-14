@@ -27,6 +27,11 @@ jobs:
           token: ${{ secrets.TECK_WEBSITE_PAT }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+      - name: Print release outputs for debugging
+        continue-on-error: true
+        run: |
+          echo "Release outputs:"
+          echo "${{ toJson(steps.release.outputs) }}"
   release-web:
     if: ${{needs.release-please.outputs.web--release_created}}
     runs-on: ubuntu-latest
