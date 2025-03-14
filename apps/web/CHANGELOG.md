@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.1.0...web@v0.2.0) (2025-03-14)
+
+
+### Features
+
+* new test release ([#111](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/111)) ([f8c8b6b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/f8c8b6ba6b5642ebaa21baf1992a9f8991c61692))
+
 ## [0.1.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.0.1...web@v0.1.0) (2025-03-14)
 
 
