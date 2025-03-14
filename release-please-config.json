@@ -3,31 +3,38 @@
   "include-v-in-tag": true,
   "tag-separator": "@",
   "separate-pull-requests": false,
-  "plugins": ["node-workspace"],
   "packages": {
     "apps/web": {
-      "release-type": "node"
+      "release-type": "node",
+      "component": "web"
     },
     "apps/storybook": {
-      "release-type": "node"
+      "release-type": "node",
+      "component": "storybook"
     },
-    "apps/doc": {
-      "release-type": "node"
+    "apps/docs": {
+      "release-type": "node",
+      "component": "docs"
     },
     "packages/eslint-config": {
-      "release-type": "node"
+      "release-type": "node",
+      "component": "eslint-config"
     },
     "packages/tailwind-config": {
-      "release-type": "node"
+      "release-type": "node",
+      "component": "tailwind-config"
     },
     "packages/tsconfig": {
-      "release-type": "node"
+      "release-type": "node",
+      "component": "tsconfig"
     },
     "packages/ui": {
-      "release-type": "node"
+      "release-type": "node",
+      "component": "ui"
     },
     "packages/utils": {
-      "release-type": "node"
+      "release-type": "node",
+      "component": "utils"
     }
   },
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
