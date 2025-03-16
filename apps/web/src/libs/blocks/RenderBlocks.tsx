@@ -16,6 +16,8 @@ const blockComponents = {
   mediaBlock: MediaBlock,
 };
 
+// Test Release
+
 export const RenderBlocks: React.FC<{
   blocks: Page["layout"][0][];
 }> = (props) => {
