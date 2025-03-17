@@ -37,6 +37,7 @@ jobs:
   release-web:
     if: ${{needs.release-please.outputs.web--release_created}}
     runs-on: ubuntu-latest
+    container: node:22-bookworm-slim
     needs: release-please
 
     services:
