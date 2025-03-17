@@ -169,7 +169,7 @@ jobs:
       - id: string
         uses: ASzc/change-string-case-action@v6
         with:
-          string: ${{ env.REGISTRY }}
+          string: ${{ env.REPOSITORY }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
