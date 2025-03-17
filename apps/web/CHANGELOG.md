@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.8](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.7...web@v0.3.8) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([15cbfe6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/15cbfe6ba940eb1a36da4037faa0283520bcd899))
+
 ## [0.3.7](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.6...web@v0.3.7) (2025-03-17)
 
 
