@@ -100,5 +100,5 @@ jobs:
           cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web:dockercache
           cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web:dockercache,mode=max,image-manifest=true
           build-args: |
-            "DATABASE_URI=postgres://postgres:postgres@localhost:5432/postgres"
+            "DATABASE_URI=postgres://postgres:postgres@172.17.0.1:5432/postgres"
             "PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET }}"
