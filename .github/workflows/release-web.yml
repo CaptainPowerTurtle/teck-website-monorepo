@@ -173,7 +173,6 @@ jobs:
           tags: |
             type=semver,pattern={{version}},value=${{ needs.prepare-release.outputs.release-version }}
             type=semver,pattern={{major}}.{{minor}}
-            type=ref,event=tag
             type=ref,event=branch
             type=ref,event=pr
             type=sha
