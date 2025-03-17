@@ -65,6 +65,10 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
+      - name: Prepare
+        run: |
+          platform=${{ matrix.platform }}/${{ matrix.architecture }}
+          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
       - uses: actions/checkout@v4
       - name: Cache turbo build setup
         uses: actions/cache@v4
@@ -120,7 +124,6 @@ jobs:
           provenance: false
           # push: ${{ github.event_name != 'pull_request' }}
           push: true
-          pull: true
           context: .
           file: apps/web/Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
@@ -139,7 +142,7 @@ jobs:
       - name: Upload digest
         uses: actions/upload-artifact@v4
         with:
-          name: digests-${{ matrix.platform }}/${{ matrix.architecture }}
+          name: digests-${{ env.PLATFORM_PAIR }}
           path: ${{ runner.temp }}/digests/*
           if-no-files-found: error
           retention-days: 1
