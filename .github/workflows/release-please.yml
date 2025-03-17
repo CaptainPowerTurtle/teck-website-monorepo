@@ -130,8 +130,12 @@ jobs:
           file: apps/web/Dockerfile
           tags: ${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha,scope=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }}
-          cache-to: type=gha,scope=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }},mode=max
+          provenance: false
+          
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }}:dockercache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }}:dockercache,mode=max,image-manifest=true
+          # cache-from: type=gha,scope=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }}
+          # cache-to: type=gha,scope=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }},mode=max
           outputs: type=image,name=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web,push-by-digest=true,name-canonical=true,push=true
           build-args: |
             "DATABASE_URI=postgres://postgres:postgres@172.17.0.1:5432/postgres"
