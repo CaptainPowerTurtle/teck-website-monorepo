@@ -36,14 +36,17 @@ jobs:
           echo "${{ toJson(steps.release.outputs) }}"
   release-web:
     if: ${{needs.release-please.outputs.web--release_created}}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.builder.runner-image }}
     needs: release-please
 
     strategy:
       fail-fast: false
       matrix:
-        platform: [linux]
-        architecture: [amd64, arm64]
+        builder:
+          - runner-image: ubuntu-24.04
+            platform: linux/amd64
+          - runner-image: ubuntu-24.04-arm
+            platform: linux/arm64
 
     services:
       # Label used to access the service container
@@ -67,7 +70,7 @@ jobs:
     steps:
       - name: Prepare
         run: |
-          platform=${{ matrix.platform }}/${{ matrix.architecture }}
+          platform=${{ matrix.builder.platform }}
           echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
       - uses: actions/checkout@v4
       - name: Cache turbo build setup
@@ -120,13 +123,15 @@ jobs:
         id: build
         uses: docker/build-push-action@v6
         with:
-          platforms: ${{ matrix.platform }}/${{ matrix.architecture }}
+          platforms: ${{ matrix.builder.platform }}
           # OCI compliant when set to false, should fix unknown/unknown arch
           # push: ${{ github.event_name != 'pull_request' }}
           context: .
           file: apps/web/Dockerfile
           tags: ${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha,scope=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }}
+          cache-to: type=gha,scope=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }},mode=max
           outputs: type=image,name=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web,push-by-digest=true,name-canonical=true,push=true
           build-args: |
             "DATABASE_URI=postgres://postgres:postgres@172.17.0.1:5432/postgres"
@@ -177,12 +182,15 @@ jobs:
             type=ref,event=branch
             type=ref,event=pr
             type=sha
-
+      - id: string
+        uses: ASzc/change-string-case-action@v6
+        with:
+          string: ${{ env.REGISTRY }}
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
         run: |
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf '${{ env.REGISTRY }}/${{ env.REPOSITORY }}/web@sha256:%s ' *)
+            $(printf '${{ steps.string.outputs.lowercase }}/${{ env.REPOSITORY }}/web@sha256:%s ' *)
 
       - name: Inspect image
         run: |
