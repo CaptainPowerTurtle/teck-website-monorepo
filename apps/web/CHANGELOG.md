@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.0...web@v0.3.1) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update payload.config.ts ([938a18a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/938a18af64f6ff679316c6dec0fe8c5840a8013f))
+
 ## [0.3.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.2.0...web@v0.3.0) (2025-03-16)
 
 
