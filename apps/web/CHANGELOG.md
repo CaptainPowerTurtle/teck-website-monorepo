@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.1...web@v0.3.2) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update .env.template ([439e7c1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/439e7c1615ed1e58e388a875bfae297227e10837))
+
 ## [0.3.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.0...web@v0.3.1) (2025-03-17)
 
 
