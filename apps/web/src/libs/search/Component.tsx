@@ -1,4 +1,3 @@
-// Release test
 "use client";
 import { Input } from "@repo/ui/components/ui/input";
 import { Label } from "@repo/ui/components/ui/label";
