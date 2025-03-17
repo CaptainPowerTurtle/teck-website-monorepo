@@ -1,6 +1,6 @@
 {
   "name": "@repo/storybook",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "scripts": {
     "dev": "BROWSER=true VITE_CJS_TRACE=true storybook dev -p 6006",
