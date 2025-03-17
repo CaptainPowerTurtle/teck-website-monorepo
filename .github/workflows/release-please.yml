@@ -86,7 +86,7 @@ jobs:
       - name: Migrate payload
         run: pnpm payload:migrate
         env:
-          DATABASE_URI: ${{ secrets.DATABASE_URI }}
+          DATABASE_URI: 'postgres://postgres:postgres@localhost:5432/postgres'
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
       - name: Log in to GitHub container registry
         uses: docker/login-action@v3
