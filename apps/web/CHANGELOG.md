@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.2...web@v0.3.3) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Component.tsx ([674e716](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/674e716ee2ff0e71641047ca7d6f21499013a33b))
+
 ## [0.3.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.1...web@v0.3.2) (2025-03-17)
 
 
