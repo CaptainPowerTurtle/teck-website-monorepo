@@ -1,4 +1,3 @@
-// Release Test
 import type { CollectionConfig } from "payload";
 
 import {
