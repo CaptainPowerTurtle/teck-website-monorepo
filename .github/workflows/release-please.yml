@@ -123,13 +123,10 @@ jobs:
           # OCI compliant when set to false, should fix unknown/unknown arch
           provenance: false
           # push: ${{ github.event_name != 'pull_request' }}
-          push: true
           context: .
           file: apps/web/Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
           outputs: type=image,push-by-digest=true,name-canonical=true,push=true
           build-args: |
             "DATABASE_URI=postgres://postgres:postgres@172.17.0.1:5432/postgres"
