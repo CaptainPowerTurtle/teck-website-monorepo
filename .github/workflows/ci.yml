@@ -5,6 +5,7 @@ on:
   pull_request:
     branches: ["main", "feature/**", "bugfix/**"]
     types: [opened, synchronize]
+    
 jobs:
   build:
     name: Build and Test
@@ -55,7 +56,11 @@ jobs:
           node-version: 22
           cache: "pnpm"
 
-      - name: Install dependencies
+      - name: Install dependencies without lockfile
+        if: ${{ github.actor == 'dependabot[bot]' }}
+        run: pnpm install --no-frozen-lockfile
+      - name: Install dependencies with lockfile
+        if: ${{ github.actor != 'dependabot[bot]' }}
         run: pnpm install
 
       - name: Migrate payload
