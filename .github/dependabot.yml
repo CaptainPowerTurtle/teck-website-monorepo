@@ -20,9 +20,7 @@ updates:
 
   # /apps/web
   - package-ecosystem: "npm"
-    directories:
-      - "/apps/web"
-      - "/"
+    directory: "/apps/web"
     schedule:
       interval: "daily"
     allow:
