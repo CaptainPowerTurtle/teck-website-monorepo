@@ -39,7 +39,7 @@
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
     "@t3-oss/env-nextjs": "0.12.0",
-    "babel-plugin-react-compiler": "^19.0.0-beta-30d8a17-20250209",
+    "babel-plugin-react-compiler": "^19.0.0-beta-3229e95-20250315",
     "clsx": "2.1.1",
     "lucide-react": "^0.475.0",
     "motion": "12.4.2",
