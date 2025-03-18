@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/utils@v0.1.1...utils@v0.1.2) (2025-03-18)
+
+
+### 🧹 Chores
+
+* release main ([#181](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/181)) ([eb58a79](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/eb58a791eca03577168c84a55ce853ccf3ed8600))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @repo/tsconfig bumped to 0.1.2
+    * @repo/eslint-config bumped to 0.1.2
+
 ## [0.1.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/utils@v0.1.0...utils@v0.1.1) (2025-03-18)
 
 
