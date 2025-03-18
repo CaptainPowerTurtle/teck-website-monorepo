@@ -146,8 +146,8 @@ importers:
         specifier: ^8.6.7
         version: 8.6.7(storybook@8.6.4(prettier@3.5.3))
       '@storybook/blocks':
-        specifier: ^8.1.2
-        version: 8.5.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(prettier@3.5.3))
+        specifier: ^8.5.8
+        version: 8.6.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(prettier@3.5.3))
       '@storybook/cli':
         specifier: ^8.6.7
         version: 8.6.7(@babel/preset-env@7.26.9(@babel/core@7.26.10))(prettier@3.5.3)
@@ -4196,18 +4196,6 @@ packages:
     peerDependencies:
       storybook: ^8.6.7
 
-  '@storybook/blocks@8.5.3':
-    resolution: {integrity: sha512-a/PpHFmeBtVB9Q/6cNAnqfeCqMowsrI8nGka0Nl7BB3x1eJnS3I1Qo3Skht0LBEsmXOgXk4dwWxpeQL3qHMRkw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^8.5.3
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
-
   '@storybook/blocks@8.6.7':
     resolution: {integrity: sha512-IFhIKO7R1UPpnoG/5tZH0FgC79oYgXNf+7aGUwq29M/CQWy6p/Pvp0y4P962btY1UZRol+SsU//33nH8o6yNRw==}
     peerDependencies:
@@ -4275,9 +4263,6 @@ packages:
 
   '@storybook/csf@0.0.1':
     resolution: {integrity: sha512-USTLkZze5gkel8MYCujSRBVIrUQ3YPBrLOx7GNk/0wttvVtlzWXAq9eLbQ4p/NicGxP+3T7KPEMVV//g+yubpw==}
-
-  '@storybook/csf@0.1.12':
-    resolution: {integrity: sha512-9/exVhabisyIVL0VxTCxo01Tdm8wefIXKXfltAPTSr8cbLn5JAxGQ6QV3mjdecLGEOucfoVhAKtJfVHxEK1iqw==}
 
   '@storybook/global@5.0.0':
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
@@ -14876,16 +14861,6 @@ snapshots:
       memoizerific: 1.11.3
       storybook: 8.6.4(prettier@3.5.3)
 
-  '@storybook/blocks@8.5.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(prettier@3.5.3))':
-    dependencies:
-      '@storybook/csf': 0.1.12
-      '@storybook/icons': 1.4.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      storybook: 8.6.4(prettier@3.5.3)
-      ts-dedent: 2.2.0
-    optionalDependencies:
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-
   '@storybook/blocks@8.6.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.4(prettier@3.5.3))':
     dependencies:
       '@storybook/icons': 1.4.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -15048,10 +15023,6 @@ snapshots:
   '@storybook/csf@0.0.1':
     dependencies:
       lodash: 4.17.21
-
-  '@storybook/csf@0.1.12':
-    dependencies:
-      type-fest: 2.19.0
 
   '@storybook/global@5.0.0': {}
 
