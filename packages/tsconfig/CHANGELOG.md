@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/tsconfig@v0.1.1...tsconfig@v0.1.2) (2025-03-18)
+
+
+### 🧹 Chores
+
+* release main ([#181](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/181)) ([eb58a79](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/eb58a791eca03577168c84a55ce853ccf3ed8600))
+
 ## [0.1.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/tsconfig@v0.1.0...tsconfig@v0.1.1) (2025-03-18)
 
 
