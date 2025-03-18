@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: ["main", "feature/**", "bugfix/**"]
+    branches: ["main"]
   pull_request:
     branches: ["main", "feature/**", "bugfix/**"]
     types: [opened, synchronize]
