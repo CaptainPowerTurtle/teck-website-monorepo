@@ -1,4 +1,3 @@
-// storage-adapter-import-placeholder
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import path from "path";
 import { buildConfig } from "payload";
