@@ -360,8 +360,8 @@ importers:
         specifier: ^9.20.0
         version: 9.22.0
       '@next/eslint-plugin-next':
-        specifier: ^15.1.6
-        version: 15.2.1
+        specifier: ^15.2.3
+        version: 15.2.3
       eslint:
         specifier: ^9.20.0
         version: 9.22.0(jiti@2.4.2)
@@ -2811,8 +2811,8 @@ packages:
   '@next/env@15.3.0-canary.12':
     resolution: {integrity: sha512-KzWgkJdJ9XowQKf3mO7tzTbPfTzw0D1esH6n2Mjf/ZkHThCcx34m3Q/IGLq1xVpCT6iGjjcPCP3q3DxpHDtHpg==}
 
-  '@next/eslint-plugin-next@15.2.1':
-    resolution: {integrity: sha512-6ppeToFd02z38SllzWxayLxjjNfzvc7Wm07gQOKSLjyASvKcXjNStZrLXMHuaWkhjqxe+cnhb2uzfWXm1VEj/Q==}
+  '@next/eslint-plugin-next@15.2.3':
+    resolution: {integrity: sha512-eNSOIMJtjs+dp4Ms1tB1PPPJUQHP3uZK+OQ7iFY9qXpGO6ojT6imCL+KcUOqE/GXGidWbBZJzYdgAdPHqeCEPA==}
 
   '@next/swc-darwin-arm64@15.3.0-canary.12':
     resolution: {integrity: sha512-Com/f417w7WC2OlrU+HOB1vaSk9BeiKNGKyhxUj5/9IoTCYpIghEwSng1iNXWxH4klQsO+EG2ylBIVMfGoelSw==}
@@ -13128,7 +13128,7 @@ snapshots:
 
   '@next/env@15.3.0-canary.12': {}
 
-  '@next/eslint-plugin-next@15.2.1':
+  '@next/eslint-plugin-next@15.2.3':
     dependencies:
       fast-glob: 3.3.1
 

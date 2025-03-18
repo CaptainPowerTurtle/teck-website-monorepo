@@ -22,7 +22,7 @@ jobs:
       release-version: ${{ steps.version.outputs.full_without_prefix }}
       repository-lowercase: ${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/${{ env.PROJECT }}
     steps:
-      - uses: nowsprinting/check-version-format-action@v3
+      - uses: nowsprinting/check-version-format-action@v4
         id: version
         with:
           prefix: 'web@v'
@@ -76,7 +76,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         with:
           version: 10
 
