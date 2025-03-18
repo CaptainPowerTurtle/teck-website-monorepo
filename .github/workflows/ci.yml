@@ -1,10 +1,11 @@
 name: CI
 on:
   push:
-    branches: ["main", "feature/**", "bugfix/**"]
+    branches: ["main"]
   pull_request:
     branches: ["main", "feature/**", "bugfix/**"]
     types: [opened, synchronize]
+    
 jobs:
   build:
     name: Build and Test
@@ -46,8 +47,6 @@ jobs:
             ${{ runner.os }}-turbo-
 
       - uses: pnpm/action-setup@v3
-        with:
-          version: 10
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
