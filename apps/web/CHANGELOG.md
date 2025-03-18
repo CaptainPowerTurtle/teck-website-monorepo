@@ -1,5 +1,191 @@
 # Changelog
 
+## [1.0.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.4.1...web@v1.0.0) (2025-03-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update Media.ts
+
+### 🐛 Bug Fixes
+
+* Update Media.ts ([4599cce](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/4599cce161f5f367cd5fe88975a8bdd8bd356bdd))
+
+## [0.4.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.4.0...web@v0.4.1) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([7fd921a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/7fd921ac1d39bf97703c1000229c3a739f1a2afa))
+
+## [0.4.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.21...web@v0.4.0) (2025-03-17)
+
+
+### Features
+
+* Update Media.ts ([ce3c5a7](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ce3c5a7e4c9d9b0d7f783af8fe5a5801ee18d518))
+
+## [0.3.21](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.20...web@v0.3.21) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([ddcbf06](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ddcbf06233d55adca5f5ae4ab98915fc9589cb25))
+
+## [0.3.20](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.19...web@v0.3.20) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([98aa545](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/98aa545810067ae57514258d76ee70b03cc3a7e8))
+
+## [0.3.19](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.18...web@v0.3.19) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([58d8dc2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/58d8dc24c46bcd4dfae17906bbc7e39957cdf40e))
+
+## [0.3.18](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.17...web@v0.3.18) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([40bec31](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/40bec31f81e8ca484f20520b61242fffeb528c66))
+
+## [0.3.17](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.16...web@v0.3.17) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([069bbb4](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/069bbb46da6c5a13f3e37cf6acb68126e596a749))
+
+## [0.3.16](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.15...web@v0.3.16) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([9a67149](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/9a67149458d08ab4dc8b7346b807dfe8c8f1f7df))
+
+## [0.3.15](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.14...web@v0.3.15) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([2780110](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/2780110c27d7f94668740affd04de3eb8371e53d))
+
+## [0.3.14](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.13...web@v0.3.14) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([665e8dd](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/665e8ddb35fea1b49dc137372382e3fcae903ac4))
+
+## [0.3.13](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.12...web@v0.3.13) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([5b12539](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/5b12539ff0515ad44331bc16a2398e090e7d0a24))
+
+## [0.3.12](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.11...web@v0.3.12) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([b8b072b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/b8b072b72dff48fe63bdbc24ce4a67bf44e33935))
+
+## [0.3.11](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.10...web@v0.3.11) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([a2bae48](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/a2bae488f4f15b6f6768c44c5531bad49c9f386c))
+
+## [0.3.10](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.9...web@v0.3.10) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([557a61b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/557a61b149dfed30c024870aa027c1eef6aaee46))
+
+## [0.3.9](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.8...web@v0.3.9) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([a4b735e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/a4b735e6d6a0399ebe55144e2220a99df862d3de))
+
+## [0.3.8](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.7...web@v0.3.8) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([15cbfe6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/15cbfe6ba940eb1a36da4037faa0283520bcd899))
+
+## [0.3.7](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.6...web@v0.3.7) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([97ef051](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/97ef0516de9f12e1b497502769487ad269f817ce))
+
+## [0.3.6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.5...web@v0.3.6) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([7e0b63a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/7e0b63ae7b3b60f199b7a13b5fc4df534f0b77b3))
+
+## [0.3.5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.4...web@v0.3.5) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Media.ts ([74f0320](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/74f0320c0a3c65740515615822234e2876c106a2))
+
+## [0.3.4](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.3...web@v0.3.4) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Component.tsx ([ab04933](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ab04933ba7430cf2d63c6b05d4299882f8860a32))
+
+## [0.3.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.2...web@v0.3.3) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update Component.tsx ([674e716](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/674e716ee2ff0e71641047ca7d6f21499013a33b))
+
+## [0.3.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.1...web@v0.3.2) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update .env.template ([439e7c1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/439e7c1615ed1e58e388a875bfae297227e10837))
+
+## [0.3.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.3.0...web@v0.3.1) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update payload.config.ts ([938a18a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/938a18af64f6ff679316c6dec0fe8c5840a8013f))
+
+## [0.3.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.2.0...web@v0.3.0) (2025-03-16)
+
+
+### Features
+
+* test release ([#113](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/113)) ([24e1174](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/24e1174bcd658aa58e2e3546a757ebbfdbc2857a))
+
+## [0.2.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.1.0...web@v0.2.0) (2025-03-14)
+
+
+### Features
+
+* new test release ([#111](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/111)) ([f8c8b6b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/f8c8b6ba6b5642ebaa21baf1992a9f8991c61692))
+
 ## [0.1.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v0.0.1...web@v0.1.0) (2025-03-14)
 
 
