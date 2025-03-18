@@ -8,7 +8,7 @@ updates:
     allow:
       - dependency-type: "all"
     open-pull-requests-limit: 10
-    versioning-strategy: "auto"
+    versioning-strategy: "increase"
     commit-message:
       prefix: "chore"
       include: "scope"
@@ -26,7 +26,7 @@ updates:
     allow:
       - dependency-type: "all"
     open-pull-requests-limit: 10
-    versioning-strategy: "auto"
+    versioning-strategy: "increase"
     commit-message:
       prefix: "chore"
       include: "scope"
@@ -45,7 +45,7 @@ updates:
     allow:
       - dependency-type: "all"
     open-pull-requests-limit: 10
-    versioning-strategy: "auto"
+    versioning-strategy: "increase"
     commit-message:
       prefix: "chore"
       include: "scope"
@@ -64,7 +64,7 @@ updates:
     allow:
       - dependency-type: "all"
     open-pull-requests-limit: 10
-    versioning-strategy: "auto"
+    versioning-strategy: "increase"
     commit-message:
       prefix: "chore"
       include: "scope"
@@ -83,7 +83,7 @@ updates:
     allow:
       - dependency-type: "all"
     open-pull-requests-limit: 10
-    versioning-strategy: "auto"
+    versioning-strategy: "increase"
     commit-message:
       prefix: "chore"
       include: "scope"
