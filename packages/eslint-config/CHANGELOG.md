@@ -16,6 +16,8 @@
 * **deps-dev:** bump tailwindcss from 4.0.6 to 4.0.14 in /packages/ui ([#99](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/99)) ([e32bf73](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e32bf7321189e4c34ce33e45252c8bf29bdac068))
 * **deps-dev:** bump typescript-eslint from 8.26.0 to 8.26.1 ([#150](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/150)) ([10e022c](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/10e022ca9312409db8ea831418e6c9bd1bb66919))
 * **deps:** bump @tailwindcss/postcss in /packages/ui ([#100](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/100)) ([23825b0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/23825b09b8477d5ee4addd3c4248956fecb46a12))
+* **deps:** bump motion from 12.4.2 to 12.4.13 in /apps/web ([#85](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/85)) ([9e8e7a1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/9e8e7a101e93c1922284b003fd50b22d41ab5bf2))
+* **deps:** bump motion from 12.4.2 to 12.4.13 in /packages/ui ([#91](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/91)) ([da52fe9](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/da52fe96757e97d4d3cfb277e7d85d6209949d53))
 * **deps:** bump next from 15.2.2-canary.0 to 15.2.3 in /apps/web ([#144](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/144)) ([1f0c24b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/1f0c24b887ddb1a1f498a643a15b573a825cff5a))
 
 ## [0.1.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/eslint-config@v0.0.1...eslint-config@v0.1.0) (2025-03-14)
