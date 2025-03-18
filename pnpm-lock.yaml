@@ -91,8 +91,8 @@ importers:
         specifier: 8.5.1
         version: 8.5.1
       tailwindcss:
-        specifier: 4.0.6
-        version: 4.0.6
+        specifier: 4.0.14
+        version: 4.0.14
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -194,8 +194,8 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0(webpack@5.98.0(esbuild@0.25.1))
       tailwindcss:
-        specifier: ^4.0.12
-        version: 4.0.12
+        specifier: ^4.0.14
+        version: 4.0.14
       typescript:
         specifier: ^5.8.2
         version: 5.8.2
@@ -348,8 +348,8 @@ importers:
         specifier: ^8.5.2
         version: 8.5.2
       tailwindcss:
-        specifier: 4.0.6
-        version: 4.0.6
+        specifier: 4.0.14
+        version: 4.0.14
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -400,17 +400,17 @@ importers:
         version: 1.4.4
       tailwindcss-animate:
         specifier: 1.0.7
-        version: 1.0.7(tailwindcss@4.0.6)
+        version: 1.0.7(tailwindcss@4.0.14)
     devDependencies:
       '@repo/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       '@tailwindcss/typography':
         specifier: ^0.5.16
-        version: 0.5.16(tailwindcss@4.0.6)
+        version: 0.5.16(tailwindcss@4.0.14)
       tailwindcss:
-        specifier: ^4.0.6
-        version: 4.0.6
+        specifier: ^4.0.14
+        version: 4.0.14
 
   packages/tsconfig: {}
 
@@ -481,7 +481,7 @@ importers:
         version: 3.0.1
       tailwindcss-animate:
         specifier: 1.0.7
-        version: 1.0.7(tailwindcss@4.0.6)
+        version: 1.0.7(tailwindcss@4.0.14)
     devDependencies:
       '@repo/eslint-config':
         specifier: workspace:*
@@ -497,7 +497,7 @@ importers:
         version: link:../utils
       '@tailwindcss/typography':
         specifier: ^0.5.16
-        version: 0.5.16(tailwindcss@4.0.6)
+        version: 0.5.16(tailwindcss@4.0.14)
       '@types/node':
         specifier: 22.13.10
         version: 22.13.10
@@ -511,8 +511,8 @@ importers:
         specifier: 8.5.2
         version: 8.5.2
       tailwindcss:
-        specifier: 4.0.6
-        version: 4.0.6
+        specifier: 4.0.14
+        version: 4.0.14
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -9727,14 +9727,8 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
 
-  tailwindcss@4.0.12:
-    resolution: {integrity: sha512-bT0hJo91FtncsAMSsMzUkoo/iEU0Xs5xgFgVC9XmdM9bw5MhZuQFjPNl6wxAE0SiQF/YTZJa+PndGWYSDtuxAg==}
-
   tailwindcss@4.0.14:
     resolution: {integrity: sha512-92YT2dpt671tFiHH/e1ok9D987N9fHD5VWoly1CdPD/Cd1HMglvZwP3nx2yTj2lbXDAHt8QssZkxTLCCTNL+xw==}
-
-  tailwindcss@4.0.6:
-    resolution: {integrity: sha512-mysewHYJKaXgNOW6pp5xon/emCsfAMnO8WMaGKZZ35fomnR/T5gYnRg2/yRTTrtXiEl1tiVkeRt0eMO6HxEZqw==}
 
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -15475,13 +15469,13 @@ snapshots:
       postcss: 8.5.3
       tailwindcss: 4.0.14
 
-  '@tailwindcss/typography@0.5.16(tailwindcss@4.0.6)':
+  '@tailwindcss/typography@0.5.16(tailwindcss@4.0.14)':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 4.0.6
+      tailwindcss: 4.0.14
 
   '@tanstack/react-virtual@3.13.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
@@ -21732,15 +21726,11 @@ snapshots:
 
   tailwind-merge@3.0.1: {}
 
-  tailwindcss-animate@1.0.7(tailwindcss@4.0.6):
+  tailwindcss-animate@1.0.7(tailwindcss@4.0.14):
     dependencies:
-      tailwindcss: 4.0.6
-
-  tailwindcss@4.0.12: {}
+      tailwindcss: 4.0.14
 
   tailwindcss@4.0.14: {}
-
-  tailwindcss@4.0.6: {}
 
   tapable@2.2.1: {}
 
