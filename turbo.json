@@ -64,7 +64,7 @@
     "payload:migrate": {
       "cache": false,
       "dependsOn": ["^build"],
-      "env": ["PAYLOAD_SECRET", "DATABASE_URI"],
+      "env": ["PAYLOAD_SECRET", "DATABASE_URI", "SKIP_ENV_VALIDATION"],
       "inputs": [
         "$TURBO_DEFAULT$",
         ".env.production.local",
