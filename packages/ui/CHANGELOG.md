@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.1.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/ui@v0.1.2...ui@v0.1.3) (2025-03-19)
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump @types/react from 19.0.11 to 19.0.12 ([#187](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/187)) ([bb3e979](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/bb3e979746649db5e42a7f0c79cde18c1abeca14))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @repo/utils bumped to 0.1.3
+
 ## [0.1.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/ui@v0.1.1...ui@v0.1.2) (2025-03-18)
 
 
