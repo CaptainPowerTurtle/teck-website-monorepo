@@ -32,15 +32,20 @@ COPY --from=builder /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 RUN corepack enable
 RUN pnpm install --frozen-lockfile
 
-ARG PAYLOAD_SECRET
-ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
-ARG DATABASE_URI
-ENV DATABASE_URI=$DATABASE_URI
+# ARG PAYLOAD_SECRET
+# ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
+# ARG DATABASE_URI
+# ENV DATABASE_URI=$DATABASE_URI
 
 
 # Build the project
+# RUN --mount=type=secret,id=payload_secret,env=PAYLOAD_SECRET 
+# RUN --mount=type=secret,id=database_uri,env=DATABASE_URI 
+
 COPY --from=builder /app/out/full/ .
-RUN pnpm turbo run build --filter=@repo/web...
+RUN --mount=type=secret,id=payload_secret --mount=type=secret,id=database_uri \
+    PAYLOAD_SECRET=/run/secrets/payload_secret PAYLOAD_SECRET=/run/secrets/database_uri  \
+    pnpm turbo run build --filter=@repo/web...
 
 FROM base AS runner
 WORKDIR /app
