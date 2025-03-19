@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.1.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.1.1...web@v1.1.2) (2025-03-19)
+
+
+### 🐛 Bug Fixes
+
+* fixed secret mounting ([c198c3e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/c198c3ef198a829262b307dcae9bc062a340e086))
+
+## [1.1.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.1.0...web@v1.1.1) (2025-03-19)
+
+
+### 🐛 Bug Fixes
+
+* wrong env ([cfb6e6e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/cfb6e6ebba4439b46b3cc957b65d202065169a0f))
+
+## [1.1.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.0.2...web@v1.1.0) (2025-03-19)
+
+
+### 🚀 Features
+
+* moving from arg and env to secrets during build ([#183](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/183)) ([e44ec64](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e44ec64e967496233940a16ba880fa9e21fce514))
+
 ## [1.0.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.0.1...web@v1.0.2) (2025-03-18)
 
 

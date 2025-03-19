@@ -46,7 +46,7 @@ ENV SKIP_ENV_VALIDATION=true
 
 COPY --from=builder /app/out/full/ .
 RUN --mount=type=secret,id=payload_secret --mount=type=secret,id=database_uri \
-    PAYLOAD_SECRET=/run/secrets/payload_secret PAYLOAD_SECRET=/run/secrets/database_uri  \
+    PAYLOAD_SECRET=$(cat /run/secrets/payload_secret) DATABASE_URI=$(cat /run/secrets/database_uri) \
     pnpm turbo run build --filter=@repo/web...
 
 FROM base AS runner

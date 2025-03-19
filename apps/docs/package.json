@@ -13,7 +13,7 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
-    "next": "15.3.0-canary.12",
+    "next": "15.3.0-canary.13",
     "nextra": "4.2.16",
     "nextra-theme-blog": "4.2.7",
     "nextra-theme-docs": "4.2.16",
@@ -25,7 +25,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
     "@types/node": "22.13.10",
-    "@types/react": "19.0.11",
+    "@types/react": "19.0.12",
     "@types/react-dom": "19.0.2",
     "typescript": "5.7.3",
     "autoprefixer": "10.4.21",

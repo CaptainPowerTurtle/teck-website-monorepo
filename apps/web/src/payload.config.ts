@@ -31,7 +31,7 @@ import { getServerSideURL } from "@/libs/utils/getURL";
 import type { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 import type { Page, Article } from "@/payload-types";
 import { migrations } from "./migrations";
-import { env } from "@/env";
+import { env } from "@/env/server";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
