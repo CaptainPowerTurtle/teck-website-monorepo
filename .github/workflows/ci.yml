@@ -60,7 +60,7 @@ jobs:
       - name: Migrate payload
         run: pnpm payload:migrate
         env:
-          SKIP_ENV_VALIDATION: true
+          PREVIEW_SECRET: "fjdkfj269020asmd"
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
           # DATABASE_URI: "postgres://postgres:postgres@postgres:5432/postgres"
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
@@ -70,7 +70,7 @@ jobs:
       - name: Build
         run: pnpm build
         env:
-          SKIP_ENV_VALIDATION: true
+          PREVIEW_SECRET: "fjdkfj269020asmd"
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
 
