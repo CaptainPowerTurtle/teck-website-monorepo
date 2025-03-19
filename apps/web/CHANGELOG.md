@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.1.1...web@v1.1.2) (2025-03-19)
+
+
+### 🐛 Bug Fixes
+
+* fixed secret mounting ([c198c3e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/c198c3ef198a829262b307dcae9bc062a340e086))
+
 ## [1.1.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.1.0...web@v1.1.1) (2025-03-19)
 
 
