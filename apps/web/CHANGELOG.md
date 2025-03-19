@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.1.0...web@v1.1.1) (2025-03-19)
+
+
+### 🐛 Bug Fixes
+
+* wrong env ([cfb6e6e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/cfb6e6ebba4439b46b3cc957b65d202065169a0f))
+
 ## [1.1.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.0.2...web@v1.1.0) (2025-03-19)
 
 
