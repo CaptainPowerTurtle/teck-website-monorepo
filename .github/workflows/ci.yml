@@ -56,8 +56,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-        with:
-          SKIP_ENV_VALIDATION: true
 
       - name: Migrate payload
         run: pnpm payload:migrate
@@ -72,6 +70,7 @@ jobs:
       - name: Build
         run: pnpm build
         env:
+          SKIP_ENV_VALIDATION: true
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
 
