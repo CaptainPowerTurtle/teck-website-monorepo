@@ -31,6 +31,7 @@ import { getServerSideURL } from "@/libs/utils/getURL";
 import type { GenerateTitle, GenerateURL } from "@payloadcms/plugin-seo/types";
 import type { Page, Article } from "@/payload-types";
 import { migrations } from "./migrations";
+import { env } from "@/env";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -77,7 +78,7 @@ export default buildConfig({
   },
   collections: [Pages, Articles, Media, Categories, Users],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || "",
+  secret: env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
@@ -85,7 +86,7 @@ export default buildConfig({
   db: postgresAdapter({
     prodMigrations: migrations,
     pool: {
-      connectionString: process.env.DATABASE_URI || "",
+      connectionString: env.DATABASE_URI || "",
     },
   }),
   // database-adapter-config-end

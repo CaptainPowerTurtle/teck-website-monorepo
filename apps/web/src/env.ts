@@ -11,6 +11,11 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    DATABASE_URI: z.string(),
+    PAYLOAD_SECRET: z.string(),
+    PREVIEW_SECRET: z.string(),
+    PROJECT_PRODUCTION_URL: z.string().optional(),
+    ANALYZE: z.boolean().default(true),
   },
   /**
    * Specify your client-side environment variables schema here. This way you can ensure the app
@@ -18,6 +23,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
+    NEXT_PUBLIC_SERVER_URL: z.string(),
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
   },
   /**
@@ -26,6 +32,12 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    DATABASE_URI: process.env.DATABASE_URI,
+    PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
+    PREVIEW_SECRET: process.env.PREVIEW_SECRET,
+    PROJECT_PRODUCTION_URL: process.env.PROJECT_PRODUCTION_URL,
+    ANALYZE: process.env.ANALYZE,
+    NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

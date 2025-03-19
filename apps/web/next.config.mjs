@@ -1,14 +1,15 @@
 import { withPayload } from "@payloadcms/next/withPayload";
 // @ts-check
 import bundleAnalyzer from "@next/bundle-analyzer";
+import { env } from "@/env";
 
 const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
+  enabled: env.ANALYZE === "true",
 });
 
-const NEXT_PUBLIC_SERVER_URL = process.env.PROJECT_PRODUCTION_URL
-  ? `https://${process.env.PROJECT_PRODUCTION_URL}`
-  : undefined || process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:4000";
+const NEXT_PUBLIC_SERVER_URL = env.PROJECT_PRODUCTION_URL
+  ? `https://${env.PROJECT_PRODUCTION_URL}`
+  : undefined || env.NEXT_PUBLIC_SERVER_URL || "http://localhost:4000";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
