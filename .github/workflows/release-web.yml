@@ -1,7 +1,7 @@
 on:
   push:
     tags:
-      - 'web@v**'
+      - "web@v**"
 
 permissions:
   contents: write
@@ -25,7 +25,7 @@ jobs:
       - uses: nowsprinting/check-version-format-action@v4
         id: version
         with:
-          prefix: 'web@v'
+          prefix: "web@v"
       - uses: ASzc/change-string-case-action@v6
         id: string
         with:
@@ -90,7 +90,7 @@ jobs:
       - name: Migrate payload
         run: pnpm payload:migrate
         env:
-          DATABASE_URI: 'postgres://postgres:postgres@localhost:5432/postgres'
+          DATABASE_URI: "postgres://postgres:postgres@localhost:5432/postgres"
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
 
       - name: Docker meta
@@ -120,15 +120,18 @@ jobs:
           tags: ${{ needs.prepare-release.outputs.repository-lowercase }}
           labels: ${{ steps.meta.outputs.labels }}
           provenance: false
-          
+
           # cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }}:dockercache
           # cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }}:dockercache,mode=max,image-manifest=true
           cache-from: type=gha,scope=${{ needs.prepare-release.outputs.repository-lowercase }}-${{ env.PLATFORM_PAIR }}
           cache-to: type=gha,scope=${{ needs.prepare-release.outputs.repository-lowercase }}-${{ env.PLATFORM_PAIR }},mode=max
           outputs: type=image,name=${{ needs.prepare-release.outputs.repository-lowercase }},push-by-digest=true,name-canonical=true,push=true
-          build-args: |
-            "DATABASE_URI=postgres://postgres:postgres@172.17.0.1:5432/postgres"
-            "PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET }}"
+          secrets: |
+            "database_uri=postgres://postgres:postgres@172.17.0.1:5432/postgres"
+            "payload_secret=${{ secrets.PAYLOAD_SECRET }}"
+          # build-args: |
+          #   "DATABASE_URI=postgres://postgres:postgres@172.17.0.1:5432/postgres"
+          #   "PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET }}"
       - name: Export digest
         run: |
           mkdir -p ${{ runner.temp }}/digests
