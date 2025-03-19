@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.0.2...web@v1.1.0) (2025-03-19)
+
+
+### 🚀 Features
+
+* moving from arg and env to secrets during build ([#183](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/183)) ([e44ec64](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e44ec64e967496233940a16ba880fa9e21fce514))
+
 ## [1.0.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.0.1...web@v1.0.2) (2025-03-18)
 
 
