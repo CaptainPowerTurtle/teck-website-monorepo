@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.31](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/storybook@v0.1.30...storybook@v0.1.31) (2025-03-19)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @repo/web bumped to 1.1.2
+
 ## [0.1.30](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/storybook@v0.1.29...storybook@v0.1.30) (2025-03-19)
 
 
