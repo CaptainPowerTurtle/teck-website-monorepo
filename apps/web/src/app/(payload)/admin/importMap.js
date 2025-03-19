@@ -32,6 +32,7 @@ import { LinkToDoc as LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloa
 import { ReindexButton as ReindexButton_aead06e4cbf6b2620c5c51c9ab283634 } from '@payloadcms/plugin-search/client'
 import { RowLabel as RowLabel_32a51e6e3af330e56588397e714b8f89 } from '@/components/Header/RowLabel'
 import { RowLabel as RowLabel_60b5df3cbc6a1ff1b7020e4512a8a1e3 } from '@/components/Footer/RowLabel'
+import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 
 export const importMap = {
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -67,5 +68,6 @@ export const importMap = {
   "@payloadcms/plugin-search/client#LinkToDoc": LinkToDoc_aead06e4cbf6b2620c5c51c9ab283634,
   "@payloadcms/plugin-search/client#ReindexButton": ReindexButton_aead06e4cbf6b2620c5c51c9ab283634,
   "@/components/Header/RowLabel#RowLabel": RowLabel_32a51e6e3af330e56588397e714b8f89,
-  "@/components/Footer/RowLabel#RowLabel": RowLabel_60b5df3cbc6a1ff1b7020e4512a8a1e3
+  "@/components/Footer/RowLabel#RowLabel": RowLabel_60b5df3cbc6a1ff1b7020e4512a8a1e3,
+  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24
 }

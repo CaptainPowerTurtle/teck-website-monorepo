@@ -1,10 +1,12 @@
 import { canUseDOM } from "@repo/utils";
+import { env as server } from "@/env/server";
+import { env as client } from "@/env/client";
 
 export const getServerSideURL = () => {
-  let url = process.env.NEXT_PUBLIC_SERVER_URL;
+  let url = client.NEXT_PUBLIC_SERVER_URL;
 
-  if (!url && process.env.PROJECT_PRODUCTION_URL) {
-    return `https://${process.env.PROJECT_PRODUCTION_URL}`;
+  if (!url && server.PROJECT_PRODUCTION_URL) {
+    return `https://${server.PROJECT_PRODUCTION_URL}`;
   }
 
   if (!url) {
@@ -23,9 +25,9 @@ export const getClientSideURL = () => {
     return `${protocol}//${domain}${port ? `:${port}` : ""}`;
   }
 
-  if (process.env.PROJECT_PRODUCTION_URL) {
-    return `https://${process.env.PROJECT_PRODUCTION_URL}`;
+  if (server.PROJECT_PRODUCTION_URL) {
+    return `https://${server.PROJECT_PRODUCTION_URL}`;
   }
 
-  return process.env.NEXT_PUBLIC_SERVER_URL || "";
+  return client.NEXT_PUBLIC_SERVER_URL || "";
 };

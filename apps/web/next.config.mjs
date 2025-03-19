@@ -1,6 +1,13 @@
 import { withPayload } from "@payloadcms/next/withPayload";
 // @ts-check
 import bundleAnalyzer from "@next/bundle-analyzer";
+// import { env } from "./src/env";
+
+// import { fileURLToPath } from "node:url";
+// import createJiti from "jiti";
+// const jiti = createJiti(fileURLToPath(import.meta.url));
+
+// jiti("./src/env");
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -12,7 +19,7 @@ const NEXT_PUBLIC_SERVER_URL = process.env.PROJECT_PRODUCTION_URL
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@repo/ui"],
+  transpilePackages: ["@repo/ui", "@t3-oss/env-nextjs", "@t3-oss/env-core"],
   reactStrictMode: true,
   output: "standalone",
   experimental: {

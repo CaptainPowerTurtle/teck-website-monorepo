@@ -19,7 +19,7 @@
         "storybook-static/**"
       ],
       "dependsOn": ["^build"],
-      "env": ["PAYLOAD_SECRET", "DATABASE_URI"]
+      "env": ["PAYLOAD_SECRET", "DATABASE_URI", "SKIP_ENV_VALIDATION"]
     },
     "test:e2e": {
       "outputs": ["tests/coverage/e2e/**"]
@@ -64,7 +64,12 @@
     "payload:migrate": {
       "cache": false,
       "dependsOn": ["^build"],
-      "env": ["PAYLOAD_SECRET", "DATABASE_URI"],
+      "env": [
+        "PAYLOAD_SECRET",
+        "DATABASE_URI",
+        "PREVIEW_SECRET",
+        "SKIP_ENV_VALIDATION"
+      ],
       "inputs": [
         "$TURBO_DEFAULT$",
         ".env.production.local",
