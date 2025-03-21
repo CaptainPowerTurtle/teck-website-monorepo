@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.1.32](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/storybook@v0.1.31...storybook@v0.1.32) (2025-03-19)
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump @types/react from 19.0.11 to 19.0.12 ([#187](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/187)) ([bb3e979](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/bb3e979746649db5e42a7f0c79cde18c1abeca14))
+* **deps-dev:** bump @vitejs/plugin-react-swc from 3.8.0 to 3.8.1 ([#189](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/189)) ([e8c9ac8](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e8c9ac831ab6561723c383bbca291bcc374e0675))
+* **deps:** bump next from 15.3.0-canary.12 to 15.3.0-canary.13 ([#188](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/188)) ([4e2a0fb](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/4e2a0fbfc6d999c6be06c97ddd3f3d233ce8bca2))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @repo/ui bumped to 0.1.3
+    * @repo/utils bumped to 0.1.3
+    * @repo/web bumped to 1.2.0
+
 ## [0.1.31](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/storybook@v0.1.30...storybook@v0.1.31) (2025-03-19)
 
 
