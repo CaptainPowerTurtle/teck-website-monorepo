@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+  namespace: {{ .Values.web.namespace }}
+  labels:
+    name: {{ .Values.web.label.name }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  ports:
+  - port: {{ .Values.web.service.port}}
+    targetPort: {{ .Values.web.service.targetPort }}
+  selector:
+    app: {{ .Values.web.label.name }}

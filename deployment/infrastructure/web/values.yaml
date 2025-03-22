@@ -1,0 +1,24 @@
+environment: production
+web:
+  label:
+    name: teck-website-web
+    namespace: teck-website-prod
+  replicas: 2
+
+  containers:
+    name: teckwebsite-web
+    ports:
+      containerPort: 3000
+
+    image:
+      repository: ghcr.io/captainpowerturtle/teck-website-monorepo
+      name: web
+      tag: 0.0.1
+      imagePullPolicy: Always
+    resources:
+      imits:
+        cpu: "500m"
+        memory: 1500Mi
+  service:
+    port: 3000
+    targetPort: 3000

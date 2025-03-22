@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+  labels:
+    app: {{ .Values.web.label.name }}
+  namespace: {{ .Values.web.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  replicas: {{ .Values.web.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.web.label.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.web.label.name }}
+        environment: {{ .Values.environment }}
+    spec:
+      containers:
+        - name: {{ .Values.web.containers.name }}
+          image: {{ .Values.web.containers.image.name }}:{{ .Values.web.containers.image.tag }}
+          imagePullPolicy: {{ .Values.web.containers.image.imagePullPolicy }}
+          ports:
+            - containerPort: {{ .Values.web.containers.ports.containerPort }}
+          resources:
+            limits:
+              cpu: {{ .Values.web.containers.resources.imits.cpu }}
+              memory: {{ .Values.web.containers.resources.imits.memory }}
+          env:
+            - name: POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+            - name: PAYLOAD_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: payload-secret
+                  key: secret
+            - name: DATABASE_URI
+              value: postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@pooler-postgres-rw.{{ .Values.web.namespace }}.svc:5432/teck-website
+            - name: PAYLOAD_SECRET
+              value: $(PAYLOAD_SECRET)
+      imagePullSecrets:
+        - name: ghcr-login-secret

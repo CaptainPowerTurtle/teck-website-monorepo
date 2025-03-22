@@ -42,7 +42,7 @@ metadata:
   namespace: teck-website-prod
 spec:
   cluster:
-    name: teckshop-postgres
+    name: postgres
 
   instances: 1
   type: rw
