@@ -24,7 +24,7 @@ const nextConfig = {
   output: "standalone",
   experimental: {
     reactCompiler: true,
-    ppr: true,
+    ppr: 'incremental',
     turbo: {
       rules: {
         "*.svg": {
