@@ -57,8 +57,8 @@ importers:
         specifier: 4.2.17
         version: 4.2.17(next@15.3.0-canary.17(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(nextra@4.2.16(acorn@8.14.1)(next@15.3.0-canary.17(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       nextra-theme-docs:
-        specifier: 4.2.16
-        version: 4.2.16(@types/react@19.0.12)(next@15.3.0-canary.17(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(nextra@4.2.16(acorn@8.14.1)(next@15.3.0-canary.17(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 4.2.17
+        version: 4.2.17(@types/react@19.0.12)(next@15.3.0-canary.17(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(nextra@4.2.16(acorn@8.14.1)(next@15.3.0-canary.17(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -8047,11 +8047,11 @@ packages:
       react: '>=18'
       react-dom: '>=18'
 
-  nextra-theme-docs@4.2.16:
-    resolution: {integrity: sha512-IbEf7A7qd2PWYZ8XlwIXNghZRPxbiTw1tbPejH/tNX6nmAHUNpCrDPQO/jraYSnEae2DSb/5ZOBdqMT1c03paQ==}
+  nextra-theme-docs@4.2.17:
+    resolution: {integrity: sha512-QQ7iPHQ7zqh7dKJZ3SQbxqoFt7r8RHD9v7dFtJ+x8evEfxwM23oBGHNBqIjBoPl5uSwtvufEiVd7WMhK+Dxdww==}
     peerDependencies:
       next: '>=14'
-      nextra: 4.2.16
+      nextra: 4.2.17
       react: '>=18'
       react-dom: '>=18'
 
@@ -19656,7 +19656,7 @@ snapshots:
       react-compiler-runtime: 0.0.0-experimental-22c6e49-20241219(react@19.0.0)
       react-dom: 19.0.0(react@19.0.0)
 
-  nextra-theme-docs@4.2.16(@types/react@19.0.12)(next@15.3.0-canary.17(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(nextra@4.2.16(acorn@8.14.1)(next@15.3.0-canary.17(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  nextra-theme-docs@4.2.17(@types/react@19.0.12)(next@15.3.0-canary.17(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(nextra@4.2.16(acorn@8.14.1)(next@15.3.0-canary.17(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@headlessui/react': 2.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       clsx: 2.1.1
@@ -19667,8 +19667,8 @@ snapshots:
       react-compiler-runtime: 0.0.0-experimental-22c6e49-20241219(react@19.0.0)
       react-dom: 19.0.0(react@19.0.0)
       scroll-into-view-if-needed: 3.1.0
-      zod: 3.24.1
-      zod-validation-error: 3.4.0(zod@3.24.1)
+      zod: 3.24.2
+      zod-validation-error: 3.4.0(zod@3.24.2)
       zustand: 5.0.3(@types/react@19.0.12)(react@19.0.0)
     transitivePeerDependencies:
       - '@types/react'
@@ -22297,6 +22297,10 @@ snapshots:
   zod-validation-error@3.4.0(zod@3.24.1):
     dependencies:
       zod: 3.24.1
+
+  zod-validation-error@3.4.0(zod@3.24.2):
+    dependencies:
+      zod: 3.24.2
 
   zod@3.24.1: {}
 
