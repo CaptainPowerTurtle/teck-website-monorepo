@@ -54,5 +54,5 @@ spec:
               value: postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@pooler-postgres-rw.{{ .Values.web.namespace }}.svc:5432/teck-website
             - name: PAYLOAD_SECRET
               value: $(PAYLOAD_SECRET)
-            - name: PAYLOAD_SECRET
+            - name: PREVIEW_SECRET
               value: $(PREVIEW_SECRET)
