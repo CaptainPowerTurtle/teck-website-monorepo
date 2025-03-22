@@ -22,3 +22,5 @@ web:
   service:
     port: 3000
     targetPort: 3000
+  ingress:
+    url: teck.dk
