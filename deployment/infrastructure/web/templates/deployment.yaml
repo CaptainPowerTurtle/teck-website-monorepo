@@ -45,6 +45,11 @@ spec:
                 secretKeyRef:
                   name: payload-secret
                   key: secret
+            - name: PREVIEW_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: payload-preview-secret
+                  key: preview-secret
             - name: DATABASE_URI
               value: postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@pooler-postgres-rw.{{ .Values.web.namespace }}.svc:5432/teck-website
             - name: PAYLOAD_SECRET
