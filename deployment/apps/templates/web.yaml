@@ -13,9 +13,9 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: { { .Values.spec.destination.namespace } }
-    server: { { .Values.spec.destination.server } }
-  project: { { .Values.spec.project } }
+    namespace: {{ .Values.spec.destination.namespace }}
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Values.spec.project }}
   source:
     path: deployment/infrastructure/web
     repoURL: git@github.com:CaptainPowerTurtle/teck-website-monorepo.git
