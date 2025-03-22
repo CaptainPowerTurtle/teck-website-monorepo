@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.1.4](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/ui@v0.1.3...ui@v0.1.4) (2025-03-22)
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump @types/node from 22.13.10 to 22.13.11 ([#202](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/202)) ([154b60d](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/154b60d6718c5ebfece61b56aa9718f9a94f29c0))
+* **deps-dev:** bump tailwindcss from 4.0.14 to 4.0.15 ([#221](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/221)) ([471ef9c](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/471ef9cb71ea1c7a43b0a275611c3a65e69b4772))
+* **deps:** bump @tailwindcss/postcss from 4.0.14 to 4.0.15 ([#199](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/199)) ([d382f26](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/d382f265a2abb1bcc74ce976e91cda2f14a879b7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @repo/tailwind-config bumped to 0.1.3
+
 ## [0.1.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/ui@v0.1.2...ui@v0.1.3) (2025-03-19)
 
 
