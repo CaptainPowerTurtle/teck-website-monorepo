@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.2.2...web@v1.2.3) (2025-03-22)
+
+
+### 🐛 Bug Fixes
+
+* Update next.config.mjs ([bb6eba3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/bb6eba3dd589869240a8ef0cc549d73917e80b9e))
+
 ## [1.2.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.2.1...web@v1.2.2) (2025-03-22)
 
 
