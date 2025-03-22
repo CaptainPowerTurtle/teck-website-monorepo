@@ -18,7 +18,7 @@ spec:
   project: {{ .Values.spec.project }}
   source:
     path: deployment/infrastructure/web
-    repoURL: git@github.com:CaptainPowerTurtle/teck-website-monorepo.git
+    repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo.git
     targetRevision: HEAD
     helm:
       valueFiles:
