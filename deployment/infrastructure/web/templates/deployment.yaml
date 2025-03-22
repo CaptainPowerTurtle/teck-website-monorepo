@@ -56,3 +56,5 @@ spec:
               value: $(PAYLOAD_SECRET)
             - name: PREVIEW_SECRET
               value: $(PREVIEW_SECRET)
+            - name: NEXT_PUBLIC_SERVER_URL
+              value: {{ .Values.web.ingress.url }}
