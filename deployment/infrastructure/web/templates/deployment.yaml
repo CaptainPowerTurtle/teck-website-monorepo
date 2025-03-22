@@ -49,5 +49,3 @@ spec:
               value: postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@pooler-postgres-rw.{{ .Values.web.namespace }}.svc:5432/teck-website
             - name: PAYLOAD_SECRET
               value: $(PAYLOAD_SECRET)
-      imagePullSecrets:
-        - name: ghcr-login-secret
