@@ -2,7 +2,7 @@ environment: production
 web:
   label:
     name: teck-website-web
-    namespace: teck-website-prod
+  namespace: teck-website-prod
   replicas: 2
 
   containers:
