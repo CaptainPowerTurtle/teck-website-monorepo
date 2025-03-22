@@ -1,6 +1,9 @@
 spec:
   destination:
     server: https://kubernetes.default.svc
+    namespace: teck-website-prod
+    name: in-cluster
   source:
     repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo
     targetRevision: HEAD
+  project: teck-website

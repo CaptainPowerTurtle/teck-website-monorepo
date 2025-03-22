@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: web=ghcr.io/captainpowerturtle/teck-website-monorepo/web:x.x.x
+    argocd-image-updater.argoproj.io/web.update-strategy: semver
+    argocd-image-updater.argoproj.io/web.allow-tags: regexp:^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
+    argocd-image-updater.argoproj.io/web.helm.image-name: web.containers.image.name
+    argocd-image-updater.argoproj.io/web.helm.image-tag: web.containers.image.tag
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: { { .Values.spec.destination.namespace } }
+    server: { { .Values.spec.destination.server } }
+  project: { { .Values.spec.project } }
+  source:
+    path: deployment/infrastructure/web
+    repoURL: git@github.com:CaptainPowerTurtle/teck-website-monorepo.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

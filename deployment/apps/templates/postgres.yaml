@@ -7,9 +7,9 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: teck-website-prod
+    namespace: { { .Values.spec.destination.namespace } }
     server: { { .Values.spec.destination.server } }
-  project: default
+  project: { { .Values.spec.project } }
   source:
     path: deployment/infrastructure/postgres
     repoURL: { { .Values.spec.source.repoURL } }
