@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.2.3...web@v1.2.4) (2025-03-23)
+
+
+### 🐛 Bug Fixes
+
+* Update Dockerfile ([fb38a6d](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/fb38a6d7d3ff3ac8263a069e9e67399c3faea6a4))
+
 ## [1.2.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.2.2...web@v1.2.3) (2025-03-22)
 
 
