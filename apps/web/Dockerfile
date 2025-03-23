@@ -32,8 +32,8 @@ COPY --from=builder /app/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
 RUN corepack enable
 RUN pnpm install --frozen-lockfile
 
-# ARG PAYLOAD_SECRET
-# ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
+ARG NEXT_PUBLIC_SERVER_URL
+ENV NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL
 # ARG DATABASE_URI
 # ENV DATABASE_URI=$DATABASE_URI
 
