@@ -23,4 +23,4 @@ web:
     port: 3000
     targetPort: 3000
   ingress:
-    url: teck.dk
+    url: https://teck.dk
