@@ -146,8 +146,8 @@ importers:
         specifier: ^8.6.10
         version: 8.6.10(storybook@8.6.10(prettier@3.5.3))
       '@storybook/blocks':
-        specifier: ^8.6.10
-        version: 8.6.10(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.10(prettier@3.5.3))
+        specifier: ^8.6.11
+        version: 8.6.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.10(prettier@3.5.3))
       '@storybook/cli':
         specifier: ^8.6.10
         version: 8.6.10(@babel/preset-env@7.26.9(@babel/core@7.26.10))(prettier@3.5.3)
