@@ -149,8 +149,8 @@ importers:
         specifier: ^8.6.12
         version: 8.6.12(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(storybook@8.6.11(prettier@3.5.3))
       '@storybook/cli':
-        specifier: ^8.6.11
-        version: 8.6.11(@babel/preset-env@7.26.9(@babel/core@7.26.10))(prettier@3.5.3)
+        specifier: ^8.6.12
+        version: 8.6.12(@babel/preset-env@7.26.9(@babel/core@7.26.10))(prettier@3.5.3)
       '@storybook/nextjs':
         specifier: ^8.6.11
         version: 8.6.11(esbuild@0.25.2)(next@15.3.0-canary.31(@babel/core@7.26.10)(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4)(storybook@8.6.11(prettier@3.5.3))(type-fest@2.19.0)(typescript@5.8.2)(webpack-hot-middleware@2.26.1)(webpack@5.98.0(esbuild@0.25.2))
@@ -4194,12 +4194,12 @@ packages:
       typescript:
         optional: true
 
-  '@storybook/cli@8.6.11':
-    resolution: {integrity: sha512-Yitqj4TsuexiLwe9zPqUkUjuskjy7vdBAYoeO/cy939UFuD8tXt+asPtRqTOQKT5WlUG+yVAwsMV9ayiie07EQ==}
+  '@storybook/cli@8.6.12':
+    resolution: {integrity: sha512-USOPHgQsckHguxqYItm7+i9lohjiPsCrNKBMl40XPU3dc1LqENBOF1JtJnOLTGegjUxRox7oaqrM10b9rkafWA==}
     hasBin: true
 
-  '@storybook/codemod@8.6.11':
-    resolution: {integrity: sha512-+3Yg9cMFXotfEAFinTRga46QgMexWWcT305Yp7FHM0tv9gkGOs4suwgLFhlYRvzFi0Z43uijj5omrGkeWR439w==}
+  '@storybook/codemod@8.6.12':
+    resolution: {integrity: sha512-RFIGUI+dkFqrcuOyxNY97WuW7dskmuGL9yGALQsNmyGC490VUJ3scLOAgBChWBjsDfnN8uSb0Kvt/fB4OOyCmw==}
 
   '@storybook/components@8.6.11':
     resolution: {integrity: sha512-+lHcwQsSO8usKTXIBBmgmRCAa0L+KQaLJ5ARqkRTm6OjzkVVS+EPnIgL4H1nqzbwiTVXxSSOwAk+rST83KICnA==}
@@ -4213,6 +4213,14 @@ packages:
 
   '@storybook/core@8.6.11':
     resolution: {integrity: sha512-fhzLQ9HpljbLpkHykafmcjIERHI5j6SZhylFCDwEWkETuZtRbyCs3mmULutcEOzKhxRgNtiIRoRmZPdQcPtHNg==}
+    peerDependencies:
+      prettier: ^2 || ^3
+    peerDependenciesMeta:
+      prettier:
+        optional: true
+
+  '@storybook/core@8.6.12':
+    resolution: {integrity: sha512-t+ZuDzAlsXKa6tLxNZT81gEAt4GNwsKP/Id2wluhmUWD/lwYW0uum1JiPUuanw8xD6TdakCW/7ULZc7aQUBLCQ==}
     peerDependencies:
       prettier: ^2 || ^3
     peerDependenciesMeta:
@@ -4333,6 +4341,11 @@ packages:
 
   '@storybook/theming@8.6.11':
     resolution: {integrity: sha512-G7IK5P9gzofUjfYhMo9Pdgbqcr22eoKFLD808Q8RxJopDoypdZKg4tes2iD+6YnrtnHS0nEoP/soMmfFYl9FIw==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+
+  '@storybook/theming@8.6.12':
+    resolution: {integrity: sha512-6VjZg8HJ2Op7+KV7ihJpYrDnFtd9D1jrQnUS8LckcpuBXrIEbaut5+34ObY8ssQnSqkk2GwIZBBBQYQBCVvkOw==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
@@ -5572,8 +5585,8 @@ packages:
   confbox@0.1.8:
     resolution: {integrity: sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==}
 
-  confbox@0.2.1:
-    resolution: {integrity: sha512-hkT3yDPFbs95mNCy1+7qNKC6Pro+/ibzYxtM2iqEigpf0sVw+bg4Zh9/snjsBcf990vfIsg5+1U7VyiyBb3etg==}
+  confbox@0.2.2:
+    resolution: {integrity: sha512-1NB+BKqhtNipMsov4xI/NnhCKp9XG9NamYp5PVm9klAT0fsrNPjaFICsCFhNhwZJKNh7zB/3q8qXz0E9oaMNtQ==}
 
   consola@3.4.0:
     resolution: {integrity: sha512-EiPU8G6dQG0GFHNR8ljnZFki/8a+cQwEQ+7wpxdChl02Q8HXlwEZWD5lqAF8vC2sEC3Tehr8hy7vErz88LHyUA==}
@@ -5635,8 +5648,8 @@ packages:
   create-hmac@1.1.7:
     resolution: {integrity: sha512-MJG9liiZ+ogc4TzUwuvbER1JRdgvUFSB5+VR/g5h82fGaIRWMWddtKBHi7/sVhfjQZ6SehlyhvQYrcYkaUIpLg==}
 
-  create-storybook@8.6.11:
-    resolution: {integrity: sha512-jhObFLUlbFBDoi+qI5XQ+lJYGDxJjwwvVdfj7pPBjTS+uAz/WrPgBXJjP40it2OGEoveQtSoyLDBcJIbpghLmA==}
+  create-storybook@8.6.12:
+    resolution: {integrity: sha512-2Yb2LuWNvOEATWjj/pDAfkGhGiTLdV1nqJZLjB6F08ItcyBSeGuFybimrac72zFq4u0GI8LkjzEg/J3B1NI4tA==}
     hasBin: true
 
   croner@9.0.0:
@@ -9433,6 +9446,15 @@ packages:
       prettier:
         optional: true
 
+  storybook@8.6.12:
+    resolution: {integrity: sha512-Z/nWYEHBTLK1ZBtAWdhxC0l5zf7ioJ7G4+zYqtTdYeb67gTnxNj80gehf8o8QY9L2zA2+eyMRGLC2V5fI7Z3Tw==}
+    hasBin: true
+    peerDependencies:
+      prettier: ^2 || ^3
+    peerDependenciesMeta:
+      prettier:
+        optional: true
+
   stream-browserify@3.0.0:
     resolution: {integrity: sha512-H73RAHsVBapbim0tU2JwwOiXUj+fikfiaoYAKHF3VJfA0pe2BCzkhAHBlLG6REzE+2WNZcxOXjK7lkso+9euLA==}
 
@@ -11071,7 +11093,7 @@ snapshots:
 
   '@babel/generator@7.26.9':
     dependencies:
-      '@babel/parser': 7.26.9
+      '@babel/parser': 7.27.0
       '@babel/types': 7.27.0
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
@@ -11215,7 +11237,7 @@ snapshots:
 
   '@babel/helpers@7.26.9':
     dependencies:
-      '@babel/template': 7.26.9
+      '@babel/template': 7.27.0
       '@babel/types': 7.27.0
 
   '@babel/helpers@7.27.0':
@@ -11830,7 +11852,7 @@ snapshots:
   '@babel/template@7.26.9':
     dependencies:
       '@babel/code-frame': 7.26.2
-      '@babel/parser': 7.26.9
+      '@babel/parser': 7.27.0
       '@babel/types': 7.27.0
 
   '@babel/template@7.27.0':
@@ -11842,9 +11864,9 @@ snapshots:
   '@babel/traverse@7.26.9':
     dependencies:
       '@babel/code-frame': 7.26.2
-      '@babel/generator': 7.26.9
-      '@babel/parser': 7.26.9
-      '@babel/template': 7.26.9
+      '@babel/generator': 7.27.0
+      '@babel/parser': 7.27.0
+      '@babel/template': 7.27.0
       '@babel/types': 7.27.0
       debug: 4.4.0
       globals: 11.12.0
@@ -14832,14 +14854,14 @@ snapshots:
       - uglify-js
       - webpack-cli
 
-  '@storybook/cli@8.6.11(@babel/preset-env@7.26.9(@babel/core@7.26.10))(prettier@3.5.3)':
+  '@storybook/cli@8.6.12(@babel/preset-env@7.26.9(@babel/core@7.26.10))(prettier@3.5.3)':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/types': 7.27.0
-      '@storybook/codemod': 8.6.11(storybook@8.6.11(prettier@3.5.3))
+      '@storybook/codemod': 8.6.12(storybook@8.6.12(prettier@3.5.3))
       '@types/semver': 7.7.0
       commander: 12.1.0
-      create-storybook: 8.6.11
+      create-storybook: 8.6.12
       cross-spawn: 7.0.6
       envinfo: 7.14.0
       fd-package-json: 1.2.0
@@ -14852,7 +14874,7 @@ snapshots:
       p-limit: 6.2.0
       prompts: 2.4.2
       semver: 7.7.1
-      storybook: 8.6.11(prettier@3.5.3)
+      storybook: 8.6.12(prettier@3.5.3)
       tiny-invariant: 1.3.3
       ts-dedent: 2.2.0
     transitivePeerDependencies:
@@ -14862,12 +14884,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@storybook/codemod@8.6.11(storybook@8.6.11(prettier@3.5.3))':
+  '@storybook/codemod@8.6.12(storybook@8.6.12(prettier@3.5.3))':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/preset-env': 7.26.9(@babel/core@7.26.10)
       '@babel/types': 7.27.0
-      '@storybook/core': 8.6.11(prettier@3.5.3)(storybook@8.6.11(prettier@3.5.3))
+      '@storybook/core': 8.6.12(prettier@3.5.3)(storybook@8.6.12(prettier@3.5.3))
       '@types/cross-spawn': 6.0.6
       cross-spawn: 7.0.6
       es-toolkit: 1.34.1
@@ -14894,6 +14916,27 @@ snapshots:
   '@storybook/core@8.6.11(prettier@3.5.3)(storybook@8.6.11(prettier@3.5.3))':
     dependencies:
       '@storybook/theming': 8.6.11(storybook@8.6.11(prettier@3.5.3))
+      better-opn: 3.0.2
+      browser-assert: 1.2.1
+      esbuild: 0.25.2
+      esbuild-register: 3.6.0(esbuild@0.25.2)
+      jsdoc-type-pratt-parser: 4.1.0
+      process: 0.11.10
+      recast: 0.23.11
+      semver: 7.7.1
+      util: 0.12.5
+      ws: 8.18.1
+    optionalDependencies:
+      prettier: 3.5.3
+    transitivePeerDependencies:
+      - bufferutil
+      - storybook
+      - supports-color
+      - utf-8-validate
+
+  '@storybook/core@8.6.12(prettier@3.5.3)(storybook@8.6.12(prettier@3.5.3))':
+    dependencies:
+      '@storybook/theming': 8.6.12(storybook@8.6.12(prettier@3.5.3))
       better-opn: 3.0.2
       browser-assert: 1.2.1
       esbuild: 0.25.2
@@ -15108,6 +15151,10 @@ snapshots:
   '@storybook/theming@8.6.11(storybook@8.6.11(prettier@3.5.3))':
     dependencies:
       storybook: 8.6.11(prettier@3.5.3)
+
+  '@storybook/theming@8.6.12(storybook@8.6.12(prettier@3.5.3))':
+    dependencies:
+      storybook: 8.6.12(prettier@3.5.3)
 
   '@swc/core-darwin-arm64@1.11.11':
     optional: true
@@ -15336,7 +15383,7 @@ snapshots:
 
   '@types/babel__template@7.4.4':
     dependencies:
-      '@babel/parser': 7.26.9
+      '@babel/parser': 7.27.0
       '@babel/types': 7.27.0
 
   '@types/babel__traverse@7.20.6':
@@ -16510,7 +16557,7 @@ snapshots:
 
   confbox@0.1.8: {}
 
-  confbox@0.2.1: {}
+  confbox@0.2.2: {}
 
   consola@3.4.0: {}
 
@@ -16583,7 +16630,7 @@ snapshots:
       safe-buffer: 5.2.1
       sha.js: 2.4.11
 
-  create-storybook@8.6.11:
+  create-storybook@8.6.12:
     dependencies:
       recast: 0.23.11
       semver: 7.7.1
@@ -20246,7 +20293,7 @@ snapshots:
 
   pkg-types@2.1.0:
     dependencies:
-      confbox: 0.2.1
+      confbox: 0.2.2
       exsolve: 1.0.4
       pathe: 2.0.3
 
@@ -21304,6 +21351,16 @@ snapshots:
   storybook@8.6.11(prettier@3.5.3):
     dependencies:
       '@storybook/core': 8.6.11(prettier@3.5.3)(storybook@8.6.11(prettier@3.5.3))
+    optionalDependencies:
+      prettier: 3.5.3
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
+  storybook@8.6.12(prettier@3.5.3):
+    dependencies:
+      '@storybook/core': 8.6.12(prettier@3.5.3)(storybook@8.6.12(prettier@3.5.3))
     optionalDependencies:
       prettier: 3.5.3
     transitivePeerDependencies:
