@@ -25,10 +25,10 @@ spec:
       - host all all all scram-sha-256
 
   storage:
-    storageClass: longhorn-postgres-replica-storage
+    storageClass: longhorn-postgres-storage
     size: 10Gi
   walStorage:
-    storageClass: longhorn-postgres-replica-storage
+    storageClass: longhorn-postgres-storage
     size: 10Gi
 
   # prometheus
