@@ -13,7 +13,7 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
-    "next": "15.3.0-canary.17",
+    "next": "15.3.0-canary.45",
     "nextra": "4.2.16",
     "nextra-theme-blog": "4.2.17",
     "nextra-theme-docs": "4.2.16",
@@ -24,13 +24,13 @@
     "@repo/tsconfig": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
-    "@types/node": "22.13.11",
+    "@types/node": "22.13.17",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.2",
     "typescript": "5.7.3",
     "autoprefixer": "10.4.21",
     "postcss": "8.5.1",
-    "tailwindcss": "4.0.15"
+    "tailwindcss": "4.0.17"
   },
   "overrides": {
     "@types/react": "19.0.8",

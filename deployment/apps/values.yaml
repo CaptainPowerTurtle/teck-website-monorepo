@@ -3,6 +3,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: teck-website-prod
     name: in-cluster
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
   source:
     repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo
     targetRevision: HEAD

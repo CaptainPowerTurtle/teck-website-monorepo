@@ -9,7 +9,7 @@
   "devDependencies": {
     "@repo/tsconfig": "workspace:*",
     "@tailwindcss/typography": "^0.5.16",
-    "tailwindcss": "^4.0.15"
+    "tailwindcss": "^4.0.17"
   },
   "dependencies": {
     "mini-svg-data-uri": "^1.4.4",
