@@ -1,5 +1,88 @@
 # Changelog
 
+## [0.2.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/storybook@v0.1.36...storybook@v0.2.0) (2025-04-28)
+
+
+### 🚀 Features
+
+* missing headers ([b8065a2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/b8065a2d5013f09815289d5e9486da118d7ec5f1))
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump @storybook/addon-essentials from 8.6.10 to 8.6.11 ([#303](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/303)) ([32ca931](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/32ca93197e4f2b026a48aaeb3f67ced733b1da78))
+* **deps-dev:** bump @storybook/addon-essentials from 8.6.11 to 8.6.12 ([#341](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/341)) ([bffd0f8](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/bffd0f84323ffa09d4b2cf77809f4388714f0644))
+* **deps-dev:** bump @storybook/addon-essentials from 8.6.7 to 8.6.9 ([#265](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/265)) ([8f4904b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/8f4904b81ed14f4daebdd301b05651c92d02295e))
+* **deps-dev:** bump @storybook/addon-essentials from 8.6.9 to 8.6.10 ([#302](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/302)) ([0e0633f](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0e0633fb39ff874f4c1908dc6bace15333025eee))
+* **deps-dev:** bump @storybook/addon-interactions ([#311](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/311)) ([7a0ddb1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/7a0ddb10d08ff16aaf52858dc08c2947116af3e4))
+* **deps-dev:** bump @storybook/addon-interactions ([#339](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/339)) ([5f52f20](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/5f52f20023866e9ea021442b24dd2154654a27fe))
+* **deps-dev:** bump @storybook/addon-interactions from 8.6.7 to 8.6.9 ([#257](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/257)) ([1095ec5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/1095ec58d250361dece1ea4579bf3cf63283477e))
+* **deps-dev:** bump @storybook/addon-interactions from 8.6.9 to 8.6.10 ([#297](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/297)) ([e457355](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e4573559af85a85e77972fd54260ca03ebcfa9f8))
+* **deps-dev:** bump @storybook/addon-links from 8.6.10 to 8.6.11 ([#304](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/304)) ([bff4e42](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/bff4e421c3ed7f74dbc71d000ffc86c45fc822c7))
+* **deps-dev:** bump @storybook/addon-links from 8.6.11 to 8.6.12 ([#336](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/336)) ([0bd9a80](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0bd9a80ce1e5d51ec45dab4b24e2b597547b0fbd))
+* **deps-dev:** bump @storybook/addon-links from 8.6.7 to 8.6.9 ([#266](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/266)) ([5243b29](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/5243b29dfd4f2fe4abf34e9dda1c96e35f79ea81))
+* **deps-dev:** bump @storybook/addon-links from 8.6.9 to 8.6.10 ([#293](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/293)) ([8bd3a07](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/8bd3a074d44ffd928f7bd444769bc1a98db6fd84))
+* **deps-dev:** bump @storybook/addon-onboarding from 8.6.10 to 8.6.11 ([#308](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/308)) ([8bc240d](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/8bc240d606020a8f6902703b2364e944cc47cf9a))
+* **deps-dev:** bump @storybook/addon-onboarding from 8.6.11 to 8.6.12 ([#334](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/334)) ([bbb00d0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/bbb00d0536496913200cec00e9bc54d6c50a635a))
+* **deps-dev:** bump @storybook/addon-onboarding from 8.6.7 to 8.6.9 ([#264](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/264)) ([619d5e6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/619d5e6fabd0b7322dd95e46f29877dc27f588b6))
+* **deps-dev:** bump @storybook/addon-onboarding from 8.6.9 to 8.6.10 ([#294](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/294)) ([cdfbd44](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/cdfbd44c5e7b11691b14b436ef1577c51d32b7e2))
+* **deps-dev:** bump @storybook/addon-themes from 8.6.10 to 8.6.11 ([#306](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/306)) ([399d31b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/399d31bf194064d6218b63835ef5ea6393d20d39))
+* **deps-dev:** bump @storybook/addon-themes from 8.6.11 to 8.6.12 ([#345](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/345)) ([5b1cbe5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/5b1cbe58bbf74a8d2f330240789bd6282f2fc5d6))
+* **deps-dev:** bump @storybook/addon-themes from 8.6.7 to 8.6.9 ([#273](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/273)) ([bf0f61d](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/bf0f61db2a4397904534c62ddb488bdfa6a643ba))
+* **deps-dev:** bump @storybook/addon-themes from 8.6.9 to 8.6.10 ([#301](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/301)) ([c0c82e5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/c0c82e5e300b792d64838da5c7daa71644b43bcd))
+* **deps-dev:** bump @storybook/blocks from 8.6.10 to 8.6.11 ([#313](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/313)) ([e45486a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e45486aef74eb7d6aaa370383e00a2279f4603ba))
+* **deps-dev:** bump @storybook/blocks from 8.6.11 to 8.6.12 ([#337](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/337)) ([899db03](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/899db036666e895ea69bd9152c7cec2be204de90))
+* **deps-dev:** bump @storybook/blocks from 8.6.7 to 8.6.9 ([#249](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/249)) ([b14d09a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/b14d09a3287af261442c73090053e1e82d7759dd))
+* **deps-dev:** bump @storybook/blocks from 8.6.9 to 8.6.10 ([#291](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/291)) ([0ce2124](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0ce2124c9912e7d80d82caa773fc79fad2f4a033))
+* **deps-dev:** bump @storybook/cli from 8.6.10 to 8.6.11 ([#309](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/309)) ([1a6872b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/1a6872b1a77e897b0cbe2538687443ee4d00ac0f))
+* **deps-dev:** bump @storybook/cli from 8.6.11 to 8.6.12 ([#338](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/338)) ([1005fa6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/1005fa62e4d2212c6fd920c567b2a8ab1871e2f3))
+* **deps-dev:** bump @storybook/cli from 8.6.7 to 8.6.9 ([#268](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/268)) ([2795ad4](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/2795ad4647ab96902ba01ae7bdffb4a70bf74034))
+* **deps-dev:** bump @storybook/cli from 8.6.9 to 8.6.10 ([#292](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/292)) ([39ab488](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/39ab488efb608b417b1b13bc99aec7528bdfa599))
+* **deps-dev:** bump @storybook/nextjs from 8.6.10 to 8.6.11 ([#310](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/310)) ([07d26d3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/07d26d31559a50d5be426296c640e472f16ff600))
+* **deps-dev:** bump @storybook/nextjs from 8.6.11 to 8.6.12 ([#346](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/346)) ([70adb9e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/70adb9e8985898e5f1ad559d8dc1e34e0e484957))
+* **deps-dev:** bump @storybook/nextjs from 8.6.7 to 8.6.9 ([#263](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/263)) ([46358d9](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/46358d9552865331829327710f79bebb9b0e377c))
+* **deps-dev:** bump @storybook/nextjs from 8.6.9 to 8.6.10 ([#296](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/296)) ([cd0f665](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/cd0f6652e0850f564f66361e5abda33fb6943e4a))
+* **deps-dev:** bump @storybook/react from 8.6.10 to 8.6.11 ([#312](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/312)) ([cb5e69e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/cb5e69e6ce3a78fa2ab4b3b9f13163b1d808332a))
+* **deps-dev:** bump @storybook/react from 8.6.11 to 8.6.12 ([#335](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/335)) ([a988ee5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/a988ee54eecf70e5dc9df00b4bf2720b1d637007))
+* **deps-dev:** bump @storybook/react from 8.6.7 to 8.6.9 ([#260](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/260)) ([c40db19](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/c40db19801b40b844c1ce1b795837c1aea6ebf42))
+* **deps-dev:** bump @storybook/react from 8.6.9 to 8.6.10 ([#299](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/299)) ([46fd952](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/46fd9529dd2927d1e1ffead4bde9791280fe0fd3))
+* **deps-dev:** bump @storybook/react-vite from 8.6.10 to 8.6.11 ([#305](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/305)) ([d9c99be](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/d9c99bee0d6bcfcac3fbece55d7f0a0da5495a22))
+* **deps-dev:** bump @storybook/react-vite from 8.6.11 to 8.6.12 ([#342](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/342)) ([5543889](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/5543889f90f391ef0565ef36226a925cb245da03))
+* **deps-dev:** bump @storybook/react-vite from 8.6.7 to 8.6.9 ([#258](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/258)) ([4f71884](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/4f7188412c9f45e046eacd1c9fcb3c214c2a87e7))
+* **deps-dev:** bump @storybook/react-vite from 8.6.9 to 8.6.10 ([#290](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/290)) ([829c100](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/829c1000515bfcac8f0bdd3dee8515ba9c09c5ed))
+* **deps-dev:** bump @types/node from 22.13.11 to 22.13.13 ([#284](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/284)) ([79d7a37](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/79d7a379667c16515b2312b80bd01d7ff0550702))
+* **deps-dev:** bump @types/node from 22.13.14 to 22.13.16 ([#316](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/316)) ([f04655f](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/f04655f9bf4889513c385be52a837ac290847a77))
+* **deps-dev:** bump @types/node from 22.13.16 to 22.13.17 ([#321](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/321)) ([fc90148](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/fc901483068f807f6b9e7c94f6c1afbd3ca7dd14))
+* **deps-dev:** bump storybook from 8.6.10 to 8.6.11 ([#307](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/307)) ([4472a8e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/4472a8eaa7d0cdc5f6070644024343398ebaa73d))
+* **deps-dev:** bump storybook from 8.6.11 to 8.6.12 ([#340](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/340)) ([6b02070](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/6b0207022a2ea444ce64d4898283e9b88158495b))
+* **deps-dev:** bump storybook from 8.6.4 to 8.6.10 ([#298](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/298)) ([820467f](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/820467fda30dbcde2e30b6899cb65e686aff859a))
+* **deps-dev:** bump tailwindcss from 4.0.15 to 4.0.16 ([#252](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/252)) ([8c2120b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/8c2120bf4a7ac137586a589a1d24af4073925276))
+* **deps-dev:** bump tailwindcss from 4.0.16 to 4.0.17 ([#272](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/272)) ([2d9c03b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/2d9c03b67c8ea5430c1723514812bf4c71916c8b))
+* **deps-dev:** bump vite from 6.2.2 to 6.2.3 ([#254](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/254)) ([f7e0189](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/f7e01892e8c4f154f4a5bae9493f1c98826e64f7))
+* **deps-dev:** bump vite from 6.2.3 to 6.2.4 ([#315](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/315)) ([66affb2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/66affb208e56a2de93fdba17d1cd057b235b86a3))
+* **deps-dev:** bump vite from 6.2.4 to 6.2.5 ([#343](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/343)) ([7e5663d](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/7e5663d0d8ab2ad7267a492b7d36528a73bf2e99))
+* **deps-dev:** bump vite from 6.2.5 to 6.2.6 ([#378](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/378)) ([d2a9087](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/d2a908752e134438651af71e0a99393049dd6a3b))
+* **deps:** bump next from 15.3.0-canary.17 to 15.3.0-canary.21 ([#262](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/262)) ([0c5be36](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0c5be36a3f804cf199d344097c16bfd04aaf7204))
+* **deps:** bump next from 15.3.0-canary.21 to 15.3.0-canary.23 ([#281](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/281)) ([573ee48](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/573ee48c7f3a5694137a77df07522aac78e09ea1))
+* **deps:** bump next from 15.3.0-canary.24 to 15.3.0-canary.26 ([#314](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/314)) ([46e9947](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/46e9947c26d31f37aeaeda7645ae637070a63a2f))
+* **deps:** bump next from 15.3.0-canary.26 to 15.3.0-canary.27 ([#317](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/317)) ([0f2e33f](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0f2e33f25a84a90dbe26b453f187fde253de6d7d))
+* **deps:** bump next from 15.3.0-canary.27 to 15.3.0-canary.29 ([#330](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/330)) ([31a6b43](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/31a6b43bb067b54dbd8ff65b7cb4f4f789b85518))
+* **deps:** bump next from 15.3.0-canary.31 to 15.3.0-canary.33 ([#349](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/349)) ([0029eef](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0029eefb6eeaf9a8c7fe475ace4a499c11cfb047))
+* **deps:** bump next from 15.3.0-canary.33 to 15.3.0-canary.43 ([#364](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/364)) ([e430304](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e430304414277c8501e16fe08cc96e1f809f079f))
+* **deps:** bump next from 15.3.0-canary.43 to 15.3.0-canary.45 ([#371](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/371)) ([e65e2b7](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e65e2b76d44f47d20ab192882b5158f79ce2bbbc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @repo/ui bumped to 0.1.5
+    * @repo/utils bumped to 0.1.4
+    * @repo/web bumped to 1.3.0
+  * devDependencies
+    * @repo/eslint-config bumped to 0.1.3
+    * @repo/tailwind-config bumped to 0.1.4
+
 ## [0.1.36](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/storybook@v0.1.35...storybook@v0.1.36) (2025-03-23)
 
 

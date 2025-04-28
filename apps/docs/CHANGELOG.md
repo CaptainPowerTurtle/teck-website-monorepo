@@ -1,5 +1,40 @@
 # Changelog
 
+## [0.2.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/docs@v0.1.4...docs@v0.2.0) (2025-04-28)
+
+
+### 🚀 Features
+
+* missing headers ([b8065a2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/b8065a2d5013f09815289d5e9486da118d7ec5f1))
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump @types/node from 22.13.11 to 22.13.13 ([#284](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/284)) ([79d7a37](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/79d7a379667c16515b2312b80bd01d7ff0550702))
+* **deps-dev:** bump @types/node from 22.13.14 to 22.13.16 ([#316](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/316)) ([f04655f](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/f04655f9bf4889513c385be52a837ac290847a77))
+* **deps-dev:** bump @types/node from 22.13.16 to 22.13.17 ([#321](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/321)) ([fc90148](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/fc901483068f807f6b9e7c94f6c1afbd3ca7dd14))
+* **deps-dev:** bump tailwindcss from 4.0.15 to 4.0.16 ([#252](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/252)) ([8c2120b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/8c2120bf4a7ac137586a589a1d24af4073925276))
+* **deps-dev:** bump tailwindcss from 4.0.16 to 4.0.17 ([#272](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/272)) ([2d9c03b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/2d9c03b67c8ea5430c1723514812bf4c71916c8b))
+* **deps:** bump next from 15.3.0-canary.17 to 15.3.0-canary.21 ([#262](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/262)) ([0c5be36](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0c5be36a3f804cf199d344097c16bfd04aaf7204))
+* **deps:** bump next from 15.3.0-canary.21 to 15.3.0-canary.23 ([#281](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/281)) ([573ee48](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/573ee48c7f3a5694137a77df07522aac78e09ea1))
+* **deps:** bump next from 15.3.0-canary.24 to 15.3.0-canary.26 ([#314](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/314)) ([46e9947](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/46e9947c26d31f37aeaeda7645ae637070a63a2f))
+* **deps:** bump next from 15.3.0-canary.26 to 15.3.0-canary.27 ([#317](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/317)) ([0f2e33f](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0f2e33f25a84a90dbe26b453f187fde253de6d7d))
+* **deps:** bump next from 15.3.0-canary.27 to 15.3.0-canary.29 ([#330](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/330)) ([31a6b43](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/31a6b43bb067b54dbd8ff65b7cb4f4f789b85518))
+* **deps:** bump next from 15.3.0-canary.31 to 15.3.0-canary.33 ([#349](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/349)) ([0029eef](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0029eefb6eeaf9a8c7fe475ace4a499c11cfb047))
+* **deps:** bump next from 15.3.0-canary.33 to 15.3.0-canary.43 ([#364](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/364)) ([e430304](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e430304414277c8501e16fe08cc96e1f809f079f))
+* **deps:** bump next from 15.3.0-canary.43 to 15.3.0-canary.45 ([#371](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/371)) ([e65e2b7](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e65e2b76d44f47d20ab192882b5158f79ce2bbbc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @repo/ui bumped to 0.1.5
+    * @repo/utils bumped to 0.1.4
+  * devDependencies
+    * @repo/eslint-config bumped to 0.1.3
+    * @repo/tailwind-config bumped to 0.1.4
+
 ## [0.1.4](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/docs@v0.1.3...docs@v0.1.4) (2025-03-22)
 
 

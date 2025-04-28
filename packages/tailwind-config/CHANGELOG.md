@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.4](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/tailwind-config@v0.1.3...tailwind-config@v0.1.4) (2025-04-28)
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump tailwindcss from 4.0.15 to 4.0.16 ([#252](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/252)) ([8c2120b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/8c2120bf4a7ac137586a589a1d24af4073925276))
+* **deps-dev:** bump tailwindcss from 4.0.16 to 4.0.17 ([#272](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/272)) ([2d9c03b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/2d9c03b67c8ea5430c1723514812bf4c71916c8b))
+
 ## [0.1.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/tailwind-config@v0.1.2...tailwind-config@v0.1.3) (2025-03-22)
 
 
