@@ -5,6 +5,7 @@ metadata:
   namespace: {{ .Values.web.namespace }}
   annotations:
     kubernetes.io/ingress.class: traefik-external
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   entryPoints:
     - websecure
@@ -14,8 +15,12 @@ spec:
       services:
         - name: {{ .Release.Name }}-service
           port: 3000
+      middlewares:
+        - name: default-headers
     - match: Host(`teck.dk`)
       kind: Rule
       services:
         - name: {{ .Release.Name }}-service
           port: 3000
+      middlewares:
+        - name: default-headers

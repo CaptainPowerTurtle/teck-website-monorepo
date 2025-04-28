@@ -22,17 +22,17 @@ const nextConfig = {
   transpilePackages: ["@repo/ui", "@t3-oss/env-nextjs", "@t3-oss/env-core"],
   reactStrictMode: true,
   output: "standalone",
-  experimental: {
-    reactCompiler: true,
-    ppr: 'incremental',
-    turbo: {
-      rules: {
-        "*.svg": {
-          loaders: ["@svgr/webpack"],
-          as: "*.js",
-        },
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
       },
     },
+  },
+  experimental: {
+    reactCompiler: true,
+    ppr: "incremental",
   },
   images: {
     remotePatterns: [
