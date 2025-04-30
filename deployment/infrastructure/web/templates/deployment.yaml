@@ -27,8 +27,8 @@ spec:
             - containerPort: {{ .Values.web.containers.ports.containerPort }}
           resources:
             limits:
-              cpu: {{ .Values.web.containers.resources.imits.cpu }}
-              memory: {{ .Values.web.containers.resources.imits.memory }}
+              cpu: {{ .Values.web.containers.resources.limits.cpu }}
+              memory: {{ .Values.web.containers.resources.limits.memory }}
           env:
             - name: POSTGRES_USERNAME
               valueFrom:
