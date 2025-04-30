@@ -1,0 +1,30 @@
+global:
+  defaultStorageClass: longhorn
+  storageClass: longhorn
+architecture: standalone
+persistence:
+  enabled: true
+  storageClass: longhorn
+  accessModes:
+    - ReadWriteOnce
+  size: 500Mi
+extraDeploy:
+  - apiVersion: external-secrets.io/v1alpha1
+    kind: PushSecret
+    metadata:
+      name: redis-pushsecret
+      namespace: teck-website-prod
+    spec:
+      secretStoreRefs:
+      - name: teck-website-vault
+        kind: ClusterSecretStore
+      selector:
+        secret:
+          name: redis
+      refreshInterval: 30s
+      data:
+        - match:
+            secretKey: redis-password
+            remoteRef:
+              remoteKey: redis
+              property: password

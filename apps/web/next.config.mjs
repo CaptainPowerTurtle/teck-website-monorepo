@@ -30,6 +30,8 @@ const nextConfig = {
       },
     },
   },
+  cacheHandler:
+    process.env.NODE_ENV === "production" ? "./cache-handler.mjs" : undefined,
   experimental: {
     reactCompiler: true,
     ppr: "incremental",

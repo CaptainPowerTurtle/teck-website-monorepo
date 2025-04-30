@@ -50,6 +50,13 @@ spec:
                 secretKeyRef:
                   name: payload-secret
                   key: preview-secret
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: password
+            - name: REDIS_URL
+              value: redis://:$(REDIS_PASSWORD):redis-master.{{ .Values.web.namespace }}.svc:6379
             - name: DATABASE_URI
               value: postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@pooler-postgres-rw.{{ .Values.web.namespace }}.svc:5432/teck-website
             - name: PAYLOAD_SECRET
@@ -58,3 +65,5 @@ spec:
               value: $(PREVIEW_SECRET)
             - name: NEXT_PUBLIC_SERVER_URL
               value: {{ .Values.web.ingress.url }}
+            - name: REDIS_AVAILABLE
+              value: "true"

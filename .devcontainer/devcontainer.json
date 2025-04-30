@@ -7,14 +7,16 @@
   "service": "app",
   "runServices": [
     "db",
-    "minio"
+    "minio",
+    "redis"
   ],
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "forwardPorts": [
     4000,
     4001,
     6006,
-    9001
+    9001,
+    6379
   ],
   "portsAttributes": {
     "4000": {
@@ -28,6 +30,9 @@
     },
     "9001": {
       "label": "minio"
+    },
+    "6379": {
+      "label": "redis"
     }
   },
   // Features to add to the dev container. More info: https://containers.dev/features.

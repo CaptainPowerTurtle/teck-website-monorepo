@@ -68,6 +68,7 @@ jobs:
           # The default PostgreSQL port
           # Hardcoded for testing, should be retrived from either the vault, or env secrets on github.
           # PAYLOAD_SECRET: "9da353614ecee0bfa86d9e6f"
+          REDIS_AVAILABLE: "false"
       - name: Build
         run: pnpm build
         env:
@@ -75,6 +76,7 @@ jobs:
           SKIP_ENV_VALIDATION: true
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          REDIS_AVAILABLE: "false"
 
       # - name: Test
       #   run: pnpm test
