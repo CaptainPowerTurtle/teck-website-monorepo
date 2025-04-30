@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/ui@v0.1.5...ui@v0.1.6) (2025-04-30)
+
+
+### 🧹 Chores
+
+* **deps:** bump @radix-ui/react-dropdown-menu from 2.1.11 to 2.1.12 ([#426](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/426)) ([5545fa5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/5545fa5be0defa6f0885d43fa430d9b38575ee0d))
+
 ## [0.1.5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/ui@v0.1.4...ui@v0.1.5) (2025-04-28)
 
 
