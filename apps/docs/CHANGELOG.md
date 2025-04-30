@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/docs@v0.2.0...docs@v0.2.1) (2025-04-30)
+
+
+### 🧹 Chores
+
+* **deps:** bump next from 15.4.0-canary.12 to 15.4.0-canary.14 ([#430](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/430)) ([47b9896](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/47b989619725a357e10ab5ce0aa5a27222c42cd7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @repo/ui bumped to 0.1.6
+
 ## [0.2.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/docs@v0.1.4...docs@v0.2.0) (2025-04-28)
 
 
