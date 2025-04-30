@@ -12,6 +12,7 @@ spec:
   project: {{ .Values.spec.project }}
   sources:
     - repoURL: "https://charts.bitnami.com/bitnami"
+      targetRevision: 20.13.4
       chart: redis
       helm:
         releaseName: redis
