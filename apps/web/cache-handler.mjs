@@ -2,7 +2,7 @@ import { CacheHandler } from "@neshca/cache-handler";
 import createLruHandler from "@neshca/cache-handler/local-lru";
 import createRedisHandler from "@neshca/cache-handler/redis-stack";
 import { createClient } from "redis";
-import { env } from "@/env/server";
+import { env } from "./src/env/server";
 
 CacheHandler.onCreation(async ({ buildId }) => {
   let client;
