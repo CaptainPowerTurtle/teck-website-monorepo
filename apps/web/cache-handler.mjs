@@ -2,14 +2,13 @@ import { CacheHandler } from "@neshca/cache-handler";
 import createLruHandler from "@neshca/cache-handler/local-lru";
 import createRedisHandler from "@neshca/cache-handler/redis-stack";
 import { createClient } from "redis";
-import { env } from "./src/env/server";
 
 CacheHandler.onCreation(async ({ buildId }) => {
   let client;
 
   try {
     client = createClient({
-      url: env.REDIS_URL ?? "redis://localhost:6379",
+      url: process.env.REDIS_URL ?? "redis://localhost:6379",
     });
 
     client.on("error", (error) => {
@@ -21,7 +20,7 @@ CacheHandler.onCreation(async ({ buildId }) => {
 
   let redisHandler;
 
-  if (env.REDIS_AVAILABLE && buildId) {
+  if (process.env.REDIS_AVAILABLE && buildId) {
     try {
       console.info("Connecting Redis client...");
 
