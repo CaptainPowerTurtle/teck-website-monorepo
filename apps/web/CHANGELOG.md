@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.4.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.3.0...web@v1.4.0) (2025-04-30)
+
+
+### 🚀 Features
+
+* implemented redis cache ([#448](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/448)) ([7cd0e67](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/7cd0e678e78369f68adf6b458979c49d754e6177))
+
+
+### 🧹 Chores
+
+* **deps:** bump next from 15.4.0-canary.12 to 15.4.0-canary.14 ([#430](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/430)) ([47b9896](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/47b989619725a357e10ab5ce0aa5a27222c42cd7))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @repo/ui bumped to 0.1.6
+
 ## [1.3.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.2.4...web@v1.3.0) (2025-04-28)
 
 

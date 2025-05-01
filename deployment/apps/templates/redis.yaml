@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: redis
+  name: teck-website-redis
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -11,8 +11,8 @@ spec:
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.project }}
   sources:
-    - repoURL: "https://charts.bitnami.com/bitnami"
-      targetRevision: 20.13.3
+    - repoURL: "registry-1.docker.io/bitnamicharts"
+      targetRevision: 20.13.4
       chart: redis
       helm:
         releaseName: redis
@@ -22,8 +22,8 @@ spec:
       targetRevision: HEAD
       ref: values
   syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      {{ .Values.spec.syncPolicy.syncOptions }}
