@@ -4,7 +4,7 @@ metadata:
   name: web
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: web=teck-website-monorepo/web:x.x.x
+    argocd-image-updater.argoproj.io/image-list: web=captainpowerturtle/teck-website-monorepo/web:x.x.x
     argocd-image-updater.argoproj.io/web.update-strategy: semver
     argocd-image-updater.argoproj.io/web.allow-tags: regexp:^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
     argocd-image-updater.argoproj.io/web.helm.image-name: web.containers.image.name
