@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.web.containers.name }}
-          image: {{ .Values.web.containers.image.name }}:{{ .Values.web.containers.image.tag }}
+          image: {{ .Values.web.containers.image.repository }}/{{ .Values.web.containers.image.name }}:{{ .Values.web.containers.image.tag }}
           imagePullPolicy: {{ .Values.web.containers.image.imagePullPolicy }}
           ports:
             - containerPort: {{ .Values.web.containers.ports.containerPort }}
