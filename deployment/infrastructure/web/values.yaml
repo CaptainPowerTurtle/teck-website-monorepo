@@ -11,7 +11,7 @@ web:
       containerPort: 3000
 
     image:
-      registry: ghcr.io/captainpowerturtle
+      registry: ghcr.io
       name: web
       tag: 1.2.4
       imagePullPolicy: Always
