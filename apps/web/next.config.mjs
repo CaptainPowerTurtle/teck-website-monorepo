@@ -12,6 +12,8 @@ import bundleAnalyzer from "@next/bundle-analyzer";
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
+const cacheHandlerPath = new URL("./cache-handler.mjs", import.meta.url)
+  .pathname;
 
 const NEXT_PUBLIC_SERVER_URL = process.env.PROJECT_PRODUCTION_URL
   ? `https://${process.env.PROJECT_PRODUCTION_URL}`
@@ -23,6 +25,7 @@ const nextConfig = {
   reactStrictMode: true,
   output: "standalone",
   turbopack: {
+    // resolveExtensions: [".mdx", ".tsx", ".ts", ".jsx", ".js", ".mjs", ".json"],
     rules: {
       "*.svg": {
         loaders: ["@svgr/webpack"],
@@ -31,7 +34,8 @@ const nextConfig = {
     },
   },
   cacheHandler:
-    process.env.NODE_ENV === "production" ? "./cache-handler.mjs" : undefined,
+    process.env.NODE_ENV === "production" ? cacheHandlerPath : undefined,
+  cacheMaxMemorySize: process.env.NODE_ENV === "production" ? 0 : undefined, // disable default in-memory caching
   experimental: {
     reactCompiler: true,
     ppr: "incremental",
