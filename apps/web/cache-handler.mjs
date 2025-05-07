@@ -1,8 +1,9 @@
 import { CacheHandler } from "@neshca/cache-handler";
 import createLruHandler from "@neshca/cache-handler/local-lru";
-import createRedisHandler from "@neshca/cache-handler/redis-stack";
+import createRedisHandler from "@neshca/cache-handler/redis-strings";
 import { createClient } from "redis";
-
+import { Next15CacheHandler } from "@fortedigital/nextjs-cache-handler/next-15-cache-handler";
+import createBufferStringHandler from "@fortedigital/nextjs-cache-handler/buffer-string-decorator";
 CacheHandler.onCreation(async ({ buildId }) => {
   let client;
 
@@ -52,8 +53,7 @@ CacheHandler.onCreation(async ({ buildId }) => {
   const localHandler = createLruHandler();
 
   return {
-    handlers: [redisHandler, localHandler],
+    handlers: [createBufferStringHandler(redisHandler), localHandler],
   };
 });
-
-export default CacheHandler;
+export default new Next15CacheHandler();
