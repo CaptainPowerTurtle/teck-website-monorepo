@@ -21,7 +21,6 @@ CacheHandler.onCreation(async ({ buildId }) => {
 
   let redisHandler;
 
-  console.info("Is Redis?", process.env.REDIS_AVAILABLE);
   if (process.env.REDIS_AVAILABLE && buildId) {
     try {
       console.info("Connecting Redis client...");
