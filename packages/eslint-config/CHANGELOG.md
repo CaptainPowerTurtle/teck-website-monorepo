@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.4](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/eslint-config@v0.1.3...eslint-config@v0.1.4) (2025-05-08)
+
+
+### 🐛 Bug Fixes
+
+* lock file ([#480](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/480)) ([71e96ed](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/71e96ed9a2d560ba38a52a24b3364733e7564250))
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump eslint-config-prettier from 10.1.2 to 10.1.3 ([#478](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/478)) ([22498e9](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/22498e9497fb7d657891b98c38033fd10a06d3cb))
+* **deps:** bump image-size from 1.2.0 to 1.2.1 ([#383](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/383)) ([ee7f0ab](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ee7f0ab98ec2f57fb26da2942d83ec768bc4da3e))
+
 ## [0.1.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/eslint-config@v0.1.2...eslint-config@v0.1.3) (2025-04-28)
 
 
