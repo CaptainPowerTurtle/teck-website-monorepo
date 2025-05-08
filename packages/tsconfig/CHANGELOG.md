@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/tsconfig@v0.1.2...tsconfig@v0.1.3) (2025-05-08)
+
+
+### 🐛 Bug Fixes
+
+* lock file ([#480](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/480)) ([71e96ed](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/71e96ed9a2d560ba38a52a24b3364733e7564250))
+
+
+### 🧹 Chores
+
+* **deps:** bump image-size from 1.2.0 to 1.2.1 ([#383](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/383)) ([ee7f0ab](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ee7f0ab98ec2f57fb26da2942d83ec768bc4da3e))
+
 ## [0.1.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/tsconfig@v0.1.1...tsconfig@v0.1.2) (2025-03-18)
 
 
