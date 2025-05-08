@@ -1,6 +1,6 @@
 {
   "name": "@repo/storybook",
-  "version": "0.1.36",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "dev": "BROWSER=true VITE_CJS_TRACE=true storybook dev -p 6006",
@@ -12,7 +12,7 @@
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
     "@repo/web": "workspace:*",
-    "next": "15.3.0-canary.45",
+    "next": "15.4.0-canary.27",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
@@ -44,7 +44,7 @@
     "style-loader": "^4.0.0",
     "tailwindcss": "^4.0.17",
     "typescript": "^5.8.2",
-    "vite": "^6.2.5"
+    "vite": "^6.3.5"
   },
   "overrides": {
     "@types/react": "19.0.8",

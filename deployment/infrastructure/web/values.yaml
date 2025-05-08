@@ -11,12 +11,12 @@ web:
       containerPort: 3000
 
     image:
-      repository: ghcr.io/captainpowerturtle/teck-website-monorepo
+      registry: ghcr.io
       name: web
-      tag: 1.2.1
+      tag: 1.2.4
       imagePullPolicy: Always
     resources:
-      imits:
+      limits:
         cpu: "500m"
         memory: 1500Mi
   service:
