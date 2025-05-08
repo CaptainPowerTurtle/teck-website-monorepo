@@ -4,6 +4,9 @@ import createRedisHandler from "@neshca/cache-handler/redis-strings";
 import { createClient } from "redis";
 import { Next15CacheHandler } from "@fortedigital/nextjs-cache-handler/next-15-cache-handler";
 import createBufferStringHandler from "@fortedigital/nextjs-cache-handler/buffer-string-decorator";
+
+// fortedigital should be removed when neshca supports nextjs 15+
+
 CacheHandler.onCreation(async ({ buildId }) => {
   let client;
 
