@@ -1,7 +1,7 @@
 {
-  "apps/web": "1.5.0",
-  "apps/storybook": "0.2.2",
-  "apps/docs": "0.2.2",
+  "apps/web": "1.5.1",
+  "apps/storybook": "0.2.3",
+  "apps/docs": "0.2.3",
   "packages/eslint-config": "0.1.4",
   "packages/tailwind-config": "0.1.5",
   "packages/tsconfig": "0.1.3",
