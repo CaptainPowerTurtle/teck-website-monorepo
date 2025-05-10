@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.5.0...web@v1.5.1) (2025-05-10)
+
+
+### 🧹 Chores
+
+* **deps:** bump next from 15.4.0-canary.27 to 15.4.0-canary.29 ([#485](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/485)) ([785bad5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/785bad54b6792236bcb7c90e16d15c45c30941e0))
+
 ## [1.5.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.4.0...web@v1.5.0) (2025-05-08)
 
 
