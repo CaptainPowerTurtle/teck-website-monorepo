@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@neshca/cache-handler": "1.9.0",
-    "@next/bundle-analyzer": "15.1.7",
+    "@next/bundle-analyzer": "15.1.8",
     "@repo/eslint-config": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
     "@repo/tsconfig": "workspace:*",
