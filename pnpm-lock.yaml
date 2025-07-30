@@ -10650,8 +10650,8 @@ packages:
   to-space-case@1.0.0:
     resolution: {integrity: sha512-rLdvwXZ39VOn1IxGL3V6ZstoTbwLRckQmn/U8ZDLuWwIXNpuZDhQ3AiRUlhTbOXFVE9C+dR51wM0CBDhk31VcA==}
 
-  token-types@6.0.0:
-    resolution: {integrity: sha512-lbDrTLVsHhOMljPscd0yitpozq7Ga2M5Cvez5AjGg8GASBjtt6iERCAJ93yommPmz62fb45oFIXHEZ3u9bfJEA==}
+  token-types@6.0.4:
+    resolution: {integrity: sha512-MD9MjpVNhVyH4fyd5rKphjvt/1qj+PtQUz65aFqAZA6XniWAuSFRjLk3e2VALEFlh9OwBpXUN7rfeqSnT/Fmkw==}
     engines: {node: '>=14.16'}
 
   totalist@3.0.1:
@@ -19702,7 +19702,7 @@ snapshots:
   file-type@19.3.0:
     dependencies:
       strtok3: 8.1.0
-      token-types: 6.0.0
+      token-types: 6.0.4
       uint8array-extras: 1.4.0
 
   fill-range@7.1.1:
@@ -23690,7 +23690,7 @@ snapshots:
     dependencies:
       to-no-case: 1.0.2
 
-  token-types@6.0.0:
+  token-types@6.0.4:
     dependencies:
       '@tokenizer/token': 0.3.0
       ieee754: 1.2.1
