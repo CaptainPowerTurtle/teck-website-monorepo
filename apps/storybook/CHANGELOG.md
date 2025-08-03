@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.2.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/storybook@v0.2.1...storybook@v0.2.2) (2025-05-08)
+
+
+### 🐛 Bug Fixes
+
+* lock file ([#480](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/480)) ([71e96ed](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/71e96ed9a2d560ba38a52a24b3364733e7564250))
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump vite from 6.2.6 to 6.2.7 ([#437](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/437)) ([53b2013](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/53b2013e12a6c6c6a56247fe5432519493ae7ade))
+* **deps-dev:** bump vite from 6.3.4 to 6.3.5 ([#456](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/456)) ([a7e293b](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/a7e293bbc3bff7e14568b1fefdd703f24e18d523))
+* **deps:** bump image-size from 1.2.0 to 1.2.1 ([#383](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/383)) ([ee7f0ab](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ee7f0ab98ec2f57fb26da2942d83ec768bc4da3e))
+* **deps:** bump next from 15.4.0-canary.16 to 15.4.0-canary.17 ([#450](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/450)) ([d2cf3c1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/d2cf3c185f8d081c0bf203774152f45c2f6150dc))
+* **deps:** bump next from 15.4.0-canary.17 to 15.4.0-canary.18 ([#452](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/452)) ([ec18d09](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ec18d09f00e3d132657f448c11de646f1fc385f8))
+* **deps:** bump next from 15.4.0-canary.18 to 15.4.0-canary.22 ([#453](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/453)) ([0d41e6c](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0d41e6c3ced66713f7066fa3706d9d18dda7d415))
+* **deps:** bump next from 15.4.0-canary.22 to 15.4.0-canary.24 ([#477](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/477)) ([ad07000](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ad070008b3a5c6297eb252ec5f2a52e8a9e16b4c))
+* **deps:** bump next from 15.4.0-canary.24 to 15.4.0-canary.27 ([#482](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/482)) ([4ca1020](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/4ca1020a7bef7f5feab43786111b48777d395244))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @repo/ui bumped to 0.2.0
+    * @repo/utils bumped to 0.1.5
+    * @repo/web bumped to 1.5.0
+  * devDependencies
+    * @repo/eslint-config bumped to 0.1.4
+    * @repo/tailwind-config bumped to 0.1.5
+    * @repo/tsconfig bumped to 0.1.3
+
 ## [0.2.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/storybook@v0.2.0...storybook@v0.2.1) (2025-04-30)
 
 

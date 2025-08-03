@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.2.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/ui@v0.1.6...ui@v0.2.0) (2025-05-08)
+
+
+### 🚀 Features
+
+* working redis cache for nextjs ([#479](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/479)) ([8d6bd87](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/8d6bd87dc58a0de47a7a4d963511fef222abd693))
+
+
+### 🐛 Bug Fixes
+
+* lock file ([#480](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/480)) ([71e96ed](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/71e96ed9a2d560ba38a52a24b3364733e7564250))
+
+
+### 🧹 Chores
+
+* **deps:** bump @radix-ui/react-alert-dialog from 1.1.11 to 1.1.13 ([#476](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/476)) ([ffdb598](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ffdb5987814a7260c938c03a9eb86258c7ba035a))
+* **deps:** bump @radix-ui/react-dialog from 1.1.11 to 1.1.13 ([#459](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/459)) ([4565d86](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/4565d8629c3389d09cba0d0a703b86f03dd53ca6))
+* **deps:** bump @radix-ui/react-dropdown-menu from 2.1.12 to 2.1.14 ([#465](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/465)) ([eaa122f](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/eaa122f40b0c3e9e9659413f9279c1e1aa3dc85d))
+* **deps:** bump @radix-ui/react-label from 2.1.4 to 2.1.6 ([#474](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/474)) ([e0cadfa](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e0cadfa303cc4fe63663c6901d1a116609a7f3e5))
+* **deps:** bump @radix-ui/react-popover from 1.1.11 to 1.1.13 ([#473](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/473)) ([d5aa2da](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/d5aa2da0ebdacbd0a694ea0ec7f6a5426714540a))
+* **deps:** bump @radix-ui/react-separator from 1.1.4 to 1.1.6 ([#468](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/468)) ([1dd1b27](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/1dd1b277d551148da42ec862ca9730f900d751c9))
+* **deps:** bump @radix-ui/react-toggle from 1.1.6 to 1.1.8 ([#466](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/466)) ([b2fd0e0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/b2fd0e0903b466c47ae0da9f1bf281c430615e93))
+* **deps:** bump image-size from 1.2.0 to 1.2.1 ([#383](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/383)) ([ee7f0ab](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ee7f0ab98ec2f57fb26da2942d83ec768bc4da3e))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @repo/tsconfig bumped to 0.1.3
+    * @repo/eslint-config bumped to 0.1.4
+    * @repo/tailwind-config bumped to 0.1.5
+    * @repo/utils bumped to 0.1.5
+
 ## [0.1.6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/ui@v0.1.5...ui@v0.1.6) (2025-04-30)
 
 
