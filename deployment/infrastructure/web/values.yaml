@@ -12,7 +12,7 @@ web:
 
     image:
       registry: ghcr.io
-      name: web
+      name: captainpowerturtle/teck-website-monorepo/web
       tag: 1.2.4
       imagePullPolicy: Always
     resources:
