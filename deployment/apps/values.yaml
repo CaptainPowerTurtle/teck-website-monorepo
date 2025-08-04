@@ -1,3 +1,10 @@
+global:
+  namespace: teck-website-prod
+  environment: production
+  label:
+    name: teck-website
+  vaultPath: teck-website
+
 spec:
   destination:
     server: https://kubernetes.default.svc
