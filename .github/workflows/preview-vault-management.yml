@@ -1,0 +1,67 @@
+name: Preview Vault Management
+
+on:
+  pull_request:
+    types: [labeled, unlabeled, closed]
+    branches:
+      - main
+      - feature/**
+      - bugfix/**
+    paths:
+      - 'apps/web/**'
+      - 'packages/**'
+      - 'deployment/**'
+
+permissions:
+  contents: read
+  pull-requests: read
+  id-token: write  # Required for OIDC
+  packages: write  # Required for image cleanup
+
+jobs:
+  manage-vault-secrets:
+    runs-on: ubuntu-latest
+    if: |
+      (github.event.action == 'unlabeled' && github.event.label.name == 'preview') ||
+      (github.event.action == 'closed' && contains(github.event.pull_request.labels.*.name, 'preview'))
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Vault with JWT
+        uses: hashicorp/vault-action@v3
+        with:
+          url: ${{ secrets.VAULT_ADDR }}
+          method: jwt
+          role: github-actions
+          exportToken: true
+
+      - name: Delete Preview Secrets
+        run: |
+          PR_NUMBER=${{ github.event.number }}
+          NAMESPACE="preview-${PR_NUMBER}"
+          
+          echo "Cleaning up all preview secrets for: ${NAMESPACE}"
+          
+          # Since payload secrets are just strings that don't matter,
+          # we can safely delete everything
+          vault kv metadata delete secret/${NAMESPACE}/postgres || true
+          vault kv metadata delete secret/${NAMESPACE}/redis || true
+          vault kv metadata delete secret/${NAMESPACE}/payload || true
+          vault kv metadata delete secret/${NAMESPACE}/database || true
+          
+          echo "Cleaned up all secrets for preview environment: ${NAMESPACE}"
+
+      - name: Cleanup Preview Container Image
+        run: |
+          IMAGE_TAG="${{ github.event.pull_request.head.sha }}"
+          REPOSITORY_LOWER="${{ github.repository }}"
+          PACKAGE_NAME="${REPOSITORY_LOWER,,}/web"
+          
+          # Use GitHub CLI to delete the package version
+          gh api --method GET "/user/packages/container/${PACKAGE_NAME}/versions" \
+            | jq -r '.[] | select(.metadata.container.tags[]? | contains("'${IMAGE_TAG}'")) | .id' \
+            | xargs -I {} gh api --method DELETE "/user/packages/container/${PACKAGE_NAME}/versions/{}" || true
+          
+          echo "Cleaned up preview image with tag: ${IMAGE_TAG}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

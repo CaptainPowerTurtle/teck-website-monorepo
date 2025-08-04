@@ -10,14 +10,14 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`www.teck.dk`)
+    - match: Host(`www.{{ .Values.web.ingress.host }}`)
       kind: Rule
       services:
         - name: {{ .Release.Name }}-service
           port: 3000
       middlewares:
         - name: default-headers
-    - match: Host(`teck.dk`)
+    - match: Host(`{{ .Values.web.ingress.host }}`)
       kind: Rule
       services:
         - name: {{ .Release.Name }}-service

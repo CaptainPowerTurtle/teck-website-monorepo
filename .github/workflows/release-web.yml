@@ -2,6 +2,16 @@ on:
   push:
     tags:
       - "web@v**"
+  pull_request:
+    types: [labeled, synchronize]
+    branches:
+      - main
+      - feature/**
+      - bugfix/**
+    paths:
+      - 'apps/web/**'
+      - 'packages/**'
+      - 'deployment/**'
 
 permissions:
   contents: write
@@ -16,8 +26,38 @@ env:
 name: release-web
 
 jobs:
+  check-build-type:
+    runs-on: ubuntu-latest
+    outputs:
+      is-release: ${{ steps.check.outputs.is-release }}
+      is-preview: ${{ steps.check.outputs.is-preview }}
+      tag-name: ${{ steps.check.outputs.tag-name }}
+      image-tag: ${{ steps.check.outputs.image-tag }}
+    steps:
+      - name: Determine build type
+        id: check
+        run: |
+          if [[ "${{ github.event_name }}" == "push" && "${{ startsWith(github.ref, 'refs/tags/web@v') }}" == "true" ]]; then
+            echo "is-release=true" >> $GITHUB_OUTPUT
+            echo "is-preview=false" >> $GITHUB_OUTPUT
+            echo "tag-name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+            echo "image-tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "pull_request" && "${{ contains(github.event.pull_request.labels.*.name, 'preview') }}" == "true" ]]; then
+            echo "is-release=false" >> $GITHUB_OUTPUT
+            echo "is-preview=true" >> $GITHUB_OUTPUT
+            echo "tag-name=preview-${{ github.event.number }}" >> $GITHUB_OUTPUT
+            echo "image-tag=${{ github.sha }}" >> $GITHUB_OUTPUT
+          else
+            echo "is-release=false" >> $GITHUB_OUTPUT
+            echo "is-preview=false" >> $GITHUB_OUTPUT
+            echo "tag-name=" >> $GITHUB_OUTPUT
+            echo "image-tag=" >> $GITHUB_OUTPUT
+          fi
+
   prepare-release:
     runs-on: ubuntu-latest
+    needs: check-build-type
+    if: needs.check-build-type.outputs.is-release == 'true'
     outputs:
       release-version: ${{ steps.version.outputs.full_without_prefix }}
       repository-lowercase: ${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/${{ env.PROJECT }}
@@ -30,9 +70,27 @@ jobs:
         id: string
         with:
           string: ${{ env.REPOSITORY }}
-  release-web:
+
+  prepare-preview:
+    runs-on: ubuntu-latest
+    needs: check-build-type
+    if: needs.check-build-type.outputs.is-preview == 'true'
+    outputs:
+      repository-lowercase: ${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/${{ env.PROJECT }}
+    steps:
+      - uses: ASzc/change-string-case-action@v6
+        id: string
+        with:
+          string: ${{ env.REPOSITORY }}
+
+  build-web:
     runs-on: ${{ matrix.builder.runner-image }}
-    needs: prepare-release
+    needs: [check-build-type, prepare-release, prepare-preview]
+    if: |
+      always() && 
+      (needs.check-build-type.outputs.is-release == 'true' || needs.check-build-type.outputs.is-preview == 'true') &&
+      (needs.prepare-release.result == 'success' || needs.prepare-release.result == 'skipped') &&
+      (needs.prepare-preview.result == 'success' || needs.prepare-preview.result == 'skipped')
 
     strategy:
       fail-fast: false
@@ -94,11 +152,22 @@ jobs:
           DATABASE_URI: "postgres://postgres:postgres@localhost:5432/postgres"
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
 
+      - name: Set repository info
+        id: repo
+        run: |
+          if [[ "${{ needs.check-build-type.outputs.is-release }}" == "true" ]]; then
+            echo "lowercase=${{ needs.prepare-release.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
+          else
+            echo "lowercase=${{ needs.prepare-preview.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ needs.prepare-release.outputs.repository-lowercase }}
+          images: ${{ steps.repo.outputs.lowercase }}
+          tags: |
+            type=raw,value=${{ needs.check-build-type.outputs.image-tag }}
       - name: Log in to GitHub container registry
         uses: docker/login-action@v3
         with:
@@ -114,26 +183,20 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           platforms: ${{ matrix.builder.platform }}
-          # OCI compliant when set to false, should fix unknown/unknown arch
-          # push: ${{ github.event_name != 'pull_request' }}
           context: .
           file: apps/web/Dockerfile
-          tags: ${{ needs.prepare-release.outputs.repository-lowercase }}
+          tags: ${{ steps.repo.outputs.lowercase }}
           labels: ${{ steps.meta.outputs.labels }}
           provenance: false
-
-          # cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }}:dockercache
-          # cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/web-${{ env.PLATFORM_PAIR }}:dockercache,mode=max,image-manifest=true
-          cache-from: type=gha,scope=${{ needs.prepare-release.outputs.repository-lowercase }}-${{ env.PLATFORM_PAIR }}
-          cache-to: type=gha,scope=${{ needs.prepare-release.outputs.repository-lowercase }}-${{ env.PLATFORM_PAIR }},mode=max
-          outputs: type=image,name=${{ needs.prepare-release.outputs.repository-lowercase }},push-by-digest=true,name-canonical=true,push=true
+          cache-from: type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }}
+          cache-to: type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }},mode=max
+          outputs: type=image,name=${{ steps.repo.outputs.lowercase }},push-by-digest=true,name-canonical=true,push=true
           secrets: |
             "database_uri=postgres://postgres:postgres@172.17.0.1:5432/postgres"
             "payload_secret=${{ secrets.PAYLOAD_SECRET }}"
           build-args: |
             "NEXT_PUBLIC_SERVER_URL=${{ vars.NEXT_PUBLIC_SERVER_URL }}"
             "REDIS_AVAILABLE=false"
-          # build-args: |
           #   "DATABASE_URI=postgres://postgres:postgres@172.17.0.1:5432/postgres"
           #   "PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET }}" NEXT_PUBLIC_SERVER_URL
       - name: Export digest
@@ -148,12 +211,26 @@ jobs:
           path: ${{ runner.temp }}/digests/*
           if-no-files-found: error
           retention-days: 1
+
   merge:
     runs-on: ubuntu-latest
-    needs:
-      - release-web
-      - prepare-release
+    needs: [check-build-type, build-web, prepare-release, prepare-preview]
+    if: |
+      always() && 
+      needs.build-web.result == 'success' &&
+      (needs.check-build-type.outputs.is-release == 'true' || needs.check-build-type.outputs.is-preview == 'true') &&
+      (needs.prepare-release.result == 'success' || needs.prepare-release.result == 'skipped') &&
+      (needs.prepare-preview.result == 'success' || needs.prepare-preview.result == 'skipped')
     steps:
+      - name: Set repository info
+        id: repo
+        run: |
+          if [[ "${{ needs.check-build-type.outputs.is-release }}" == "true" ]]; then
+            echo "lowercase=${{ needs.prepare-release.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
+          else
+            echo "lowercase=${{ needs.prepare-preview.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Download digests
         uses: actions/download-artifact@v4
         with:
@@ -174,19 +251,18 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ needs.prepare-release.outputs.repository-lowercase }}
+          images: ${{ steps.repo.outputs.lowercase }}
           tags: |
-            type=semver,pattern={{version}},value=${{ needs.prepare-release.outputs.release-version }}
-            type=semver,pattern={{major}}.{{minor}}
-            type=ref,event=branch
-            type=ref,event=pr
-            type=sha
+            type=raw,value=${{ needs.check-build-type.outputs.image-tag }},enable=${{ needs.check-build-type.outputs.is-preview == 'true' }}
+            type=semver,pattern={{version}},value=${{ needs.prepare-release.outputs.release-version }},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
+            type=semver,pattern={{major}}.{{minor}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
+            type=semver,pattern={{major}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
         run: |
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf '${{ needs.prepare-release.outputs.repository-lowercase }}@sha256:%s ' *)
+            $(printf '${{ steps.repo.outputs.lowercase }}@sha256:%s ' *)
 
       - name: Inspect image
         run: |
-          docker buildx imagetools inspect ${{ needs.prepare-release.outputs.repository-lowercase }}:${{ steps.meta.outputs.version }}
+          docker buildx imagetools inspect ${{ steps.repo.outputs.lowercase }}:${{ needs.check-build-type.outputs.image-tag }}

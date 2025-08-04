@@ -65,6 +65,6 @@ spec:
             - name: PREVIEW_SECRET
               value: $(PREVIEW_SECRET)
             - name: NEXT_PUBLIC_SERVER_URL
-              value: {{ .Values.web.ingress.url }}
+              value: {{ .Values.web.ingress.schema }}:{{ .Values.web.ingress.host }}
             - name: REDIS_AVAILABLE
               value: "true"

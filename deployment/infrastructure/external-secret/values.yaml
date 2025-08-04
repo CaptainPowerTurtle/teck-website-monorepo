@@ -1,0 +1,6 @@
+global:
+  namespace: "teck-website-prod"
+  vaultPath: "teck-website"
+
+pushSecrets:
+  enabled: true  # Enable for both production and preview environments
