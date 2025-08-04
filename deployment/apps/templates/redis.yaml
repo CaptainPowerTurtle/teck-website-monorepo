@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: teck-website-redis
+  name: {{ .Values.global.label.name | default "teck-website" }}-redis
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: {{ .Values.spec.destination.namespace }}
+    namespace: {{ .Values.global.namespace | default .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.project }}
   sources:
@@ -18,6 +18,11 @@ spec:
         releaseName: redis
         valueFiles:
           - $values/deployment/infrastructure/redis/values.yaml
+        parameters:
+          {{- if .Values.global.environment }}
+          - name: global.environment
+            value: {{ .Values.global.environment }}
+          {{- end }}
     - repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo.git
       targetRevision: HEAD
       ref: values
@@ -26,4 +31,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      {{ .Values.spec.syncPolicy.syncOptions }}
+      - CreateNamespace=true

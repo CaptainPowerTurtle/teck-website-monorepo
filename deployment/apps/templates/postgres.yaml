@@ -1,16 +1,32 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: teck-website-postgres
+  name: {{ .Values.global.label.name | default "teck-website" }}-postgres
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: {{ .Values.spec.destination.namespace }}
+    namespace: {{ .Values.global.namespace | default .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.project }}
   source:
     path: deployment/infrastructure/postgres
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
+    helm:
+      parameters:
+        {{- if .Values.global.namespace }}
+        - name: global.namespace
+          value: {{ .Values.global.namespace }}
+        {{- end }}
+        {{- if .Values.global.environment }}
+        - name: global.environment
+          value: {{ .Values.global.environment }}
+        {{- end }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
