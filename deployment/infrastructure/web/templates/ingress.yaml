@@ -1,19 +1,26 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: "{{ include "web.fullname" . }}-ingress"
-  namespace: {{ .Values.global.namespace | default .Release.Namespace }}
+  name: {{ .Release.Name }}-ingress
+  namespace: {{ .Values.global.namespace | default .Values.web.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: '3'
     kubernetes.io/ingress.class: traefik-external
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   entryPoints:
     - websecure
   routes:
-    - kind: Rule
-      match: Host(`{{ .Values.web.ingress.host | default "localhost" }}`)
-      middlewares:
-        - name: "{{ .Values.global.resourcePrefix | default "" }}default-headers"
+    - match: Host(`www.{{ .Values.web.ingress.host }}`)
+      kind: Rule
       services:
-        - name: "{{ include "web.fullname" . }}-service"
+        - name: {{ .Release.Name }}-service
           port: 3000
+      middlewares:
+        - name: {{ .Values.global.label.name | default .Values.web.label.name }}-default-headers
+    - match: Host(`{{ .Values.web.ingress.host }}`)
+      kind: Rule
+      services:
+        - name: {{ .Release.Name }}-service
+          port: 3000
+      middlewares:
+        - name: {{ .Values.global.label.name | default .Values.web.label.name }}-default-headers
