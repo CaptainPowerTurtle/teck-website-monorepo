@@ -10,7 +10,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "1"
     reloader.stakater.com/auto: "true"
 spec:
-  replicas: {{ .Values.web.replicas }}
+  replicas: {{ if eq (.Values.global.environment | default .Values.environment) "preview" }}1{{ else }}{{ .Values.web.replicas }}{{ end }}
   selector:
     matchLabels:
       app: {{ .Values.global.label.name | default .Values.web.label.name }}

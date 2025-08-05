@@ -1,3 +1,9 @@
+global:
+  namespace: teck-website-prod
+  environment: production
+  label:
+    name: teck-website-web
+
 environment: production
 web:
   label:

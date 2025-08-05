@@ -2,7 +2,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: postgres
-  namespace: teck-website-prod
+  namespace: {{ .Values.global.namespace | default "teck-website-prod" }}
 spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:17
   instances: 2
@@ -39,7 +39,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Pooler
 metadata:
   name: pooler-postgres-rw
-  namespace: teck-website-prod
+  namespace: {{ .Values.global.namespace | default "teck-website-prod" }}
 spec:
   cluster:
     name: postgres
