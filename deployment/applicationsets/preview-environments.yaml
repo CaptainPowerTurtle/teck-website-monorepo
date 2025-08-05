@@ -27,7 +27,7 @@ spec:
       project: teck-website
       source:
         repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo.git
-        targetRevision: "{{.head_sha}}"
+        targetRevision: "b70b90d"
         path: deployment/apps
         helm:
           valueFiles:
