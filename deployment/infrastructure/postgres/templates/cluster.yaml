@@ -2,10 +2,10 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: postgres
-  namespace: {{ .Values.global.namespace | default "teck-website-prod" }}
+  namespace: {{ .Values.global.namespace }}
 spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:17
-  instances: 2
+  instances: {{ if eq (.Values.global.environment | default "production") "preview" }}1{{ else }}2{{ end }}
   startDelay: 10
   stopDelay: 10
   primaryUpdateStrategy: unsupervised
@@ -24,12 +24,21 @@ spec:
       # and password from the secret cluster-example-custom-app
       - host all all all scram-sha-256
 
+  {{- if eq (.Values.global.environment | default "production") "preview" }}
+  # Use ephemeral storage for preview environments
+  storage:
+    size: 1Gi
+  walStorage:
+    size: 1Gi
+  {{- else }}
+  # Use persistent storage for production
   storage:
     storageClass: longhorn-postgres-storage
     size: 10Gi
   walStorage:
     storageClass: longhorn-postgres-storage
     size: 10Gi
+  {{- end }}
 
   # prometheus
   monitoring:
@@ -39,7 +48,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Pooler
 metadata:
   name: pooler-postgres-rw
-  namespace: {{ .Values.global.namespace | default "teck-website-prod" }}
+  namespace: {{ .Values.global.namespace }}
 spec:
   cluster:
     name: postgres
