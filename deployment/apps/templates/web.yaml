@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.global.label.name | default "teck-website" }}
+  name: {{ .Values.global.label.name | default "teck-website" }}-web
   namespace: argocd
   {{- if eq (.Values.global.environment | default "production") "production" }}
   annotations:
