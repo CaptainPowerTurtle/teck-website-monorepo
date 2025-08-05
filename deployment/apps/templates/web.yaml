@@ -21,7 +21,7 @@ spec:
   source:
     path: deployment/infrastructure/web
     repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo.git
-    targetRevision: HEAD
+    targetRevision: {{ .Values.spec.source.targetRevision }}
     helm:
       valueFiles:
         - values.yaml
