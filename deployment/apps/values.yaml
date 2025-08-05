@@ -15,5 +15,5 @@ spec:
       - CreateNamespace=true
   source:
     repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo
-    targetRevision: HEAD
+    targetRevision: b70b90d
   project: teck-website
