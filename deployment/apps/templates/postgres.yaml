@@ -24,6 +24,10 @@ spec:
         - name: global.environment
           value: {{ .Values.global.environment }}
         {{- end }}
+        {{- if .Values.global.vaultPath }}
+        - name: global.vaultPath
+          value: {{ .Values.global.vaultPath }}
+        {{- end }}
   syncPolicy:
     automated:
       prune: true

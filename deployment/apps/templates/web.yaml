@@ -30,6 +30,10 @@ spec:
         - name: global.namespace
           value: {{ .Values.global.namespace }}
         {{- end }}
+        {{- if .Values.global.label.name }}
+        - name: global.label.name
+          value: {{ .Values.global.label.name }}
+        {{- end }}
         {{- if .Values.global.environment }}
         - name: global.environment
           value: {{ .Values.global.environment }}
