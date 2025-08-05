@@ -4,8 +4,8 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-deployment
   labels:
-    app: {{ .Values.web.label.name }}
-  namespace: {{ .Values.web.namespace }}
+    app: {{ .Values.global.label.name | default .Values.web.label.name }}
+  namespace: {{ .Values.global.namespace | default .Values.web.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     reloader.stakater.com/auto: "true"
@@ -13,12 +13,12 @@ spec:
   replicas: {{ .Values.web.replicas }}
   selector:
     matchLabels:
-      app: {{ .Values.web.label.name }}
+      app: {{ .Values.global.label.name | default .Values.web.label.name }}
   template:
     metadata:
       labels:
-        app: {{ .Values.web.label.name }}
-        environment: {{ .Values.environment }}
+        app: {{ .Values.global.label.name | default .Values.web.label.name }}
+        environment: {{ .Values.global.environment | default .Values.environment }}
     spec:
       containers:
         - name: {{ .Values.web.containers.name }}
@@ -57,14 +57,14 @@ spec:
                   name: redis-secret
                   key: password
             - name: REDIS_URL
-              value: redis://:$(REDIS_PASSWORD)@redis-master.{{ .Values.web.namespace }}.svc:6379
+              value: redis://:$(REDIS_PASSWORD)@redis-master.{{ .Values.global.namespace | default .Values.web.namespace }}.svc:6379
             - name: DATABASE_URI
-              value: postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@pooler-postgres-rw.{{ .Values.web.namespace }}.svc:5432/teck-website
+              value: postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@pooler-postgres-rw.{{ .Values.global.namespace | default .Values.web.namespace }}.svc:5432/teck-website
             - name: PAYLOAD_SECRET
               value: $(PAYLOAD_SECRET)
             - name: PREVIEW_SECRET
               value: $(PREVIEW_SECRET)
             - name: NEXT_PUBLIC_SERVER_URL
-              value: {{ .Values.web.ingress.schema }}:{{ .Values.web.ingress.host }}
+              value: {{ .Values.web.ingress.schema }}://{{ .Values.web.ingress.host }}
             - name: REDIS_AVAILABLE
               value: "true"

@@ -2,7 +2,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: {{ .Release.Name }}-ingress
-  namespace: {{ .Values.web.namespace }}
+  namespace: {{ .Values.global.namespace | default .Values.web.namespace }}
   annotations:
     kubernetes.io/ingress.class: traefik-external
     argocd.argoproj.io/sync-wave: "3"
@@ -16,11 +16,11 @@ spec:
         - name: {{ .Release.Name }}-service
           port: 3000
       middlewares:
-        - name: default-headers
+        - name: {{ .Values.global.label.name | default .Values.web.label.name }}-default-headers
     - match: Host(`{{ .Values.web.ingress.host }}`)
       kind: Rule
       services:
         - name: {{ .Release.Name }}-service
           port: 3000
       middlewares:
-        - name: default-headers
+        - name: {{ .Values.global.label.name | default .Values.web.label.name }}-default-headers

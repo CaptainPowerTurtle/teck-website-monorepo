@@ -3,6 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: teck-website-preview-environments
+  namespace: argocd
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -15,10 +16,10 @@ spec:
           # appSecretName: github-app-repo-creds
           labels:
             - preview
-        requeueAfterSeconds: 1800
+        requeueAfterSeconds: 180
   template:
     metadata:
-      name: teck-website-preview-{{number}}
+      name: "teck-website-preview-{{.number}}"
       namespace: argocd
       finalizers:
         - resources-finalizer.argocd.argoproj.io
@@ -26,27 +27,27 @@ spec:
       project: teck-website
       source:
         repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo.git
-        targetRevision: {{head_sha}}
+        targetRevision: "{{.head_sha}}"
         path: deployment/apps
         helm:
           valueFiles:
             - values.yaml
           parameters:
             - name: global.namespace
-              value: preview-{{number}}
+              value: "preview-{{.number}}"
             - name: global.label.name
-              value: teck-website-preview-{{number}}
+              value: "teck-website-preview-{{.number}}"
             - name: global.environment
               value: preview
             - name: global.vaultPath
-              value: preview-{{number}}
+              value: "preview-{{.number}}"
             - name: web.ingress.host
-              value: preview-{{number}}.dev.teck.dk
+              value: "preview-{{.number}}.dev.teck.dk"
             - name: web.containers.image.tag
-              value: "{{head_sha}}"
+              value: "{{.head_sha}}"
       destination:
         server: https://kubernetes.default.svc
-        namespace: preview-{{number}}
+        namespace: "preview-{{.number}}"
       syncPolicy:
         automated:
           prune: true
