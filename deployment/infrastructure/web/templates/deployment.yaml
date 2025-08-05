@@ -5,7 +5,7 @@ metadata:
   name: {{ .Release.Name }}-deployment
   labels:
     app: {{ .Values.global.label.name | default .Values.web.label.name }}
-  namespace: {{ .Values.global.namespace | default .Values.web.namespace }}
+  namespace: {{ .Values.global.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     reloader.stakater.com/auto: "true"
@@ -57,9 +57,9 @@ spec:
                   name: redis-secret
                   key: password
             - name: REDIS_URL
-              value: redis://:$(REDIS_PASSWORD)@redis-master.{{ .Values.global.namespace | default .Values.web.namespace }}.svc:6379
+              value: redis://:$(REDIS_PASSWORD)@redis-master.{{ .Values.global.namespace }}.svc:6379
             - name: DATABASE_URI
-              value: postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@pooler-postgres-rw.{{ .Values.global.namespace | default .Values.web.namespace }}.svc:5432/teck-website
+              value: postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@pooler-postgres-rw.{{ .Values.global.namespace }}.svc:5432/teck-website
             - name: PAYLOAD_SECRET
               value: $(PAYLOAD_SECRET)
             - name: PREVIEW_SECRET
