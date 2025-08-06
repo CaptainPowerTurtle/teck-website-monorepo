@@ -27,6 +27,10 @@ spec:
           - name: global.environment
             value: {{ .Values.global.environment }}
           {{- end }}
+          {{- if eq (.Values.global.environment | default "production") "preview" }}
+          - name: persistence.enabled
+            value: "false"
+          {{- end }}
           {{- if .Values.global.vaultPath }}
           - name: global.vaultPath
             value: {{ .Values.global.vaultPath }}

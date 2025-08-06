@@ -6,15 +6,11 @@ global:
   vaultPath: "{{ .Values.global.vaultPath | default \"teck-website\" }}"
 architecture: standalone
 persistence:
-{{- if eq (.Values.global.environment | default "production") "preview" }}
-  enabled: false
-{{- else }}
   enabled: true
   storageClass: longhorn
   accessModes:
     - ReadWriteOnce
   size: 500Mi
-{{- end }}
 extraDeploy:
   - apiVersion: external-secrets.io/v1alpha1
     kind: PushSecret
