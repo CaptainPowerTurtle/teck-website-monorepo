@@ -49,14 +49,18 @@ jobs:
           echo "Cleaning up all preview secrets for: teck-website/${NAMESPACE}"
           echo "Using Vault server: ${VAULT_ADDR}"
           
-          # Since payload secrets are just strings that don't matter,
-          # we can safely delete everything
-          vault kv metadata delete teck-website/${NAMESPACE}/postgres || true
-          vault kv metadata delete teck-website/${NAMESPACE}/redis || true
-          vault kv metadata delete teck-website/${NAMESPACE}/payload || true
-          vault kv metadata delete teck-website/${NAMESPACE}/database || true
+          # List all secrets in the preview folder and delete them
+          vault kv list teck-website/${NAMESPACE} 2>/dev/null | tail -n +3 | while read secret; do
+            if [ ! -z "$secret" ]; then
+              echo "Deleting teck-website/${NAMESPACE}/$secret"
+              vault kv metadata delete teck-website/${NAMESPACE}/$secret || true
+            fi
+          done || true
           
-          echo "Cleaned up all secrets for preview environment: teck-website/${NAMESPACE}"
+          # Also try to delete the folder itself
+          vault kv metadata delete teck-website/${NAMESPACE} || true
+          
+          echo "Cleaned up entire preview folder: teck-website/${NAMESPACE}"
         env:
           VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
 
