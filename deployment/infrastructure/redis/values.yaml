@@ -7,12 +7,12 @@ global:
 architecture: standalone
 persistence:
   enabled: {{ if eq (.Values.global.environment | default "production") "preview" }}false{{ else }}true{{ end }}
-  {{- if ne (.Values.global.environment | default "production") "preview" }}
+{{- if ne (.Values.global.environment | default "production") "preview" }}
   storageClass: longhorn
   accessModes:
     - ReadWriteOnce
   size: 500Mi
-  {{- end }}
+{{- end }}
 extraDeploy:
   - apiVersion: external-secrets.io/v1alpha1
     kind: PushSecret
