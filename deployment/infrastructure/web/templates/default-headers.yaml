@@ -2,7 +2,7 @@ apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: {{ .Values.global.label.name | default .Values.web.label.name }}-default-headers
-  namespace: {{ .Values.global.namespace | default .Values.web.namespace }}
+  namespace: {{ .Values.global.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
