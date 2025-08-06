@@ -46,7 +46,7 @@ jobs:
             echo "is-release=false" >> $GITHUB_OUTPUT
             echo "is-preview=true" >> $GITHUB_OUTPUT
             echo "tag-name=preview-${{ github.event.number }}" >> $GITHUB_OUTPUT
-            echo "image-tag=${{ github.sha }}" >> $GITHUB_OUTPUT
+            echo "image-tag=${{ github.event.pull_request.head.sha }}" >> $GITHUB_OUTPUT
           else
             echo "is-release=false" >> $GITHUB_OUTPUT
             echo "is-preview=false" >> $GITHUB_OUTPUT
