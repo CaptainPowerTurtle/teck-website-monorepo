@@ -6,8 +6,10 @@ global:
   vaultPath: "{{ .Values.global.vaultPath | default \"teck-website\" }}"
 architecture: standalone
 persistence:
-  enabled: {{ if eq (.Values.global.environment | default "production") "preview" }}false{{ else }}true{{ end }}
-{{- if ne (.Values.global.environment | default "production") "preview" }}
+{{- if eq (.Values.global.environment | default "production") "preview" }}
+  enabled: false
+{{- else }}
+  enabled: true
   storageClass: longhorn
   accessModes:
     - ReadWriteOnce
