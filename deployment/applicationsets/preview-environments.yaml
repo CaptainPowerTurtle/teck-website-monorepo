@@ -39,8 +39,8 @@ spec:
               value: "teck-website-preview-{{.number}}"
             - name: global.environment
               value: preview
-            - name: global.vaultPath
-              value: "teck-website/preview-{{.number}}"
+                        - name: global.vaultPath
+              value: "preview-{{.number}}"
             - name: web.ingress.host
               value: "preview-{{.number}}.dev.teck.dk"
             - name: web.containers.image.tag

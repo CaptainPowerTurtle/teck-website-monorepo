@@ -29,5 +29,5 @@ extraDeploy:
         - match:
             secretKey: redis-password
             remoteRef:
-              remoteKey: "{{ .Values.global.vaultPath }}/redis"
+              remoteKey: "secret/{{ .Values.global.vaultPath }}/redis"
               property: password

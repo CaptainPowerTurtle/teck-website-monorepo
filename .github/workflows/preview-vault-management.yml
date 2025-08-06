@@ -45,19 +45,18 @@ jobs:
         run: |
           PR_NUMBER=${{ github.event.number }}
           NAMESPACE="preview-${PR_NUMBER}"
-          VAULT_PATH="teck-website/${NAMESPACE}"
           
-          echo "Cleaning up all preview secrets for: ${VAULT_PATH}"
+          echo "Cleaning up all preview secrets for: teck-website/${NAMESPACE}"
           echo "Using Vault server: ${VAULT_ADDR}"
           
           # Since payload secrets are just strings that don't matter,
           # we can safely delete everything
-          vault kv metadata delete ${VAULT_PATH}/postgres || true
-          vault kv metadata delete ${VAULT_PATH}/redis || true
-          vault kv metadata delete ${VAULT_PATH}/payload || true
-          vault kv metadata delete ${VAULT_PATH}/database || true
+          vault kv metadata delete teck-website/${NAMESPACE}/postgres || true
+          vault kv metadata delete teck-website/${NAMESPACE}/redis || true
+          vault kv metadata delete teck-website/${NAMESPACE}/payload || true
+          vault kv metadata delete teck-website/${NAMESPACE}/database || true
           
-          echo "Cleaned up all secrets for preview environment: ${VAULT_PATH}"
+          echo "Cleaned up all secrets for preview environment: teck-website/${NAMESPACE}"
         env:
           VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
 
