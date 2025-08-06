@@ -40,8 +40,9 @@ jobs:
         run: |
           PR_NUMBER=${{ github.event.number }}
           NAMESPACE="preview-${PR_NUMBER}"
+          VAULT_PATH="teck-website/${NAMESPACE}"
           
-          echo "Setting up default secrets for preview environment: ${NAMESPACE}"
+          echo "Setting up default secrets for preview environment: ${VAULT_PATH}"
           
           # Generate random secrets for preview environment
           RANDOM_PAYLOAD_SECRET=$(openssl rand -hex 32)
@@ -49,7 +50,7 @@ jobs:
           RANDOM_SESSION_SECRET=$(openssl rand -hex 24)
           
           # Create payload secrets with generated values
-          vault kv put secret/${NAMESPACE}/payload \
+          vault kv put ${VAULT_PATH}/payload \
             secret="$RANDOM_PAYLOAD_SECRET" \
             preview-secret="$RANDOM_PREVIEW_SECRET" \
             session-secret="$RANDOM_SESSION_SECRET" \
@@ -57,18 +58,18 @@ jobs:
             pr-number="${PR_NUMBER}"
           
           # Optional: Create other default secrets that might be needed
-          vault kv put secret/${NAMESPACE}/postgres \
+          vault kv put ${VAULT_PATH}/postgres \
             username="preview_user" \
             password="$(openssl rand -hex 16)" \
             database="preview_${PR_NUMBER}" \
             host="postgres.preview-${PR_NUMBER}.svc.cluster.local"
           
-          vault kv put secret/${NAMESPACE}/redis \
+          vault kv put ${VAULT_PATH}/redis \
             password="$(openssl rand -hex 12)" \
             host="redis.preview-${PR_NUMBER}.svc.cluster.local" \
             port="6379"
           
-          echo "✅ Created default secrets for preview environment: ${NAMESPACE}"
+          echo "✅ Created default secrets for preview environment: ${VAULT_PATH}"
           echo "   - Payload secrets: ✅"
           echo "   - Database secrets: ✅" 
           echo "   - Redis secrets: ✅"
