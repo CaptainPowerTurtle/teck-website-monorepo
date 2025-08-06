@@ -44,7 +44,9 @@ spec:
             - name: web.ingress.host
               value: "preview-{{.number}}.dev.teck.dk"
             - name: web.containers.image.tag
-              value: "1.2.4"
+              value: "{{.head_sha}}"
+            - name: spec.source.targetRevision
+              value: "{{.head_sha}}"
       destination:
         server: https://kubernetes.default.svc
         namespace: "preview-{{.number}}"
