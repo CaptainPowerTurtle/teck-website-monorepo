@@ -1,19 +1,19 @@
 global:
-  namespace: teck-website-prod
-  environment: production
+  namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
+  environment: "{{ .Values.global.environment | default \"production\" }}"
   label:
-    name: teck-website
-  vaultPath: teck-website
+    name: "{{ .Values.global.label.name | default \"teck-website\" }}"
+  vaultPath: "{{ .Values.global.vaultPath | default \"teck-website\" }}"
 
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: teck-website-prod
+    namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
     name: in-cluster
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
   source:
     repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo
-    targetRevision: 688e921d9c32a79d5a037f5ca66b6229d9d9429f
+    targetRevision: HEAD
   project: teck-website

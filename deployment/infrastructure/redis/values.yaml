@@ -1,9 +1,9 @@
 global:
   defaultStorageClass: longhorn
   storageClass: longhorn
-  namespace: teck-website-prod
-  environment: production
-  vaultPath: teck-website
+  namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
+  environment: "{{ .Values.global.environment | default \"production\" }}"
+  vaultPath: "{{ .Values.global.vaultPath | default \"teck-website\" }}"
 architecture: standalone
 persistence:
   enabled: {{ if eq (.Values.global.environment | default "production") "preview" }}false{{ else }}true{{ end }}
