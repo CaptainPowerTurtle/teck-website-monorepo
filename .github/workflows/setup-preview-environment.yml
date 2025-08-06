@@ -43,6 +43,7 @@ jobs:
           VAULT_PATH="teck-website/${NAMESPACE}"
           
           echo "Setting up default secrets for preview environment: ${VAULT_PATH}"
+          echo "Using Vault server: ${VAULT_ADDR}"
           
           # Generate random secrets for preview environment
           RANDOM_PAYLOAD_SECRET=$(openssl rand -hex 32)
@@ -74,3 +75,5 @@ jobs:
           echo "   - Database secrets: ✅" 
           echo "   - Redis secrets: ✅"
           echo "Preview environment is ready to deploy!"
+        env:
+          VAULT_ADDR: ${{ secrets.VAULT_ADDR }}

@@ -48,6 +48,7 @@ jobs:
           VAULT_PATH="teck-website/${NAMESPACE}"
           
           echo "Cleaning up all preview secrets for: ${VAULT_PATH}"
+          echo "Using Vault server: ${VAULT_ADDR}"
           
           # Since payload secrets are just strings that don't matter,
           # we can safely delete everything
@@ -57,6 +58,8 @@ jobs:
           vault kv metadata delete ${VAULT_PATH}/database || true
           
           echo "Cleaned up all secrets for preview environment: ${VAULT_PATH}"
+        env:
+          VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
 
       - name: Cleanup Preview Container Image
         run: |
