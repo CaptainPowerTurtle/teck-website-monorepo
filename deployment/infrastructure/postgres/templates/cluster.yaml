@@ -3,6 +3,8 @@ kind: Cluster
 metadata:
   name: postgres
   namespace: {{ .Values.global.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"  # Deploy postgres cluster first
 spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:17
   instances: {{ if eq (.Values.global.environment | default "production") "preview" }}1{{ else }}2{{ end }}
@@ -25,11 +27,13 @@ spec:
       - host all all all scram-sha-256
 
   {{- if eq (.Values.global.environment | default "production") "preview" }}
-  # Use ephemeral storage for preview environments
+  # Use Longhorn storage for preview environments - will be cleaned up when namespace is deleted
   storage:
-    size: 1Gi
+    storageClass: longhorn-postgres-storage
+    size: 5Gi
   walStorage:
-    size: 1Gi
+    storageClass: longhorn-postgres-storage
+    size: 5Gi
   {{- else }}
   # Use persistent storage for production
   storage:
@@ -49,6 +53,8 @@ kind: Pooler
 metadata:
   name: pooler-postgres-rw
   namespace: {{ .Values.global.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"  # Deploy pooler with postgres cluster
 spec:
   cluster:
     name: postgres
