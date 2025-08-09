@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "2"  # Deploy postgres cluster first
 spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:17
-  instances: {{ if eq (.Values.global.environment | default "production") "preview" }}1{{ else }}2{{ end }}
+  instances: {{ if eq (.Values.global.environment | default "production") "preview" }}2{{ else }}2{{ end }}
   startDelay: 10
   stopDelay: 10
   primaryUpdateStrategy: unsupervised
