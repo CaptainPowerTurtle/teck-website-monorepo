@@ -6,8 +6,8 @@ global:
 
 web:
   label:
-    name: teck-website-web
-  namespace: teck-website-prod
+    name: "{{ .Values.global.label.name | default \"teck-website-web\" }}"
+  namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
   replicas: 2
 
   containers:
@@ -18,7 +18,7 @@ web:
     image:
       registry: ghcr.io
       name: captainpowerturtle/teck-website-monorepo/web
-      tag: 1.2.4
+      tag: "{{ .Values.web.containers.image.tag | default \"1.2.4\" }}"
       imagePullPolicy: Always
     resources:
       limits:
