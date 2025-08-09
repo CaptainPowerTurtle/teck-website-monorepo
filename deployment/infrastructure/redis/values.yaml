@@ -16,7 +16,7 @@ extraDeploy:
     kind: PushSecret
     metadata:
       name: redis-pushsecret
-      namespace: teck-website-prod
+      namespace: "{{ .Values.global.namespace }}"
     spec:
       secretStoreRefs:
       - name: teck-website-vault

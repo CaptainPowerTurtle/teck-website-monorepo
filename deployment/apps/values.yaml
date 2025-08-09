@@ -8,7 +8,7 @@ global:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: teck-website-prod
+    namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
     name: in-cluster
   syncPolicy:
     syncOptions:
