@@ -1,6 +1,7 @@
 global:
   namespace: teck-website-prod
-  vaultPath: teck-website
+  vaultPath: production
+  environment: production
 
 pushSecrets:
   enabled: true
