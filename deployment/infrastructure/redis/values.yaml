@@ -1,9 +1,9 @@
 global:
   defaultStorageClass: longhorn
   storageClass: longhorn
-  namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
-  environment: "{{ .Values.global.environment | default \"production\" }}"
-  vaultPath: "{{ .Values.global.vaultPath | default \"teck-website\" }}"
+  namespace: teck-website-prod
+  environment: production
+  vaultPath: teck-website
 architecture: standalone
 persistence:
   enabled: true
@@ -16,7 +16,7 @@ extraDeploy:
     kind: PushSecret
     metadata:
       name: redis-pushsecret
-      namespace: "{{ .Values.global.namespace }}"
+      namespace: teck-website-prod
     spec:
       secretStoreRefs:
       - name: teck-website-vault
@@ -29,5 +29,5 @@ extraDeploy:
         - match:
             secretKey: redis-password
             remoteRef:
-              remoteKey: "{{ .Values.global.vaultPath }}/redis"
+              remoteKey: teck-website/redis
               property: password

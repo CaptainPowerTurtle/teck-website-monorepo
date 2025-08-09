@@ -1,14 +1,13 @@
 global:
-  namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
-  environment: "{{ .Values.global.environment | default \"production\" }}"
+  namespace: teck-website-prod
+  environment: production
   label:
-    name: "{{ .Values.global.label.name | default \"teck-website-web\" }}"
+    name: teck-website-web
 
-environment: "{{ .Values.global.environment | default \"production\" }}"
 web:
   label:
-    name: "{{ .Values.global.label.name | default \"teck-website-web\" }}"
-  namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
+    name: teck-website-web
+  namespace: teck-website-prod
   replicas: 2
 
   containers:
@@ -19,7 +18,7 @@ web:
     image:
       registry: ghcr.io
       name: captainpowerturtle/teck-website-monorepo/web
-      tag: "{{ .Values.web.containers.image.tag | default \"1.2.4\" }}"
+      tag: 1.2.4
       imagePullPolicy: Always
     resources:
       limits:

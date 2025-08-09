@@ -1,6 +1,6 @@
 global:
-  namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
-  vaultPath: "{{ .Values.global.vaultPath | default \"teck-website\" }}"
+  namespace: teck-website-prod
+  vaultPath: teck-website
 
 pushSecrets:
-  enabled: true  # Enable for both production and preview environments
+  enabled: true

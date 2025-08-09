@@ -1,14 +1,14 @@
 global:
-  namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
-  environment: "{{ .Values.global.environment | default \"production\" }}"
+  namespace: teck-website-prod
+  environment: production
   label:
-    name: "{{ .Values.global.label.name | default \"teck-website\" }}"
-  vaultPath: "{{ .Values.global.vaultPath | default \"teck-website\" }}"
+    name: teck-website
+  vaultPath: teck-website
 
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
+    namespace: teck-website-prod
     name: in-cluster
   syncPolicy:
     syncOptions:
