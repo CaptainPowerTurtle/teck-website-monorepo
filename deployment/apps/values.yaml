@@ -17,3 +17,7 @@ spec:
     repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo
     targetRevision: HEAD
   project: teck-website
+
+web:
+  ingress:
+    host: teck.dk
