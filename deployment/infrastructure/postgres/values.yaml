@@ -1,0 +1,4 @@
+global:
+  namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
+  environment: "{{ .Values.global.environment | default \"production\" }}"
+  vaultPath: "{{ .Values.global.vaultPath | default \"teck-website\" }}"
