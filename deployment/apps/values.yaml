@@ -21,3 +21,6 @@ spec:
 web:
   ingress:
     host: teck.dk
+  containers:
+    image:
+      tag: 1.2.4
