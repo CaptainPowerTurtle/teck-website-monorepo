@@ -1,31 +1,58 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: web
+  name: {{ .Values.global.label.name | default "teck-website" }}-web
   namespace: argocd
+  {{- if eq (.Values.global.environment | default "production") "production" }}
   annotations:
     argocd-image-updater.argoproj.io/image-list: web=captainpowerturtle/teck-website-monorepo/web:x.x.x
     argocd-image-updater.argoproj.io/web.update-strategy: semver
     argocd-image-updater.argoproj.io/web.allow-tags: regexp:^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$
     argocd-image-updater.argoproj.io/web.helm.image-name: web.containers.image.name
     argocd-image-updater.argoproj.io/web.helm.image-tag: web.containers.image.tag
+  {{- end }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: {{ .Values.spec.destination.namespace }}
+    namespace: {{ .Values.global.namespace | default .Values.spec.destination.namespace }}
     server: {{ .Values.spec.destination.server }}
   project: {{ .Values.spec.project }}
   source:
     path: deployment/infrastructure/web
     repoURL: https://github.com/CaptainPowerTurtle/teck-website-monorepo.git
-    targetRevision: HEAD
+    targetRevision: {{ .Values.spec.source.targetRevision }}
     helm:
       valueFiles:
         - values.yaml
+      parameters:
+        {{- if .Values.global.namespace }}
+        - name: global.namespace
+          value: {{ .Values.global.namespace }}
+        {{- end }}
+        {{- if .Values.global.label.name }}
+        - name: global.label.name
+          value: {{ .Values.global.label.name }}
+        {{- end }}
+        {{- if .Values.global.environment }}
+        - name: global.environment
+          value: {{ .Values.global.environment }}
+        {{- end }}
+        {{- if .Values.global.vaultPath }}
+        - name: global.vaultPath
+          value: {{ .Values.global.vaultPath }}
+        {{- end }}
+        {{- if .Values.web.ingress.host }}
+        - name: web.ingress.host
+          value: {{ .Values.web.ingress.host }}
+        {{- end }}
+        {{- if .Values.web.containers.image.tag }}
+        - name: web.containers.image.tag
+          value: {{ .Values.web.containers.image.tag }}
+        {{- end }}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      {{ .Values.spec.syncPolicy.syncOptions }}
+      - CreateNamespace=true

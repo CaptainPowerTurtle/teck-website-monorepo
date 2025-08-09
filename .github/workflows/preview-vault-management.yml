@@ -1,0 +1,80 @@
+name: Preview Vault Management
+
+on:
+  pull_request:
+    types: [labeled, unlabeled, closed]
+    branches:
+      - main
+      - feature/**
+      - bugfix/**
+    paths:
+      - 'apps/web/**'
+      - 'packages/**'
+      - 'deployment/**'
+
+permissions:
+  contents: read
+  pull-requests: read
+  id-token: write  # Required for OIDC
+  packages: write  # Required for image cleanup
+
+jobs:
+  manage-vault-secrets:
+    runs-on: ubuntu-latest
+    if: |
+      (github.event.action == 'unlabeled' && github.event.label.name == 'preview') ||
+      (github.event.action == 'closed' && contains(github.event.pull_request.labels.*.name, 'preview'))
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Vault CLI
+        run: |
+          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt-get update && sudo apt-get install vault
+      
+      - name: Setup Vault with JWT
+        uses: hashicorp/vault-action@v3
+        with:
+          url: ${{ secrets.VAULT_ADDR }}
+          method: jwt
+          role: github-actions
+          exportToken: true
+
+      - name: Delete Preview Secrets
+        run: |
+          PR_NUMBER=${{ github.event.number }}
+          NAMESPACE="preview-${PR_NUMBER}"
+          
+          echo "Cleaning up all preview secrets for: teck-website/${NAMESPACE}"
+          echo "Using Vault server: ${VAULT_ADDR}"
+          
+          # List all secrets in the preview folder and delete them
+          vault kv list teck-website/${NAMESPACE} 2>/dev/null | tail -n +3 | while read secret; do
+            if [ ! -z "$secret" ]; then
+              echo "Deleting teck-website/${NAMESPACE}/$secret"
+              vault kv metadata delete teck-website/${NAMESPACE}/$secret || true
+            fi
+          done || true
+          
+          # Also try to delete the folder itself
+          vault kv metadata delete teck-website/${NAMESPACE} || true
+          
+          echo "Cleaned up entire preview folder: teck-website/${NAMESPACE}"
+        env:
+          VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+
+      - name: Cleanup Preview Container Image
+        run: |
+          IMAGE_TAG="${{ github.event.pull_request.head.sha }}"
+          REPOSITORY_LOWER="${{ github.repository }}"
+          PACKAGE_NAME="${REPOSITORY_LOWER,,}/web"
+          
+          # Use GitHub CLI to delete the package version
+          gh api --method GET "/user/packages/container/${PACKAGE_NAME}/versions" \
+            | jq -r '.[] | select(.metadata.container.tags[]? | contains("'${IMAGE_TAG}'")) | .id' \
+            | xargs -I {} gh api --method DELETE "/user/packages/container/${PACKAGE_NAME}/versions/{}" || true
+          
+          echo "Cleaned up preview image with tag: ${IMAGE_TAG}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
