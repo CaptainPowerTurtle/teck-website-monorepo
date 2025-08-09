@@ -1,10 +1,9 @@
 global:
-  namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
-  environment: "{{ .Values.global.environment | default \"production\" }}"
+  namespace: teck-website-prod
+  environment: production
   label:
-    name: "{{ .Values.global.label.name | default \"teck-website-web\" }}"
+    name: teck-website-web
 
-environment: "{{ .Values.global.environment | default \"production\" }}"
 web:
   label:
     name: "{{ .Values.global.label.name | default \"teck-website-web\" }}"
@@ -30,4 +29,4 @@ web:
     targetPort: 3000
   ingress:
     schema: https
-    host: "{{ .Values.web.ingress.host | default \"teck.dk\" }}"
+    host: teck.dk
