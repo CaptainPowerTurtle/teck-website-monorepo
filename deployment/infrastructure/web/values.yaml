@@ -30,4 +30,4 @@ web:
     targetPort: 3000
   ingress:
     schema: https
-    host: teck.dk
+    host: "{{ .Values.web.ingress.host | default \"teck.dk\" }}"
