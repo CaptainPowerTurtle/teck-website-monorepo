@@ -24,3 +24,5 @@ spec:
           port: 3000
       middlewares:
         - name: {{ .Values.global.label.name | default .Values.web.label.name }}-default-headers
+  tls:
+    secretName: certificate-teck-subdomains-tls
