@@ -3,7 +3,7 @@ global:
   storageClass: longhorn
   namespace: teck-website-prod
   environment: production
-  vaultPath: teck-website
+  vaultPath: production
 architecture: standalone
 persistence:
   enabled: true
@@ -29,5 +29,5 @@ extraDeploy:
         - match:
             secretKey: redis-password
             remoteRef:
-              remoteKey: teck-website/redis
+              remoteKey: "{{ .Values.global.vaultPath }}/redis"
               property: password
