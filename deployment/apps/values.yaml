@@ -3,12 +3,12 @@ global:
   environment: production
   label:
     name: teck-website
-  vaultPath: teck-website
+  vaultPath: production
 
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: "{{ .Values.global.namespace | default \"teck-website-prod\" }}"
+    namespace: teck-website-prod
     name: in-cluster
   syncPolicy:
     syncOptions:
