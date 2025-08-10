@@ -64,17 +64,22 @@ jobs:
         env:
           VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
 
-      - name: Cleanup Preview Container Image
+      - name: Cleanup All Preview Container Images for PR
         run: |
-          IMAGE_TAG="${{ github.event.pull_request.head.sha }}"
+          PR_NUMBER="${{ github.event.number }}"
           REPOSITORY_LOWER="${{ github.repository }}"
           PACKAGE_NAME="${REPOSITORY_LOWER,,}/web"
-          
-          # Use GitHub CLI to delete the package version
-          gh api --method GET "/user/packages/container/${PACKAGE_NAME}/versions" \
-            | jq -r '.[] | select(.metadata.container.tags[]? | contains("'${IMAGE_TAG}'")) | .id' \
-            | xargs -I {} gh api --method DELETE "/user/packages/container/${PACKAGE_NAME}/versions/{}" || true
-          
-          echo "Cleaned up preview image with tag: ${IMAGE_TAG}"
+
+          # Get all commit SHAs for the PR
+          SHAS=$(gh pr view $PR_NUMBER --json commits -q '.commits[].oid')
+
+          for SHA in $SHAS; do
+            # Find and delete the image with this tag
+            gh api --method GET "/user/packages/container/${PACKAGE_NAME}/versions" \
+              | jq -r '.[] | select(.metadata.container.tags[]? | contains("'${SHA}'")) | .id' \
+              | xargs -I {} gh api --method DELETE "/user/packages/container/${PACKAGE_NAME}/versions/{}" || true
+          done
+
+          echo "Cleaned up all preview images for PR: ${PR_NUMBER}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
