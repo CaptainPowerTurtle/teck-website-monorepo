@@ -1,4 +1,4 @@
 global:
   namespace: teck-website-prod
   environment: production
-  vaultPath: teck-website
+  vaultPath: production
