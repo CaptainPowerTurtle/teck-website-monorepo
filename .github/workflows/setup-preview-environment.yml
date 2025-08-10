@@ -49,7 +49,7 @@ jobs:
           RANDOM_PREVIEW_SECRET=$(openssl rand -hex 16)
           
           # Create payload secrets with generated values
-          vault kv put teck-website/${NAMESPACE}/payload \
+          vault kv put teck-website/${NAMESPACE}/web \
             secret="$RANDOM_PAYLOAD_SECRET" \
             preview-secret="$RANDOM_PREVIEW_SECRET"
           
