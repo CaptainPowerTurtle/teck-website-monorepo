@@ -85,7 +85,7 @@ jobs:
 
       - uses: snok/container-retention-policy@v2
         with:
-          account-type: org
+          account-type: personal
           org-name: CaptainPowerTurtle
           image-names: teck-website-monorepo/web
           filter-tags: '[a-f0-9]{40}'
