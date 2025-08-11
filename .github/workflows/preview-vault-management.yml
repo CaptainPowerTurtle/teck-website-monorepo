@@ -83,11 +83,20 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Get all open PR commit SHAs (protect from deletion)
+        id: open_pr_shas
+        run: |
+          OPEN_PR_SHAS=$(gh pr list --state open --json commits --limit 1000 -q '.[].commits[-1].oid' | jq -r '.[]' | paste -s -d ',' -)
+          echo "open_pr_shas=$OPEN_PR_SHAS" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: snok/container-retention-policy@v2
         with:
-          account-type: org
+          account-type: personal
           org-name: CaptainPowerTurtle
           image-names: teck-website-monorepo/web
           filter-tags: '[a-f0-9]{40}'
+          skip-tags: ${{ steps.open_pr_shas.outputs.open_pr_shas }}
           cut-off: 1d+00:00
           token: ${{ secrets.GITHUB_TOKEN }}
