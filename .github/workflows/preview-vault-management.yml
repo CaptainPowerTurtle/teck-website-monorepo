@@ -89,5 +89,5 @@ jobs:
           org-name: CaptainPowerTurtle
           image-names: teck-website-monorepo/web
           filter-tags: '[a-f0-9]{40}'
-          cut-off: 1d
+          cut-off: 1d+00:00
           token: ${{ secrets.GITHUB_TOKEN }}
