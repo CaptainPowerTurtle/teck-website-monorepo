@@ -64,22 +64,28 @@ jobs:
         env:
           VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
 
-      - name: Cleanup All Preview Container Images for PR
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch multi-arch digests for PR
+        id: multi_arch_digests
         run: |
-          PR_NUMBER="${{ github.event.number }}"
-          REPOSITORY_LOWER="${{ github.repository }}"
-          PACKAGE_NAME="${REPOSITORY_LOWER,,}/web"
-
-          # Get all commit SHAs for the PR
-          SHAS=$(gh pr view $PR_NUMBER --json commits -q '.commits[].oid')
-
-          for SHA in $SHAS; do
-            # Find and delete the image with this tag
-            gh api --method GET "/user/packages/container/${PACKAGE_NAME}/versions" \
-              | jq -r '.[] | select(.metadata.container.tags[]? | contains("'${SHA}'")) | .id' \
-              | xargs -I {} gh api --method DELETE "/user/packages/container/${PACKAGE_NAME}/versions/{}" || true
+          DIGESTS=""
+          for SHA in $(gh pr view ${{ github.event.number }} --json commits -q '.commits[].oid'); do
+            D=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.manifests[].digest' | paste -s -d ' ' -)
+            DIGESTS="$DIGESTS $D"
           done
-
-          echo "Cleaned up all preview images for PR: ${PR_NUMBER}"
+          echo "multi_arch_digests=$DIGESTS" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: snok/container-retention-policy@v2
+        with:
+          image-names: captainpowerturtle/teck-website-monorepo/web
+          tag-regex: '^[a-f0-9]{40}$'
+          skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
+          token: ${{ secrets.GITHUB_TOKEN }}
