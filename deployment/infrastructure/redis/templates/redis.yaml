@@ -1,0 +1,44 @@
+{{- if eq .Values.global.environment "preview" }}
+apiVersion: redis.ot-container-kit.github.com/v1alpha1
+kind: Redis
+metadata:
+  name: redis
+  namespace: your-preview-namespace
+spec:
+  image: redis:8.2-alpine
+  replicas: 1
+  # No storage section = no persistence
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 200m
+      memory: 512Mi
+  passwordSecret:
+    name: redis-password
+    key: password
+{{- else }}
+apiVersion: redis.ot-container-kit.github.com/v1alpha1
+kind: RedisCluster
+metadata:
+  name: redis
+  namespace: {{ .Values.global.namespace }}
+spec:
+  replicas: 3
+  clusterReplicas: 1
+  image: redis:8.2-alpine
+  storage:
+    className: longhorn
+    size: 1Gi
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  passwordSecret:
+    name: redis-secret
+    key: password
+{{- end }}

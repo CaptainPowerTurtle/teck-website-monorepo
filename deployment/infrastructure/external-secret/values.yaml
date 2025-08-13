@@ -2,6 +2,3 @@ global:
   namespace: teck-website-prod
   vaultPath: production
   environment: production
-
-pushSecrets:
-  enabled: true
