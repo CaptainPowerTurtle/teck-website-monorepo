@@ -57,7 +57,7 @@ spec:
                   name: redis-secret
                   key: password
             - name: REDIS_URL
-              value: redis://:$(REDIS_PASSWORD)@redis-master.{{ .Values.global.namespace }}.svc:6379
+              value: redis://:$(REDIS_PASSWORD)@redis.{{ .Values.global.namespace }}.svc:6379
             - name: DATABASE_URI
               value: postgres://$(POSTGRES_USERNAME):$(POSTGRES_PASSWORD)@pooler-postgres-rw.{{ .Values.global.namespace }}.svc:5432/teck-website
             - name: PAYLOAD_SECRET

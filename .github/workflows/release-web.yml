@@ -188,8 +188,10 @@ jobs:
           tags: ${{ steps.repo.outputs.lowercase }}
           labels: ${{ steps.meta.outputs.labels }}
           provenance: false
-          cache-from: type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }}
-          cache-to: type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }},mode=max
+          # cache-from: type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }}
+          # cache-to: type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }},mode=max
+          cache-from: type=registry,ref=${{ steps.repo.outputs.lowercase }}-cache:dockercache-${{ env.PLATFORM_PAIR }}
+          cache-to: type=registry,ref=${{ steps.repo.outputs.lowercase }}-cache:dockercache-${{ env.PLATFORM_PAIR }},mode=max
           outputs: type=image,name=${{ steps.repo.outputs.lowercase }},push-by-digest=true,name-canonical=true,push=true
           secrets: |
             "database_uri=postgres://postgres:postgres@172.17.0.1:5432/postgres"
