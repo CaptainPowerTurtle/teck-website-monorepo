@@ -34,3 +34,8 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+    ignoreDifferences:
+      - group: redis.redis.opstreelabs.in
+        kind: Redis
+        jsonPointers:
+          - /spec/kubernetesConfig/updateStrategy
