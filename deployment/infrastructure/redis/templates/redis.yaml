@@ -9,16 +9,16 @@ spec:
     image: redis:8.0.3
     imagePullPolicy: IfNotPresent
     updateStrategy: {}
-  redisPasswordSecret:
-    key: password
-    name: redis-password
-  resources:
-    limits:
-      cpu: 200m
-      memory: 256Mi
-    requests:
-      cpu: 50m
-      memory: 128Mi
+    resources:
+      limits:
+        cpu: 200m
+        memory: 256Mi
+      requests:
+        cpu: 50m
+        memory: 128Mi
+    redisSecret:
+      key: password
+      name: redis-password
   size: 1
 {{- else }}
 apiVersion: redis.redis.opstreelabs.in/v1beta2
@@ -31,6 +31,16 @@ spec:
     image: redis:8.0.3
     imagePullPolicy: IfNotPresent
     updateStrategy: {}
+    resources:
+      limits:
+        cpu: 1
+        memory: 1Gi
+      requests:
+        cpu: 50m
+        memory: 256Mi
+    redisSecret:
+      key: password
+      name: redis-secret
   size: 3
   storage:
     volumeClaimTemplate:
@@ -40,14 +50,4 @@ spec:
         resources:
           requests:
             storage: 1Gi
-  resources:
-    requests:
-      cpu: 50m
-      memory: 256Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
-  redisPasswordSecret:
-    name: redis-secret
-    key: password
 {{- end }}
