@@ -19,33 +19,54 @@ spec:
     redisSecret:
       key: password
       name: redis-secret
-  size: 1
 {{- else }}
 apiVersion: redis.redis.opstreelabs.in/v1beta2
-kind: Redis
+kind: RedisCluster
 metadata:
-  name: redis
+  name: redis-cluster
   namespace: {{ .Values.global.namespace }}
 spec:
+  clusterSize: 3
+  clusterVersion: v7
+  persistenceEnabled: true
+  podSecurityContext:
+    runAsUser: 1000
+    fsGroup: 1000
   kubernetesConfig:
-    image: redis:8.0.3
+    image: quay.io/opstree/redis:v7.0.12
     imagePullPolicy: IfNotPresent
-    updateStrategy: {}
     resources:
-      limits:
-        cpu: 1
-        memory: 1Gi
       requests:
-        cpu: 50m
-        memory: 256Mi
+        cpu: 101m
+        memory: 128Mi
+      limits:
+        cpu: 101m
+        memory: 128Mi
     redisSecret:
-      key: password
       name: redis-secret
-  size: 3
+      key: password
+  redisExporter:
+    enabled: false
+    image: quay.io/opstree/redis-exporter:v1.44.0
+    imagePullPolicy: Always
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
   storage:
     volumeClaimTemplate:
       spec:
         storageClassName: longhorn
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
+    nodeConfVolume: true
+    nodeConfVolumeClaimTemplate:
+      spec:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
