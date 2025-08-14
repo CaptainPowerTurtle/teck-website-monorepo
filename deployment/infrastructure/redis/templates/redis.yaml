@@ -3,7 +3,7 @@ apiVersion: redis.redis.opstreelabs.in/v1beta2
 kind: Redis
 metadata:
   name: redis
-  namespace: your-preview-namespace
+  namespace: {{ .Values.global.namespace }}
 spec:
   image: redis:8.2-alpine
   replicas: 1
