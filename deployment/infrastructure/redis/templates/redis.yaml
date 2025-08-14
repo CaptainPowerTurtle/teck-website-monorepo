@@ -5,19 +5,17 @@ metadata:
   name: redis
   namespace: {{ .Values.global.namespace }}
 spec:
-  image: redis:8.0.3
+  kubernetesConfig:
+    image: redis:8.0.3
+    imagePullPolicy: IfNotPresent
   size: 1
-  storage:
-    keepAfterDeletion: false
-    storageClass: longhorn
-    storage: 0Gi # No persistence for preview
   resources:
     requests:
       cpu: 50m
       memory: 128Mi
     limits:
       cpu: 200m
-      memory: 512Mi
+      memory: 256Mi
   redisPasswordSecret:
     name: redis-password
     key: password
@@ -28,16 +26,22 @@ metadata:
   name: redis
   namespace: {{ .Values.global.namespace }}
 spec:
-  image: redis:8.0.3
+  kubernetesConfig:
+    image: redis:8.0.3
+    imagePullPolicy: IfNotPresent
   size: 3
   storage:
-    keepAfterDeletion: true
-    storageClass: longhorn
-    storage: 1Gi
+    volumeClaimTemplate:
+      spec:
+        storageClassName: longhorn
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
   resources:
     requests:
       cpu: 50m
-      memory: 128Mi
+      memory: 256Mi
     limits:
       cpu: 1
       memory: 1Gi
