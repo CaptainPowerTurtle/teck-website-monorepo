@@ -93,10 +93,9 @@ jobs:
 
       - uses: snok/container-retention-policy@v2
         with:
-          account-type: personal
-          org-name: CaptainPowerTurtle
+          account: CaptainPowerTurtle
           image-names: teck-website-monorepo/web
           filter-tags: '[a-f0-9]{40}'
           skip-tags: ${{ steps.open_pr_shas.outputs.open_pr_shas }}
-          cut-off: 1d+00:00
+          cut-off: 0m
           token: ${{ secrets.GITHUB_TOKEN }}
