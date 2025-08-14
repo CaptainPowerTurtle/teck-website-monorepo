@@ -18,7 +18,7 @@ spec:
         memory: 128Mi
     redisSecret:
       key: password
-      name: redis-password
+      name: redis-secret
   size: 1
 {{- else }}
 apiVersion: redis.redis.opstreelabs.in/v1beta2
