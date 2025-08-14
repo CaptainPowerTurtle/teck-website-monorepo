@@ -8,17 +8,17 @@ spec:
   kubernetesConfig:
     image: redis:8.0.3
     imagePullPolicy: IfNotPresent
-  size: 1
+  redisPasswordSecret:
+    key: password
+    name: redis-password
   resources:
-    requests:
-      cpu: 50m
-      memory: 128Mi
     limits:
       cpu: 200m
       memory: 256Mi
-  redisPasswordSecret:
-    name: redis-password
-    key: password
+    requests:
+      cpu: 50m
+      memory: 128Mi
+  size: 1
 {{- else }}
 apiVersion: redis.redis.opstreelabs.in/v1beta2
 kind: Redis
