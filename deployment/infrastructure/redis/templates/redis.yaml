@@ -8,6 +8,7 @@ spec:
   kubernetesConfig:
     image: redis:8.0.3
     imagePullPolicy: IfNotPresent
+    updateStrategy: {}
   redisPasswordSecret:
     key: password
     name: redis-password
@@ -29,6 +30,7 @@ spec:
   kubernetesConfig:
     image: redis:8.0.3
     imagePullPolicy: IfNotPresent
+    updateStrategy: {}
   size: 3
   storage:
     volumeClaimTemplate:
