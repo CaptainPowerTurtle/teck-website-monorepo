@@ -11,7 +11,7 @@ metadata:
     argocd-image-updater.argoproj.io/web.helm.image-name: web.containers.image.name
     argocd-image-updater.argoproj.io/web.helm.image-tag: web.containers.image.tag
   {{- end }}
-  notifications.argoproj.io/subscribe.on-deployed.github: ""
+    notifications.argoproj.io/subscribe.on-deployed.github: ""
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
