@@ -91,12 +91,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: snok/container-retention-policy@v2
+      - name: Container Retention Policy
+        uses: snok/container-retention-policy@v3.0.0
         with:
-          account-type: personal
           account: CaptainPowerTurtle
           image-names: teck-website-monorepo/web
           filter-tags: '[a-f0-9]{40}'
           skip-tags: ${{ steps.open_pr_shas.outputs.open_pr_shas }}
-          cut-off: 0d+00:00
+          skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
+          cut-off: 0d
           token: ${{ secrets.GITHUB_TOKEN }}
