@@ -1,0 +1,43 @@
+name: Manual Container Cleanup
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  cleanup-containers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch multi-arch digests for SHA-only images
+        id: multi_arch_digests
+        run: |
+          DIGESTS=""
+          # Get all SHA-only tags for the image
+          for SHA in $(gh api repos/CaptainPowerTurtle/teck-website-monorepo/packages/container/teck-website-monorepo%2Fweb/versions --jq '.[] | select(.metadata.container.tags | length == 1 and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]'); do
+            D=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.manifests[].digest' | paste -s -d ' ' -)
+            DIGESTS="$DIGESTS $D"
+          done
+          DIGESTS=$(echo $DIGESTS | xargs | tr ' ' ',')
+          echo "multi_arch_digests=$DIGESTS" >> $GITHUB_OUTPUT
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Container Retention Policy
+        uses: snok/container-retention-policy@v3.0.0
+        with:
+          account: CaptainPowerTurtle
+          image-names: teck-website-monorepo/web
+          tag-selection: sha-only
+          skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
+          cut-off: 0d
+          token: ${{ secrets.GITHUB_TOKEN }}

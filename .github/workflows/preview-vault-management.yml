@@ -71,23 +71,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Fetch multi-arch digests for PR
-        id: multi_arch_digests
+      - name: Collect multi-arch digests for current PR
+        id: current_pr_digests
         run: |
           DIGESTS=""
           for SHA in $(gh pr view ${{ github.event.number }} --json commits -q '.commits[].oid'); do
             D=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.manifests[].digest' | paste -s -d ' ' -)
             DIGESTS="$DIGESTS $D"
           done
-          echo "multi_arch_digests=$DIGESTS" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Get all open PR commit SHAs (protect from deletion)
-        id: open_pr_shas
-        run: |
-          OPEN_PR_SHAS=$(gh pr list --state open --json commits --limit 1000 -q '.[].commits[-1].oid' | jq -r '.[]' | paste -s -d ',' -)
-          echo "open_pr_shas=$OPEN_PR_SHAS" >> $GITHUB_OUTPUT
+          DIGESTS=$(echo $DIGESTS | xargs | tr ' ' ',')
+          echo "current_pr_digests=$DIGESTS" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -96,8 +89,6 @@ jobs:
         with:
           account: CaptainPowerTurtle
           image-names: teck-website-monorepo/web
-          filter-tags: '[a-f0-9]{40}'
-          skip-tags: ${{ steps.open_pr_shas.outputs.open_pr_shas }}
-          skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
+          skip-shas: ${{ steps.current_pr_digests.outputs.current_pr_digests }}
           cut-off: 0d
           token: ${{ secrets.GITHUB_TOKEN }}
