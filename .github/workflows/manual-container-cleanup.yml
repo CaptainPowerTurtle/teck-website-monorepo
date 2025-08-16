@@ -18,6 +18,30 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Debug: Print SHA-only tags and digests
+        run: |
+          echo "Fetching SHA-only tags..."
+          SHA_TAGS=$(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.container.tags | length == 1 and (.container.tags[0] | test("^[a-f0-9]{40}$"))) | .container.tags[0]')
+          echo "SHA-only tags found: $SHA_TAGS"
+          for SHA in $SHA_TAGS; do
+            echo "---"
+            echo "Parent manifest: ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA"
+            PARENT_DIGEST=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.config.digest // .schemaV2.digest // .digest // empty')
+            echo "Parent digest: $PARENT_DIGEST"
+            CHILD_DIGESTS=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.manifests[].digest' | paste -s -d ' ' -)
+            echo "Child digests: $CHILD_DIGESTS"
+          done
+          echo "---"
+          echo "All child digests to be protected:"
+          DIGESTS=""
+          for SHA in $SHA_TAGS; do
+            CHILD_DIGESTS=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.manifests[].digest' | paste -s -d ' ' -)
+            DIGESTS="$DIGESTS $CHILD_DIGESTS"
+          done
+          DIGESTS=$(echo $DIGESTS | xargs | tr ' ' ',')
+          echo "$DIGESTS"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Fetch multi-arch digests for SHA-only images
         id: multi_arch_digests
         run: |
