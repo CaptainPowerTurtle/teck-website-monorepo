@@ -38,7 +38,7 @@ jobs:
         with:
           account: user
           image-names: teck-website-monorepo/web
-          tag-selection: tagged
+          tag-selection: both
           image-tags: '[a-f0-9]{40}'   # regex for SHA tags
           skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
           cut-off: 0d
