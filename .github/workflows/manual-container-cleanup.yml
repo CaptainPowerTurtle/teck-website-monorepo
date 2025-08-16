@@ -17,27 +17,30 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Fetch multi-arch digests for SHA-only images
-        id: multi_arch_digests
+  
+      - name: Fetch multi-platform digests for all SHA-only tags
+        id: multi-arch-digests
         run: |
+          IMAGE="ghcr.io/captainpowerturtle/teck-website-monorepo/web"
           DIGESTS=""
-          # Get all SHA-only tags for the image
-          for SHA in $(gh api repos/CaptainPowerTurtle/teck-website-monorepo/packages/container/teck-website-monorepo%2Fweb/versions --jq '.[] | select(.metadata.container.tags | length == 1 and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]'); do
-            D=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.manifests[].digest' | paste -s -d ' ' -)
-            DIGESTS="$DIGESTS $D"
+          SHA_TAGS=$(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.metadata.container.tags? and (.metadata.container.tags | length == 1) and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]')
+          for SHA in $SHA_TAGS; do
+            ARCH_DIGESTS=$(docker manifest inspect $IMAGE:$SHA | jq -r '.[0].manifests[].digest' | paste -s -d ' ' -)
+            DIGESTS="$DIGESTS$ARCH_DIGESTS,"
           done
-          DIGESTS=$(echo $DIGESTS | xargs | tr ' ' ',')
-          echo "multi_arch_digests=$DIGESTS" >> $GITHUB_OUTPUT
+          DIGESTS=$(echo $DIGESTS | sed 's/,$//')
+          echo "multi-arch-digests=$DIGESTS" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Container Retention Policy
         uses: snok/container-retention-policy@v3.0.0
         with:
-          account: CaptainPowerTurtle
+          account: user
           image-names: teck-website-monorepo/web
-          tag-selection: sha-only
+          tag-selection: both
+          image-tags: '[a-f0-9]{40}'   # regex for SHA tags
           skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
           cut-off: 0d
           token: ${{ secrets.GITHUB_TOKEN }}
+          dry-run: false

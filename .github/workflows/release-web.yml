@@ -255,10 +255,11 @@ jobs:
         with:
           images: ${{ steps.repo.outputs.lowercase }}
           tags: |
-            type=raw,value=${{ needs.check-build-type.outputs.image-tag }},enable=${{ needs.check-build-type.outputs.is-preview == 'true' }}
-            type=semver,pattern={{version}},value=${{ needs.prepare-release.outputs.release-version }},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
-            type=semver,pattern={{major}}.{{minor}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
-            type=semver,pattern={{major}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
+              type=raw,value=${{ needs.check-build-type.outputs.image-tag }},enable=${{ needs.check-build-type.outputs.is-preview == 'true' }}
+              type=raw,value=preview-${{ github.event.pull_request.number }},enable=${{ needs.check-build-type.outputs.is-preview == 'true' }}
+              type=semver,pattern={{version}},value=${{ needs.prepare-release.outputs.release-version }},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
+              type=semver,pattern={{major}}.{{minor}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
+              type=semver,pattern={{major}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
         run: |
