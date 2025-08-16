@@ -18,6 +18,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Debug Print all tags and digests from API
+        run: |
+          echo "Raw API output for all versions:"
+          gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions > /tmp/versions.json
+          cat /tmp/versions.json | jq '.'
+          echo "---"
+          echo "All tags found:"
+          cat /tmp/versions.json | jq -r '.[] | .container.tags[]?'
+          echo "---"
+          echo "All digests found:"
+          cat /tmp/versions.json | jq -r '.[] | .container.digest // empty'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Debug Print SHA-only tags and digests
         run: |
           echo "Fetching SHA-only tags..."
