@@ -23,7 +23,8 @@ jobs:
         run: |
           DIGESTS=""
           # Get all SHA-only tags for the image
-          for SHA in $(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.metadata.container.tags | length == 1 and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]'); do
+          SHA_LIST=$(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.metadata.container.tags | length == 1 and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]')
+          for SHA in $SHA_LIST; do
             CHILD_DIGESTS=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.manifests[].digest' | paste -s -d ' ' -)
             DIGESTS="$DIGESTS $CHILD_DIGESTS"
           done
