@@ -35,7 +35,7 @@ jobs:
       - name: Container Retention Policy
         uses: snok/container-retention-policy@v3.0.0
         with:
-          account: CaptainPowerTurtle
+          account: user
           image-names: teck-website-monorepo/web
           tag-selection: tagged
           image-tags: '[a-f0-9]{40}'   # regex for SHA tags
