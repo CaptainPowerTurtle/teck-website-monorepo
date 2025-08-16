@@ -43,4 +43,4 @@ jobs:
           skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
           cut-off: 0d
           token: ${{ secrets.GITHUB_TOKEN }}
-          dry-run: true
+          dry-run: false
