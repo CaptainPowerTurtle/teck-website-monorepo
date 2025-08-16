@@ -24,8 +24,9 @@ jobs:
           DIGESTS=""
           # Get all SHA-only tags for the image
           for SHA in $(gh api repos/CaptainPowerTurtle/teck-website-monorepo/packages/container/teck-website-monorepo%2Fweb/versions --jq '.[] | select(.metadata.container.tags | length == 1 and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]'); do
-            D=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.manifests[].digest' | paste -s -d ' ' -)
-            DIGESTS="$DIGESTS $D"
+            # Get all child image digests (from manifests[])
+            CHILD_DIGESTS=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.manifests[].digest' | paste -s -d ' ' -)
+            DIGESTS="$DIGESTS $CHILD_DIGESTS"
           done
           DIGESTS=$(echo $DIGESTS | xargs | tr ' ' ',')
           echo "multi_arch_digests=$DIGESTS" >> $GITHUB_OUTPUT
@@ -35,10 +36,9 @@ jobs:
       - name: Container Retention Policy
         uses: snok/container-retention-policy@v3.0.0
         with:
-          account: user
+          account: CaptainPowerTurtle
           image-names: teck-website-monorepo/web
-          tag-selection: tagged
-          image-tags: '[a-f0-9]{40}'   # regex for SHA tags
+          tag-selection: sha-only
           skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
           cut-off: 0d
           token: ${{ secrets.GITHUB_TOKEN }}
