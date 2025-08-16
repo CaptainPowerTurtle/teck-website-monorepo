@@ -25,16 +25,16 @@ jobs:
           cat /tmp/versions.json | jq '.'
           echo "---"
           echo "All tags found:"
-          cat /tmp/versions.json | jq -r '.[] | .container.tags[]?'
+          cat /tmp/versions.json | jq -r '.[] | .metadata.container.tags[]?'
           echo "---"
           echo "All digests found:"
-          cat /tmp/versions.json | jq -r '.[] | .container.digest // empty'
+          cat /tmp/versions.json | jq -r '.[] | .metadata.container.digest // empty'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Debug Print SHA-only tags and digests
         run: |
           echo "Fetching SHA-only tags..."
-          SHA_TAGS=$(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.container.tags | length == 1 and (.container.tags[0] | test("^[a-f0-9]{40}$"))) | .container.tags[0]')
+          SHA_TAGS=$(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.metadata.container.tags | length == 1 and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]')
           echo "SHA-only tags found: $SHA_TAGS"
           for SHA in $SHA_TAGS; do
             echo "---"
@@ -60,7 +60,7 @@ jobs:
         run: |
           DIGESTS=""
           # Get all SHA-only tags for the image
-          for SHA in $(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.container.tags | length == 1 and (.container.tags[0] | test("^[a-f0-9]{40}$"))) | .container.tags[0]'); do
+          for SHA in $(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.metadata.container.tags | length == 1 and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]'); do
             CHILD_DIGESTS=$(docker manifest inspect ghcr.io/captainpowerturtle/teck-website-monorepo/web:$SHA 2>/dev/null | jq -r '.manifests[].digest' | paste -s -d ' ' -)
             DIGESTS="$DIGESTS $CHILD_DIGESTS"
           done
