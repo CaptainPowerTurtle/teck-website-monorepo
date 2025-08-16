@@ -13,6 +13,7 @@ metadata:
   {{- end }}
     notifications.argoproj.io/subscribe.on-deployed.github: ""
     notifications.argoproj.io/subscribe.on-sync-failed.github: ""
+    notifications.argoproj.io/subscribe.on-sync-running.github: ""
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
