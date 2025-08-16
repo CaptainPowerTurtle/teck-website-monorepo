@@ -37,7 +37,8 @@ jobs:
         with:
           account: CaptainPowerTurtle
           image-names: teck-website-monorepo/web
-          tag-selection: sha-only
+          tag-selection: tagged
+          image-tags: '[a-f0-9]{40}'   # regex for SHA tags
           skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
           cut-off: 0d
           token: ${{ secrets.GITHUB_TOKEN }}
