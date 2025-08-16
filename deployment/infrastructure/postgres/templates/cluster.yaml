@@ -3,8 +3,6 @@ kind: Cluster
 metadata:
   name: postgres
   namespace: {{ .Values.global.namespace }}
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"  # Deploy postgres cluster first
 spec:
   imageName: ghcr.io/cloudnative-pg/postgresql:17
   instances: {{ if eq (.Values.global.environment | default "production") "preview" }}2{{ else }}2{{ end }}
@@ -53,8 +51,6 @@ kind: Pooler
 metadata:
   name: pooler-postgres-rw
   namespace: {{ .Values.global.namespace }}
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"  # Deploy pooler with postgres cluster
 spec:
   cluster:
     name: postgres
