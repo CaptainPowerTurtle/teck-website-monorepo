@@ -18,7 +18,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Debug: Print SHA-only tags and digests
+      - name: Debug Print SHA-only tags and digests
         run: |
           echo "Fetching SHA-only tags..."
           SHA_TAGS=$(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.container.tags | length == 1 and (.container.tags[0] | test("^[a-f0-9]{40}$"))) | .container.tags[0]')
