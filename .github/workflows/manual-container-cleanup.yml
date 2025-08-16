@@ -23,7 +23,7 @@ jobs:
         run: |
           IMAGE="ghcr.io/captainpowerturtle/teck-website-monorepo/web"
           DIGESTS=""
-          SHA_TAGS=$(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.metadata.container.tags? | length == 1 and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]')
+          SHA_TAGS=$(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.versions[] | select(.metadata.container.tags? | length == 1 and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]')
           for SHA in $SHA_TAGS; do
             ARCH_DIGESTS=$(docker manifest inspect $IMAGE:$SHA | jq -r '.[0].manifests[].digest' | paste -s -d ' ' -)
             DIGESTS="$DIGESTS$ARCH_DIGESTS,"
