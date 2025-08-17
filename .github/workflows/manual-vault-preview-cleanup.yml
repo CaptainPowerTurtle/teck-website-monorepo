@@ -51,7 +51,10 @@ jobs:
           # Recursively destroy all secrets and subfolders (all versions + metadata) using -mount flag
           delete_recursive() {
             local path="$1"
+            echo "Listing items at: ${path}"
+            vault kv list -mount="teck-website" "${path}" 2>/dev/null | tail -n +3
             for item in $(vault kv list -mount="teck-website" "${path}" 2>/dev/null | tail -n +3); do
+              echo "Found item: $item"
               if [[ "$item" == */ ]]; then
                 delete_recursive "${path}/${item%/}"
               else
