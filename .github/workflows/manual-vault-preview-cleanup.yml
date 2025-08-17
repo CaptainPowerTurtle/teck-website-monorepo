@@ -52,9 +52,12 @@ jobs:
           delete_recursive() {
             local path="$1"
             for item in $(vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3); do
-              if [[ "$item" == */ ]]; then
-                delete_recursive "${path}/${item%/}"
+              item="${item%/}"
+              if vault kv list "teck-website/${path}/${item}" 2>/dev/null | grep -q .; then
+                # It's a folder, recurse into it
+                delete_recursive "${path}/${item}"
               else
+                # It's a secret, delete it
                 echo "Destroying all versions of secret: ${path}/$item"
                 vault kv destroy "teck-website/${path}/$item" || true
                 echo "Deleting secret metadata: ${path}/$item"
