@@ -49,12 +49,12 @@ jobs:
               else
                 echo "Deleting secret data: teck-website/data/${path}/$item"
                 vault kv delete "teck-website/data/${path}/$item" || true
-                echo "Deleting secret metadata: teck-website/metadata/${path}/$item"
-                vault kv metadata delete "teck-website/metadata/${path}/$item" || true
+                echo "Deleting secret metadata: teck-website/${path}/$item"
+                vault kv metadata delete "teck-website/${path}/$item" || true
               fi
             done
             echo "Deleting folder metadata: teck-website/metadata/${path}"
-            vault kv metadata delete "teck-website/metadata/${path}" || true
+            vault kv metadata delete "teck-website/${path}" || true
           }
 
           delete_recursive "$NAMESPACE"
