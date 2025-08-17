@@ -1,0 +1,70 @@
+name: Manual Vault Preview Cleanup
+
+description: Manually delete all secrets and metadata under a specified preview namespace in Vault.
+
+on:
+  workflow_dispatch:
+    inputs:
+      namespace:
+        description: 'Preview namespace to delete (e.g. preview-123)'
+        required: true
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  manual-vault-preview-cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Vault CLI
+        run: |
+          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt-get update && sudo apt-get install vault
+      
+      - name: Setup Vault with JWT
+        uses: hashicorp/vault-action@v3
+        with:
+          url: ${{ secrets.VAULT_ADDR }}
+          method: jwt
+          role: github-actions
+          exportToken: true
+
+      - name: Delete Preview Secrets (Manual)
+        run: |
+          NAMESPACE="${{ github.event.inputs.namespace }}"
+          echo "Cleaning up all preview secrets for: teck-website/data/${NAMESPACE}"
+          echo "Using Vault server: ${VAULT_ADDR}"
+
+          # Recursively delete all secrets and subfolders (data + metadata)
+          delete_recursive() {
+            local path="$1"
+            for item in $(vault kv list "teck-website/data/${path}" 2>/dev/null | tail -n +3); do
+              if [[ "$item" == */ ]]; then
+                delete_recursive "${path}/${item%/}"
+              else
+                echo "Deleting secret data: teck-website/data/${path}/$item"
+                vault kv delete "teck-website/data/${path}/$item" || true
+                echo "Deleting secret metadata: teck-website/metadata/${path}/$item"
+                vault kv metadata delete "teck-website/metadata/${path}/$item" || true
+              fi
+            done
+            echo "Deleting folder metadata: teck-website/metadata/${path}"
+            vault kv metadata delete "teck-website/metadata/${path}" || true
+          }
+
+          delete_recursive "$NAMESPACE"
+          echo "Cleaned up entire preview folder: teck-website/data/${NAMESPACE}"
+        env:
+          VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
