@@ -65,6 +65,7 @@ jobs:
               fi
             done
             # Try to delete the folder metadata itself (will only disappear if empty)
+            echo "Deleting folder metadata: teck-website/metadata/${path}"
             vault kv metadata delete "teck-website/metadata/${path}" || true
           }
 
