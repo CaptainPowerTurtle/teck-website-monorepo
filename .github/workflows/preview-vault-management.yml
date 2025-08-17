@@ -92,8 +92,8 @@ jobs:
           account: user
           image-names: teck-website-monorepo/web
           tag-selection: both
-          image-tags: 'preview-${{ github.event.number }}*'
+          image-tags: 'preview-${{ github.event.number }} *'
           cut-off: 0d
           token: ${{ secrets.GITHUB_TOKEN }}
-          skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
+          skip-shas: ${{ steps.multi-arch-digests.outputs.multi-arch-digests }}
           dry-run: false
