@@ -48,35 +48,18 @@ jobs:
           echo "Cleaning up all preview secrets for: teck-website/data/${NAMESPACE}"
           echo "Using Vault server: ${VAULT_ADDR}"
 
-          # Recursively destroy all secrets and subfolders (all versions + metadata) using full path (mount + secret path)
-          delete_recursive() {
-            local path="$1"
-            echo "Listing items at: teck-website/${path}"
-            local items=$(vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3)
+          # Explicitly delete known keys under the namespace
+          for key in redis postgres web; do
+            echo "Explicitly deleting: teck-website/${NAMESPACE}/$key"
+            vault kv get "teck-website/${NAMESPACE}/$key" || echo "No secret found at teck-website/${NAMESPACE}/$key"
+            vault kv destroy "teck-website/${NAMESPACE}/$key" || true
+            vault kv metadata delete "teck-website/${NAMESPACE}/$key" || true
+            vault kv get "teck-website/${NAMESPACE}/$key" || echo "No secret found at teck-website/${NAMESPACE}/$key"
+          done
 
-            # Always attempt to delete direct secret at this path
-            echo "Attempting to delete direct secret: teck-website/${path}"
-            echo "Before deletion, kv get output:"
-            vault kv get "teck-website/${path}" || echo "No secret found at teck-website/${path}"
-            echo "Destroying all versions of secret: teck-website/${path}"
-            vault kv destroy "teck-website/${path}" || true
-            echo "Deleting secret metadata: teck-website/${path}"
-            vault kv metadata delete "teck-website/${path}" || true
-            echo "After deletion, kv get output:"
-            vault kv get "teck-website/${path}" || echo "No secret found at teck-website/${path}"
-
-            if [ -z "$items" ]; then
-              return
-            fi
-            for item in $items; do
-              item="${item%/}"
-              echo "Found item: $item"
-              # Always recurse into subpath, even if kv list does not show it as a folder
-              delete_recursive "${path}/${item}"
-            done
-          }
-
-          delete_recursive "$NAMESPACE"
+          # Delete the preview folder metadata itself
+          echo "Deleting preview folder metadata: teck-website/${NAMESPACE}"
+          vault kv metadata delete "teck-website/${NAMESPACE}" || true
           echo "Cleaned up entire preview folder: teck-website/${NAMESPACE}"
         env:
           VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
