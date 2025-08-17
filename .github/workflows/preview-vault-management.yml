@@ -89,11 +89,11 @@ jobs:
       - name: Container Retention Policy
         uses: snok/container-retention-policy@v3.0.0
         with:
-          account: user
-          image-names: teck-website-monorepo/web
-          tag-selection: tagged
-          image-tags: 'preview-${{ github.event.number }}'   # only delete preview-<PR number> tags
-          cut-off: 0d
-          token: ${{ secrets.GITHUB_TOKEN }}
-          skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
-          dry-run: false
+            account: user
+            image-names: teck-website-monorepo/web
+            tag-selection: tagged
+            image-tags: 'preview-${{ github.event.number }}*'   # match any tag starting with preview-<PR number>
+            cut-off: 0d
+            token: ${{ secrets.GITHUB_TOKEN }}
+            skip-shas: ${{ steps.multi_arch_digests.outputs.multi_arch_digests }}
+            dry-run: false
