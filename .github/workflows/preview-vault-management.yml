@@ -73,8 +73,6 @@ jobs:
 
       - name: Fetch multi-platform digests for all SHA-only tags
         id: multi-arch-digests
-      - name: Fetch multi-platform digests for all SHA-only tags
-        id: multi-arch-digests
         run: |
           IMAGE="ghcr.io/captainpowerturtle/teck-website-monorepo/web"
           DIGESTS=""
