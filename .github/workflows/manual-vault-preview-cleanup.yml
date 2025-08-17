@@ -34,14 +34,6 @@ jobs:
           role: github-actions
           exportToken: true
 
-      - name: Print Vault Token and Accessor
-        run: |
-          echo "VAULT_TOKEN=$VAULT_TOKEN"
-          vault token lookup | grep accessor
-        env:
-          VAULT_TOKEN: ${{ env.VAULT_TOKEN }}
-          VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
-
       - name: Delete Preview Secrets (Manual)
         run: |
           NAMESPACE="${{ github.event.inputs.namespace }}"

@@ -41,36 +41,39 @@ jobs:
           role: github-actions
           exportToken: true
 
-      - name: Delete Preview Secrets
+      - name: Delete Preview Secrets (Manual)
         run: |
-          PR_NUMBER=${{ github.event.number }}
-          NAMESPACE="preview-${PR_NUMBER}"
+          NAMESPACE="${{ github.event.inputs.namespace }}"
           echo "Cleaning up all preview secrets for: teck-website/data/${NAMESPACE}"
           echo "Using Vault server: ${VAULT_ADDR}"
 
-          # Recursively delete all secrets and subfolders (data + metadata)
-          delete_recursive() {
-            local path="$1"
-            # List all secrets and subfolders
-            for item in $(vault kv list "teck-website/data/${path}" 2>/dev/null | tail -n +3); do
-              if [[ "$item" == */ ]]; then
-                # It's a subfolder, recurse
-                delete_recursive "${path}/${item%/}"
-              else
-                # It's a secret, delete both data and metadata
-                echo "Deleting secret data: teck-website/data/${path}/$item"
-                vault kv delete "teck-website/data/${path}/$item" || true
-                echo "Deleting secret metadata: teck-website/metadata/${path}/$item"
-                vault kv metadata delete "teck-website/metadata/${path}/$item" || true
-              fi
-            done
-            # Try to delete the folder metadata itself (will only disappear if empty)
-            echo "Deleting folder metadata: teck-website/metadata/${path}"
-            vault kv metadata delete "teck-website/metadata/${path}" || true
-          }
+          # Explicitly delete known keys under the namespace
+          for key in redis postgres web; do
+            echo "Explicitly deleting: teck-website/${NAMESPACE}/$key"
+            vault kv get "teck-website/${NAMESPACE}/$key" || echo "No secret found at teck-website/${NAMESPACE}/$key"
 
-          delete_recursive "$NAMESPACE"
-          echo "Cleaned up entire preview folder: teck-website/data/${NAMESPACE}"
+            # Find all versions for the key
+            versions=$(vault kv metadata get "teck-website/${NAMESPACE}/$key" 2>/dev/null | grep '^  version:' | awk '{print $2}')
+            if [ -z "$versions" ]; then
+              # Try to parse all available versions from the metadata output
+              versions=$(vault kv metadata get "teck-website/${NAMESPACE}/$key" 2>/dev/null | grep -E '^[ ]+[0-9]+:' | awk -F: '{print $1}' | tr -d ' ' | tr '\n' ',')
+              versions=${versions%,}
+            fi
+            if [ -n "$versions" ]; then
+              echo "Destroying all versions: $versions"
+              vault kv destroy "teck-website/${NAMESPACE}/$key" -versions="$versions" || true
+            else
+              echo "No versions found to destroy for teck-website/${NAMESPACE}/$key"
+            fi
+
+            vault kv metadata delete "teck-website/${NAMESPACE}/$key" || true
+            vault kv get "teck-website/${NAMESPACE}/$key" || echo "No secret found at teck-website/${NAMESPACE}/$key"
+          done
+
+          # Delete the preview folder metadata itself
+          echo "Deleting preview folder metadata: teck-website/${NAMESPACE}"
+          vault kv metadata delete "teck-website/${NAMESPACE}" || true
+          echo "Cleaned up entire preview folder: teck-website/${NAMESPACE}"
         env:
           VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
 
