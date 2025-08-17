@@ -45,21 +45,28 @@ jobs:
         run: |
           PR_NUMBER=${{ github.event.number }}
           NAMESPACE="preview-${PR_NUMBER}"
-          
           echo "Cleaning up all preview secrets for: teck-website/${NAMESPACE}"
           echo "Using Vault server: ${VAULT_ADDR}"
-          
-          # List all secrets in the preview folder and delete them
-          vault kv list teck-website/${NAMESPACE} 2>/dev/null | tail -n +3 | while read secret; do
-            if [ ! -z "$secret" ]; then
-              echo "Deleting teck-website/${NAMESPACE}/$secret"
-              vault kv metadata delete teck-website/${NAMESPACE}/$secret || true
-            fi
-          done || true
-          
-          # Also try to delete the folder itself
-          vault kv metadata delete teck-website/${NAMESPACE} || true
-          
+
+          # Recursively delete all secrets and subfolders
+          delete_recursive() {
+            local path="$1"
+            # List all secrets and subfolders
+            for item in $(vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3); do
+              if [[ "$item" == */ ]]; then
+                # It's a subfolder, recurse
+                delete_recursive "${path}/${item%/}"
+              else
+                # It's a secret, delete
+                echo "Deleting teck-website/${path}/$item"
+                vault kv metadata delete "teck-website/${path}/$item" || true
+              fi
+            done
+            # Try to delete the folder metadata itself
+            vault kv metadata delete "teck-website/${path}" || true
+          }
+
+          delete_recursive "$NAMESPACE"
           echo "Cleaned up entire preview folder: teck-website/${NAMESPACE}"
         env:
           VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
@@ -94,7 +101,7 @@ jobs:
           account: user
           image-names: teck-website-monorepo/web
           tag-selection: both
-          image-tags: 'preview-${{ github.event.number }} ![0-9]*.[0-9]*.[0-9]* !latest'
+          image-tags: 'preview-${{ github.event.number }} * ![0-9]*.[0-9]*.[0-9]* !latest'
           cut-off: 0d
           token: ${{ secrets.GITHUB_TOKEN }}
           skip-shas: ${{ steps.multi-arch-digests.outputs.multi-arch-digests }}
