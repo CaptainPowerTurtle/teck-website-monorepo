@@ -51,13 +51,15 @@ jobs:
           # Recursively destroy all secrets and subfolders (all versions + metadata) using full path (mount + secret path)
           delete_recursive() {
             local path="$1"
+            echo "Listing items at: teck-website/${path}"
+            vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3
             for item in $(vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3); do
               item="${item%/}"
+              echo "Found item: $item"
               if vault kv list "teck-website/${path}/${item}" 2>/dev/null | grep -q .; then
-                # It's a folder, recurse into it
+                echo "Recursing into folder: ${path}/${item}"
                 delete_recursive "${path}/${item}"
               else
-                # It's a secret, delete it
                 echo "Destroying all versions of secret: ${path}/$item"
                 vault kv destroy "teck-website/${path}/$item" || true
                 echo "Deleting secret metadata: ${path}/$item"
