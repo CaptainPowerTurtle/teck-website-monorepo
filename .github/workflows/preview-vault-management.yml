@@ -41,10 +41,11 @@ jobs:
           role: github-actions
           exportToken: true
 
-      - name: Delete Preview Secrets (Manual)
+      - name: Delete Preview Secrets
         run: |
-          NAMESPACE="${{ github.event.inputs.namespace }}"
-          echo "Cleaning up all preview secrets for: teck-website/data/${NAMESPACE}"
+          PR_NUMBER=${{ github.event.number }}
+          NAMESPACE="preview-${PR_NUMBER}"
+          echo "Cleaning up all preview secrets for: teck-website/${NAMESPACE}"
           echo "Using Vault server: ${VAULT_ADDR}"
 
           # Explicitly delete known keys under the namespace
