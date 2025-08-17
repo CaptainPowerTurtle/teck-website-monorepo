@@ -45,31 +45,31 @@ jobs:
         run: |
           PR_NUMBER=${{ github.event.number }}
           NAMESPACE="preview-${PR_NUMBER}"
-          echo "Cleaning up all preview secrets for: teck-website/${NAMESPACE}"
+          echo "Cleaning up all preview secrets for: teck-website/data/${NAMESPACE}"
           echo "Using Vault server: ${VAULT_ADDR}"
 
           # Recursively delete all secrets and subfolders (data + metadata)
           delete_recursive() {
             local path="$1"
             # List all secrets and subfolders
-            for item in $(vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3); do
+            for item in $(vault kv list "teck-website/data/${path}" 2>/dev/null | tail -n +3); do
               if [[ "$item" == */ ]]; then
                 # It's a subfolder, recurse
                 delete_recursive "${path}/${item%/}"
               else
                 # It's a secret, delete both data and metadata
-                echo "Deleting secret data: teck-website/${path}/$item"
-                vault kv delete "teck-website/${path}/$item" || true
-                echo "Deleting secret metadata: teck-website/${path}/$item"
-                vault kv metadata delete "teck-website/${path}/$item" || true
+                echo "Deleting secret data: teck-website/data/${path}/$item"
+                vault kv delete "teck-website/data/${path}/$item" || true
+                echo "Deleting secret metadata: teck-website/metadata/${path}/$item"
+                vault kv metadata delete "teck-website/metadata/${path}/$item" || true
               fi
             done
             # Try to delete the folder metadata itself (will only disappear if empty)
-            vault kv metadata delete "teck-website/${path}" || true
+            vault kv metadata delete "teck-website/metadata/${path}" || true
           }
 
           delete_recursive "$NAMESPACE"
-          echo "Cleaned up entire preview folder: teck-website/${NAMESPACE}"
+          echo "Cleaned up entire preview folder: teck-website/data/${NAMESPACE}"
         env:
           VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
 
