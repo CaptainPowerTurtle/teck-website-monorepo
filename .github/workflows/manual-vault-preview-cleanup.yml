@@ -48,24 +48,21 @@ jobs:
           echo "Cleaning up all preview secrets for: teck-website/data/${NAMESPACE}"
           echo "Using Vault server: ${VAULT_ADDR}"
 
-          # Recursively destroy all secrets and subfolders (all versions + metadata) using -mount flag
+          # Recursively destroy all secrets and subfolders (all versions + metadata) using full path (mount + secret path)
           delete_recursive() {
             local path="$1"
-            echo "Listing items at: ${path}"
-            vault kv list -mount="teck-website" "${path}" 2>/dev/null | tail -n +3
-            for item in $(vault kv list -mount="teck-website" "${path}" 2>/dev/null | tail -n +3); do
-              echo "Found item: $item"
+            for item in $(vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3); do
               if [[ "$item" == */ ]]; then
                 delete_recursive "${path}/${item%/}"
               else
                 echo "Destroying all versions of secret: ${path}/$item"
-                vault kv destroy -mount="teck-website" "${path}/$item" || true
+                vault kv destroy "teck-website/${path}/$item" || true
                 echo "Deleting secret metadata: ${path}/$item"
-                vault kv metadata delete -mount="teck-website" "${path}/$item" || true
+                vault kv metadata delete "teck-website/${path}/$item" || true
               fi
             done
             echo "Deleting folder metadata: ${path}"
-            vault kv metadata delete -mount="teck-website" "${path}" || true
+            vault kv metadata delete "teck-website/${path}" || true
           }
 
           delete_recursive "$NAMESPACE"
