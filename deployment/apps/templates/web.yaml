@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.global.label.name | default "teck-website" }}-web
   namespace: argocd
   labels:
-    environment: {{ .Values.global.environment | "production" }}
+    environment: {{ .Values.global.environment | default "production" }}
     host: {{ .Values.web.ingress.host }}
   annotations:
   {{- if eq (.Values.global.environment | default "production") "production" }}
