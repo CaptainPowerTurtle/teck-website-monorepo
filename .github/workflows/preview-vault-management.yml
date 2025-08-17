@@ -25,6 +25,9 @@ jobs:
       (github.event.action == 'unlabeled' && github.event.label.name == 'preview') ||
       (github.event.action == 'closed' && contains(github.event.pull_request.labels.*.name, 'preview'))
     steps:
+      - name: Wait before running cleanup
+        run: sleep 60
+
       - uses: actions/checkout@v4
       
       - name: Install Vault CLI
