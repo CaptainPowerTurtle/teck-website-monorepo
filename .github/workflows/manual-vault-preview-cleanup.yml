@@ -53,37 +53,27 @@ jobs:
             local path="$1"
             echo "Listing items at: teck-website/${path}"
             local items=$(vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3)
+
+            # Always attempt to delete direct secret at this path
+            echo "Attempting to delete direct secret: teck-website/${path}"
+            echo "Before deletion, kv get output:"
+            vault kv get "teck-website/${path}" || echo "No secret found at teck-website/${path}"
+            echo "Destroying all versions of secret: teck-website/${path}"
+            vault kv destroy "teck-website/${path}" || true
+            echo "Deleting secret metadata: teck-website/${path}"
+            vault kv metadata delete "teck-website/${path}" || true
+            echo "After deletion, kv get output:"
+            vault kv get "teck-website/${path}" || echo "No secret found at teck-website/${path}"
+
             if [ -z "$items" ]; then
-              echo "No items found. Attempting to delete direct secret: teck-website/${path}"
-              echo "Before deletion, kv get output:"
-              vault kv get "teck-website/${path}" || echo "No secret found at teck-website/${path}"
-              echo "Destroying all versions of secret: teck-website/${path}"
-              vault kv destroy "teck-website/${path}" || true
-              echo "Deleting secret metadata: teck-website/${path}"
-              vault kv metadata delete "teck-website/${path}" || true
-              echo "After deletion, kv get output:"
-              vault kv get "teck-website/${path}" || echo "No secret found at teck-website/${path}"
               return
             fi
             for item in $items; do
               item="${item%/}"
               echo "Found item: $item"
-              if vault kv list "teck-website/${path}/${item}" 2>/dev/null | grep -q .; then
-                echo "Recursing into folder: ${path}/${item}"
-                delete_recursive "${path}/${item}"
-              else
-                echo "Before deletion, kv get output:"
-                vault kv get "teck-website/${path}/${item}" || echo "No secret found at teck-website/${path}/${item}"
-                echo "Destroying all versions of secret: teck-website/${path}/${item}"
-                vault kv destroy "teck-website/${path}/${item}" || true
-                echo "Deleting secret metadata: teck-website/${path}/${item}"
-                vault kv metadata delete "teck-website/${path}/${item}" || true
-                echo "After deletion, kv get output:"
-                vault kv get "teck-website/${path}/${item}" || echo "No secret found at teck-website/${path}/${item}"
-              fi
+              # Always recurse into subpath, even if kv list does not show it as a folder
+              delete_recursive "${path}/${item}"
             done
-            echo "Deleting folder metadata: teck-website/${path}"
-            vault kv metadata delete "teck-website/${path}" || true
           }
 
           delete_recursive "$NAMESPACE"
