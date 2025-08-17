@@ -91,7 +91,7 @@ jobs:
         with:
             account: user
             image-names: teck-website-monorepo/web
-            tag-selection: tagged
+            tag-selection: both
             image-tags: 'preview-${{ github.event.number }}*'   # match any tag starting with preview-<PR number>
             cut-off: 0d
             token: ${{ secrets.GITHUB_TOKEN }}
