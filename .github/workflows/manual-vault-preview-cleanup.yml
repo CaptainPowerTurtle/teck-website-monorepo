@@ -52,8 +52,14 @@ jobs:
           delete_recursive() {
             local path="$1"
             echo "Listing items at: teck-website/${path}"
-            vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3
-            for item in $(vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3); do
+            local items=$(vault kv list "teck-website/${path}" 2>/dev/null | tail -n +3)
+            if [ -z "$items" ]; then
+              echo "No items found, attempting to delete direct secret: teck-website/${path}"
+              vault kv destroy "teck-website/${path}" || true
+              vault kv metadata delete "teck-website/${path}" || true
+              return
+            fi
+            for item in $items; do
               item="${item%/}"
               echo "Found item: $item"
               if vault kv list "teck-website/${path}/${item}" 2>/dev/null | grep -q .; then
