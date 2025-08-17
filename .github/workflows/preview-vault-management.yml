@@ -104,6 +104,7 @@ jobs:
           image-names: teck-website-monorepo/web
           tag-selection: both
           image-tags: 'preview-${{ github.event.number }} * ![0-9]*.[0-9]*.[0-9]* !latest'
+          image-tags: 'preview-${{ github.event.number }} * ![0-9]*.[0-9]*.[0-9]* !latest'
           cut-off: 0d
           token: ${{ secrets.GITHUB_TOKEN }}
           skip-shas: ${{ steps.multi-arch-digests.outputs.multi-arch-digests }}
