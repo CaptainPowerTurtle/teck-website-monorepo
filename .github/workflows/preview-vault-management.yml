@@ -48,7 +48,7 @@ jobs:
           echo "Cleaning up all preview secrets for: teck-website/${NAMESPACE}"
           echo "Using Vault server: ${VAULT_ADDR}"
 
-          # Recursively delete all secrets and subfolders
+          # Recursively delete all secrets and subfolders (data + metadata)
           delete_recursive() {
             local path="$1"
             # List all secrets and subfolders
@@ -57,12 +57,14 @@ jobs:
                 # It's a subfolder, recurse
                 delete_recursive "${path}/${item%/}"
               else
-                # It's a secret, delete
-                echo "Deleting teck-website/${path}/$item"
+                # It's a secret, delete both data and metadata
+                echo "Deleting secret data: teck-website/${path}/$item"
+                vault kv delete "teck-website/${path}/$item" || true
+                echo "Deleting secret metadata: teck-website/${path}/$item"
                 vault kv metadata delete "teck-website/${path}/$item" || true
               fi
             done
-            # Try to delete the folder metadata itself
+            # Try to delete the folder metadata itself (will only disappear if empty)
             vault kv metadata delete "teck-website/${path}" || true
           }
 
