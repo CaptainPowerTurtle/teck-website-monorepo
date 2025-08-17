@@ -52,7 +52,21 @@ jobs:
           for key in redis postgres web; do
             echo "Explicitly deleting: teck-website/${NAMESPACE}/$key"
             vault kv get "teck-website/${NAMESPACE}/$key" || echo "No secret found at teck-website/${NAMESPACE}/$key"
-            vault kv destroy "teck-website/${NAMESPACE}/$key" || true
+
+            # Find all versions for the key
+            versions=$(vault kv metadata get "teck-website/${NAMESPACE}/$key" 2>/dev/null | grep '^  version:' | awk '{print $2}')
+            if [ -z "$versions" ]; then
+              # Try to parse all available versions from the metadata output
+              versions=$(vault kv metadata get "teck-website/${NAMESPACE}/$key" 2>/dev/null | grep -E '^[ ]+[0-9]+:' | awk -F: '{print $1}' | tr -d ' ' | tr '\n' ',')
+              versions=${versions%,}
+            fi
+            if [ -n "$versions" ]; then
+              echo "Destroying all versions: $versions"
+              vault kv destroy "teck-website/${NAMESPACE}/$key" -versions="$versions" || true
+            else
+              echo "No versions found to destroy for teck-website/${NAMESPACE}/$key"
+            fi
+
             vault kv metadata delete "teck-website/${NAMESPACE}/$key" || true
             vault kv get "teck-website/${NAMESPACE}/$key" || echo "No secret found at teck-website/${NAMESPACE}/$key"
           done
