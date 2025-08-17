@@ -1,29 +1,22 @@
-name: Preview Vault Management
+name: Manual Vault Preview Cleanup
+
+description: Manually delete all secrets and metadata under a specified preview namespace in Vault.
 
 on:
-  pull_request:
-    types: [labeled, unlabeled, closed]
-    branches:
-      - main
-      - feature/**
-      - bugfix/**
-    paths:
-      - 'apps/web/**'
-      - 'packages/**'
-      - 'deployment/**'
+  workflow_dispatch:
+    inputs:
+      namespace:
+        description: 'Preview namespace to delete (e.g. preview-123)'
+        required: true
+        type: string
 
 permissions:
+  id-token: write
   contents: read
-  pull-requests: read
-  id-token: write  # Required for OIDC
-  packages: write  # Required for image cleanup
 
 jobs:
-  manage-vault-secrets:
+  manual-vault-preview-cleanup:
     runs-on: ubuntu-latest
-    if: |
-      (github.event.action == 'unlabeled' && github.event.label.name == 'preview') ||
-      (github.event.action == 'closed' && contains(github.event.pull_request.labels.*.name, 'preview'))
     steps:
       - uses: actions/checkout@v4
       
@@ -83,32 +76,3 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Fetch multi-platform digests for all SHA-only tags
-        id: multi-arch-digests
-        run: |
-          IMAGE="ghcr.io/captainpowerturtle/teck-website-monorepo/web"
-          DIGESTS=""
-          SHA_TAGS=$(gh api users/CaptainPowerTurtle/packages/container/teck-website-monorepo%2Fweb/versions | jq -r '.[] | select(.metadata.container.tags? and (.metadata.container.tags | length == 1) and (.metadata.container.tags[0] | test("^[a-f0-9]{40}$"))) | .metadata.container.tags[0]')
-          echo "Found SHA tags:"
-          echo "$SHA_TAGS"
-          for SHA in $SHA_TAGS; do
-            ARCH_DIGESTS=$(docker manifest inspect $IMAGE:$SHA | jq -r '.[0].manifests[].digest' | paste -s -d ' ' -)
-            DIGESTS="$DIGESTS$ARCH_DIGESTS,"
-          done
-          DIGESTS=$(echo $DIGESTS | sed 's/,$//')
-          echo "multi-arch-digests=$DIGESTS" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Container Retention Policy
-        uses: snok/container-retention-policy@v3.0.0
-        with:
-          account: user
-          image-names: teck-website-monorepo/web
-          tag-selection: both
-          image-tags: 'preview-${{ github.event.number }} * ![0-9]*.[0-9]*.[0-9]* !latest'
-          cut-off: 0d
-          token: ${{ secrets.GITHUB_TOKEN }}
-          skip-shas: ${{ steps.multi-arch-digests.outputs.multi-arch-digests }}
-          dry-run: false
