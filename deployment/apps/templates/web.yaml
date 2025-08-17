@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: {{ .Values.global.label.name | default "teck-website" }}-web
   namespace: argocd
+  labels:
+    environment: {{ .Values.global.environment | "production" }}
+    host: {{ .Values.web.ingress.host }}
   annotations:
   {{- if eq (.Values.global.environment | default "production") "production" }}
     argocd-image-updater.argoproj.io/image-list: web=captainpowerturtle/teck-website-monorepo/web:x.x.x
