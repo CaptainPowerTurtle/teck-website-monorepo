@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.2.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/ui@v0.2.0...ui@v0.2.1) (2025-08-18)
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump postcss from 8.5.1 to 8.5.4 ([#543](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/543)) ([47b25dc](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/47b25dc5a933a9e181901862a8933428a15eb65f))
+* **deps-dev:** bump postcss from 8.5.4 to 8.5.5 ([#592](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/592)) ([6511590](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/6511590b3184805146dcc99afba65efce3e54559))
+* **deps-dev:** bump postcss from 8.5.5 to 8.5.6 ([#596](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/596)) ([fabc657](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/fabc65798623c01fe12a57721956666dc352cab5))
+* **deps:** bump @radix-ui/react-alert-dialog from 1.1.13 to 1.1.14 ([#513](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/513)) ([30adde6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/30adde6104f1d9d7c03406c91f4153a2402b63ea))
+* **deps:** bump @radix-ui/react-alert-dialog from 1.1.14 to 1.1.15 ([#723](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/723)) ([6cf7f89](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/6cf7f89c418550bb14fb7c69c460e391a7d3d7ee))
+* **deps:** bump @radix-ui/react-dialog from 1.1.13 to 1.1.14 ([#514](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/514)) ([828576e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/828576e77408cfabd590d24067f90f575a8dc5cb))
+* **deps:** bump @radix-ui/react-dialog from 1.1.14 to 1.1.15 ([#724](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/724)) ([76f4862](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/76f48629b23378e2ca48c43293f58ea7cfaed070))
+* **deps:** bump @radix-ui/react-dropdown-menu from 2.1.14 to 2.1.15 ([#515](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/515)) ([d331e46](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/d331e468140017d6ee05a1da53ce7c5fea8cf653))
+* **deps:** bump @radix-ui/react-dropdown-menu from 2.1.15 to 2.1.16 ([#726](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/726)) ([7b0361e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/7b0361ecf648c09fc26a8f862f961b7c55579cd0))
+* **deps:** bump @radix-ui/react-label from 2.1.6 to 2.1.7 ([#516](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/516)) ([a9c4836](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/a9c483630f02a8c4c338f95b7c5ebb77879a1262))
+* **deps:** bump @radix-ui/react-popover from 1.1.13 to 1.1.14 ([#519](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/519)) ([db8f7f3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/db8f7f331a5e9759b3fd31bc8dcf12c60eed99ff))
+* **deps:** bump @radix-ui/react-popover from 1.1.14 to 1.1.15 ([#728](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/728)) ([4530066](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/4530066db7d360fcc9746917229fac97e5531260))
+* **deps:** bump @radix-ui/react-separator from 1.1.6 to 1.1.7 ([#520](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/520)) ([0fcf504](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0fcf504182542a11be7cd58e22b05eb70d86e615))
+* **deps:** bump @radix-ui/react-toggle from 1.1.8 to 1.1.9 ([#518](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/518)) ([9b2aa42](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/9b2aa426c257edd55da8c1507230abc31958bf23))
+* **deps:** bump @radix-ui/react-toggle from 1.1.9 to 1.1.10 ([#725](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/725)) ([ebe9ddc](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ebe9ddc57c26436cf659b2df8c715039ee456f48))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @repo/eslint-config bumped to 0.1.5
+    * @repo/utils bumped to 0.1.6
+
 ## [0.2.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/ui@v0.1.6...ui@v0.2.0) (2025-05-08)
 
 
