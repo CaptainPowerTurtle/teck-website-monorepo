@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/utils@v0.1.5...utils@v0.1.6) (2025-08-18)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @repo/eslint-config bumped to 0.1.5
+
 ## [0.1.5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/utils@v0.1.4...utils@v0.1.5) (2025-05-08)
 
 

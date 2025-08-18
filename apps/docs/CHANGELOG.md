@@ -1,5 +1,58 @@
 # Changelog
 
+## [0.2.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/docs@v0.2.2...docs@v0.2.3) (2025-08-18)
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump postcss from 8.5.1 to 8.5.4 ([#543](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/543)) ([47b25dc](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/47b25dc5a933a9e181901862a8933428a15eb65f))
+* **deps-dev:** bump postcss from 8.5.4 to 8.5.5 ([#592](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/592)) ([6511590](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/6511590b3184805146dcc99afba65efce3e54559))
+* **deps-dev:** bump postcss from 8.5.5 to 8.5.6 ([#596](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/596)) ([fabc657](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/fabc65798623c01fe12a57721956666dc352cab5))
+* **deps:** bump next from 15.4.0-canary.103 to 15.4.0-canary.109 ([#633](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/633)) ([c2ab1c2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/c2ab1c21dd12dd3bf2516b9f8e83591cc6f2cf2d))
+* **deps:** bump next from 15.4.0-canary.109 to 15.4.0-canary.113 ([#650](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/650)) ([bedb3c0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/bedb3c0925d02efda9fb93a027bdb2ff3b2d03cd))
+* **deps:** bump next from 15.4.0-canary.113 to 15.4.0-canary.116 ([#651](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/651)) ([39949b7](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/39949b77379a05bb948694a00bf505d2b237998a))
+* **deps:** bump next from 15.4.0-canary.116 to 15.4.0-canary.123 ([#663](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/663)) ([07989f0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/07989f06e834e836b3e179939146544287d79313))
+* **deps:** bump next from 15.4.0-canary.123 to 15.4.0-canary.126 ([#665](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/665)) ([56ec0d0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/56ec0d0dbf65cd1e20f4a2328ad1e693055f24a8))
+* **deps:** bump next from 15.4.0-canary.27 to 15.4.0-canary.29 ([#485](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/485)) ([785bad5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/785bad54b6792236bcb7c90e16d15c45c30941e0))
+* **deps:** bump next from 15.4.0-canary.29 to 15.4.0-canary.31 ([#488](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/488)) ([a49ec39](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/a49ec392f5d0b1ee8ea6640fd2bccc95bb67a5ca))
+* **deps:** bump next from 15.4.0-canary.31 to 15.4.0-canary.33 ([#489](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/489)) ([a5f424a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/a5f424a38b1516a3c9ec36a2fcbd1d191a7aad17))
+* **deps:** bump next from 15.4.0-canary.33 to 15.4.0-canary.34 ([#490](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/490)) ([21f0693](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/21f0693ccf6745b3b5a83e265071e5e2495ad63c))
+* **deps:** bump next from 15.4.0-canary.34 to 15.4.0-canary.35 ([#492](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/492)) ([578774a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/578774a27e661c6b09a7b28ae7e31c0238e6fa7b))
+* **deps:** bump next from 15.4.0-canary.35 to 15.4.0-canary.39 ([#512](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/512)) ([6a3c215](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/6a3c2154c95dc17bc0e3ab873001dc36c9083b25))
+* **deps:** bump next from 15.4.0-canary.39 to 15.4.0-canary.45 ([#521](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/521)) ([3bcf0ec](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/3bcf0ecca17aa1283f8f30836ab9b34014f6b0a4))
+* **deps:** bump next from 15.4.0-canary.45 to 15.4.0-canary.52 ([#539](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/539)) ([f4c1310](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/f4c1310ae9cf3894ae2a4153ca2b2215a047041f))
+* **deps:** bump next from 15.4.0-canary.52 to 15.4.0-canary.53 ([#540](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/540)) ([5485392](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/548539221b6c0bc7e04b03dc343eba170dcf15c5))
+* **deps:** bump next from 15.4.0-canary.53 to 15.4.0-canary.55 ([#541](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/541)) ([23e2cf8](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/23e2cf8adb99161dd3d790f7b90cfa97c81e7b3b))
+* **deps:** bump next from 15.4.0-canary.55 to 15.4.0-canary.56 ([#542](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/542)) ([b4907a0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/b4907a0c7b1664f65f8bc4657cb10f759d57f71a))
+* **deps:** bump next from 15.4.0-canary.56 to 15.4.0-canary.58 ([#545](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/545)) ([ec3d0de](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ec3d0de1b058103ab78259a153b89e0376bb361e))
+* **deps:** bump next from 15.4.0-canary.58 to 15.4.0-canary.61 ([#560](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/560)) ([d24fe6f](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/d24fe6f8814b7774a30d9b8753fc8703707286b0))
+* **deps:** bump next from 15.4.0-canary.61 to 15.4.0-canary.62 ([#561](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/561)) ([7fccc64](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/7fccc642d768bbb6699887d4fcc1d8e0de7d6c95))
+* **deps:** bump next from 15.4.0-canary.62 to 15.4.0-canary.65 ([#562](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/562)) ([60e6e1e](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/60e6e1e2a6d2144439288af64d0346851c8f1e6f))
+* **deps:** bump next from 15.4.0-canary.65 to 15.4.0-canary.67 ([#565](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/565)) ([f00bc26](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/f00bc26c754e63f7022b7154af1acf5ef6a1214b))
+* **deps:** bump next from 15.4.0-canary.67 to 15.4.0-canary.69 ([#577](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/577)) ([94734ba](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/94734bac2bafccb8f7d62aa176f4525b2664cb22))
+* **deps:** bump next from 15.4.0-canary.69 to 15.4.0-canary.72 ([#578](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/578)) ([b88aabe](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/b88aabeea9b4d87725020517ab50ca3e4b25ea25))
+* **deps:** bump next from 15.4.0-canary.72 to 15.4.0-canary.75 ([#581](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/581)) ([e471705](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e471705fb90b9cafc4c27c292c7505a044e6ab7f))
+* **deps:** bump next from 15.4.0-canary.75 to 15.4.0-canary.78 ([#591](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/591)) ([d09878a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/d09878a3155dc9d566cda814c2777e0019353c76))
+* **deps:** bump next from 15.4.0-canary.78 to 15.4.0-canary.81 ([#594](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/594)) ([88ae523](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/88ae5239d75f38718f9d1a48f1d6e4d13decefef))
+* **deps:** bump next from 15.4.0-canary.81 to 15.4.0-canary.83 ([#595](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/595)) ([c2e2908](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/c2e2908c35cba53f5da487a3b45e96b067ed111a))
+* **deps:** bump next from 15.4.0-canary.83 to 15.4.0-canary.85 ([#611](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/611)) ([d304dd5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/d304dd565e4e74c3149bae8ac0e412670b55db1c))
+* **deps:** bump next from 15.4.0-canary.85 to 15.4.0-canary.86 ([#612](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/612)) ([cdb583a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/cdb583a70c2782247d50d4145369b23f464b895b))
+* **deps:** bump next from 15.4.0-canary.86 to 15.4.0-canary.93 ([#615](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/615)) ([61af340](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/61af3400da962c3721afad3fea8be7683afc1b5e))
+* **deps:** bump next from 15.4.0-canary.93 to 15.4.0-canary.94 ([#617](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/617)) ([b039d87](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/b039d8786be54fadfd559d614f88ac7584158528))
+* **deps:** bump next from 15.4.0-canary.94 to 15.4.0-canary.96 ([#618](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/618)) ([e55b99a](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e55b99ae03355f744ec1e5afd6fdd5aa833e07de))
+* **deps:** bump next from 15.4.0-canary.96 to 15.4.0-canary.98 ([#619](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/619)) ([b50cecf](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/b50cecf22c9195bc594c9ddcd84c57108e6a717b))
+* **deps:** bump next from 15.4.0-canary.98 to 15.4.0-canary.103 ([#632](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/632)) ([e595e55](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/e595e5559d1cbf8d105bb761655b8464627d1e1f))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @repo/ui bumped to 0.2.1
+    * @repo/utils bumped to 0.1.6
+  * devDependencies
+    * @repo/eslint-config bumped to 0.1.5
+
 ## [0.2.2](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/docs@v0.2.1...docs@v0.2.2) (2025-05-08)
 
 

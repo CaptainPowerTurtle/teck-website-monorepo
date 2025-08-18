@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/eslint-config@v0.1.4...eslint-config@v0.1.5) (2025-08-18)
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump eslint-config-prettier from 10.1.3 to 10.1.5 ([#486](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/486)) ([0c6c028](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0c6c02868370658b0693ffda528167b87195ee83))
+* **deps-dev:** bump eslint-config-prettier from 10.1.5 to 10.1.7 ([#684](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/684)) ([0286bc9](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/0286bc944897f7cf95ad916c2596cf89fd0ddaf7))
+* **deps-dev:** bump eslint-config-prettier from 10.1.7 to 10.1.8 ([#685](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/685)) ([f7d9e66](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/f7d9e66864df775fd6bab46f2947fbb59a5a0138))
+
 ## [0.1.4](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/eslint-config@v0.1.3...eslint-config@v0.1.4) (2025-05-08)
 
 
