@@ -1,49 +1,49 @@
-# syntax=docker/dockerfile:1
-FROM node:22-bullseye-slim AS base
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+# syntax=docker/dockerfile:1.4
+# Multi-arch friendly Dockerfile. Works with your existing matrix-based buildx runs.
+ARG BUILDPLATFORM
+ARG TARGETPLATFORM
+ARG TARGETARCH
 
-# Install small runtime build deps and enable corepack + pnpm
+FROM --platform=$BUILDPLATFORM node:22-bullseye-slim AS base
+ENV PNPM_HOME="/pnpm" PATH="$PNPM_HOME:$PATH"
+# Install minimal build deps once, enable corepack + install pnpm
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates git curl build-essential python3 \
     && rm -rf /var/lib/apt/lists/* \
     && corepack enable \
     && corepack prepare pnpm@10.15.0 --activate
 
-FROM base AS builder
+# Prune the monorepo to reduce context for installs and build
+FROM base AS pruner
 WORKDIR /work
 COPY . .
-
-# Use pnpm dlx turbo to prune (no global turbo). Use BuildKit cache for pnpm.
+# Use cache mounts for pnpm and .turbo; produce out/ used by next steps
 RUN --mount=type=cache,target=/root/.cache/pnpm \
+    --mount=type=cache,target=/work/.turbo \
     pnpm dlx turbo@latest prune --scope=@repo/web --docker
 
-FROM base AS installer
+# Installer + build stage: install deps and run turbo build for target arch
+FROM base AS builder
 WORKDIR /work
-
-# allow passing TURBO_TEAM as a build-arg and expose as env
 ARG TURBO_TEAM
 ENV TURBO_TEAM=${TURBO_TEAM:-}
+# Copy pruned artifacts created by prune step
+COPY --from=pruner /work/out/full/ ./
+COPY --from=pruner /work/out/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=pruner /work/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
+COPY --from=pruner /work/out/json/ ./out/json/
 
-# Copy pruned workspace metadata and sources
-COPY --from=builder /work/out/json/ ./out/json/
-COPY --from=builder /work/out/pnpm-lock.yaml ./pnpm-lock.yaml
-COPY --from=builder /work/out/pnpm-workspace.yaml ./pnpm-workspace.yaml
-COPY --from=builder /work/out/full/ ./
-
-# Install dependencies using cached pnpm store
+# Install deps using pnpm cache; build using turbo. Use BuildKit secrets for sensitive values.
 RUN --mount=type=cache,target=/root/.cache/pnpm \
     pnpm install --frozen-lockfile --store=/root/.cache/pnpm
 
-ENV SKIP_ENV_VALIDATION=true
 ARG NEXT_PUBLIC_SERVER_URL
 ENV NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL:-}
 ARG REDIS_AVAILABLE
 ENV REDIS_AVAILABLE=${REDIS_AVAILABLE:-false}
+ENV SKIP_ENV_VALIDATION=true
 
-# Build using turbo via pnpm dlx; pass secrets via BuildKit secrets.
-# - turbo_token must be passed as a build secret (id=turbo_token)
-# - payload_secret and database_uri should also be provided as secrets
+# Build (turbo will respect TURBO_TOKEN/TURBO_TEAM if provided). Mount caches for speed.
 RUN --mount=type=secret,id=turbo_token \
     --mount=type=secret,id=payload_secret \
     --mount=type=secret,id=database_uri \
@@ -51,24 +51,26 @@ RUN --mount=type=secret,id=turbo_token \
     --mount=type=cache,target=/work/.turbo \
     /bin/sh -c '\
     if [ -f /run/secrets/turbo_token ]; then export TURBO_TOKEN="$(cat /run/secrets/turbo_token)"; fi && \
-    export PAYLOAD_SECRET="$(cat /run/secrets/payload_secret)" && \
-    export DATABASE_URI="$(cat /run/secrets/database_uri)" && \
-    # TURBO_TEAM is available as env if provided via build-arg; turbo CLI will use TURBO_TOKEN/TURBO_TEAM if present
+    if [ -f /run/secrets/payload_secret ]; then export PAYLOAD_SECRET="$(cat /run/secrets/payload_secret)"; fi && \
+    if [ -f /run/secrets/database_uri ]; then export DATABASE_URI="$(cat /run/secrets/database_uri)"; fi && \
     pnpm dlx turbo@latest run build --filter=@repo/web... \
     '
 
-FROM node:22-bullseye-slim AS runner
+# Final runtime: copy only the Next standalone output (smallest image)
+FROM --platform=$TARGETPLATFORM node:22-bullseye-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
-# Non-root user
+# create non-root user
 RUN addgroup --system --gid 1001 nodejs \
-    && adduser --system --uid 1001 nextjs
+    && adduser --system --uid 1001 --ingroup nodejs nextjs
 
-# Copy Next standalone output (one-step ownership)
-COPY --from=installer --chown=nextjs:nodejs /work/apps/web/.next/standalone/ ./
-COPY --from=installer --chown=nextjs:nodejs /work/apps/web/.next/static ./apps/web/.next/static
-COPY --from=installer --chown=nextjs:nodejs /work/apps/web/public ./apps/web/public
+# Copy only runtime output from builder
+# .next/standalone contains server.js and package.json and the required node_modules
+COPY --from=builder --chown=nextjs:nodejs /work/apps/web/.next/standalone/ ./
+# static & public assets
+COPY --from=builder --chown=nextjs:nodejs /work/apps/web/.next/static ./apps/web/.next/static
+COPY --from=builder --chown=nextjs:nodejs /work/apps/web/public ./apps/web/public
 
 USER nextjs
 EXPOSE 3000

@@ -176,8 +176,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+    
       - name: Build and push container image to registry
         id: build
         uses: docker/build-push-action@v6
@@ -188,7 +187,7 @@ jobs:
           tags: ${{ steps.repo.outputs.lowercase }}
           labels: ${{ steps.meta.outputs.labels }}
           provenance: false
-          # Use GitHub Actions cache (fast) + registry cache (shared across runners)
+          # Keep both gha + registry caches (good for matrix multi-arch)
           cache-from: |
             type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }}
             type=registry,ref=${{ steps.repo.outputs.lowercase }}-cache:dockercache-${{ env.PLATFORM_PAIR }}
@@ -204,8 +203,8 @@ jobs:
             "NEXT_PUBLIC_SERVER_URL=${{ vars.NEXT_PUBLIC_SERVER_URL }}"
             "REDIS_AVAILABLE=false"
             "TURBO_TEAM=${{ vars.TURBO_TEAM }}"
-          #   "DATABASE_URI=postgres://postgres:postgres@172.17.0.1:5432/postgres"
-          #   "PAYLOAD_SECRET=${{ secrets.PAYLOAD_SECRET }}" NEXT_PUBLIC_SERVER_URL
+            "PLATFORM_PAIR=${{ env.PLATFORM_PAIR }}"
+
       - name: Export digest
         run: |
           mkdir -p ${{ runner.temp }}/digests

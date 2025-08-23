@@ -83,18 +83,24 @@ jobs:
           REDIS_AVAILABLE: "false"
 
       - name: Build
-        run: pnpm build
+        # use turbo so remote cache (TURBO_TOKEN) and task graph are respected
+        run: pnpm dlx turbo@latest run build --concurrency=50
         env:
           SKIP_ENV_VALIDATION: true
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
           REDIS_AVAILABLE: "false"
 
+      - name: Ensure .turbo exists
+        run: |
+          if [ ! -d .turbo ]; then
+            mkdir -p .turbo
+          fi
+
       - name: Save .turbo cache (post-build)
         if: success()
         uses: actions/cache@v4
         with:
           path: .turbo
-          key: ${{ runner.os }}-turbo-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ github.sha }}
-
-      # optional: run tests, upload artifacts, or split heavy steps into separate jobs
+          # use same lockfile-based key as the restore step (do NOT include github.sha)
+          key: ${{ runner.os }}-turbo-${{ hashFiles('**/pnpm-lock.yaml') }}
