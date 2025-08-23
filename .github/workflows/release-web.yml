@@ -33,6 +33,7 @@ jobs:
       is-preview: ${{ steps.check.outputs.is-preview }}
       tag-name: ${{ steps.check.outputs.tag-name }}
       image-tag: ${{ steps.check.outputs.image-tag }}
+      app-version: ${{ steps.check.outputs.app_version }} 
     steps:
       - name: Determine build type
         id: check
@@ -42,16 +43,21 @@ jobs:
             echo "is-preview=false" >> $GITHUB_OUTPUT
             echo "tag-name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
             echo "image-tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+            # use tag-name as app version for release builds (or override later from prepare-release)
+            echo "app_version=${{ github.ref_name }}" >> $GITHUB_OUTPUT
           elif [[ "${{ github.event_name }}" == "pull_request" && "${{ contains(github.event.pull_request.labels.*.name, 'preview') }}" == "true" ]]; then
             echo "is-release=false" >> $GITHUB_OUTPUT
             echo "is-preview=true" >> $GITHUB_OUTPUT
             echo "tag-name=preview-${{ github.event.number }}" >> $GITHUB_OUTPUT
             echo "image-tag=${{ github.event.pull_request.head.sha }}" >> $GITHUB_OUTPUT
+            short_sha="$(echo "${{ github.event.pull_request.head.sha }}" | cut -c1-7)"
+            echo "app_version=preview-${short_sha}" >> $GITHUB_OUTPUT
           else
             echo "is-release=false" >> $GITHUB_OUTPUT
             echo "is-preview=false" >> $GITHUB_OUTPUT
             echo "tag-name=" >> $GITHUB_OUTPUT
             echo "image-tag=" >> $GITHUB_OUTPUT
+            echo "app_version=dev-$(date -u +%Y%m%dT%H%M%SZ)" >> $GITHUB_OUTPUT
           fi
 
   prepare-release:
@@ -204,6 +210,7 @@ jobs:
             "REDIS_AVAILABLE=false"
             "TURBO_TEAM=${{ vars.TURBO_TEAM }}"
             "PLATFORM_PAIR=${{ env.PLATFORM_PAIR }}"
+            "APP_VERSION=${{ needs.check-build-type.outputs.app-version }}"
 
       - name: Export digest
         run: |

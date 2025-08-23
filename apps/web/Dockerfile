@@ -42,6 +42,8 @@ ENV NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL:-}
 ARG REDIS_AVAILABLE
 ENV REDIS_AVAILABLE=${REDIS_AVAILABLE:-false}
 ENV SKIP_ENV_VALIDATION=true
+ARG APP_VERSION
+ENV APP_VERSION=${APP_VERSION:-}
 
 # Build (turbo will respect TURBO_TOKEN/TURBO_TEAM if provided). Mount caches for speed.
 RUN --mount=type=secret,id=turbo_token \
@@ -50,9 +52,15 @@ RUN --mount=type=secret,id=turbo_token \
     --mount=type=cache,target=/root/.cache/pnpm \
     --mount=type=cache,target=/work/.turbo \
     /bin/sh -c '\
-    if [ -f /run/secrets/turbo_token ]; then export TURBO_TOKEN="$(cat /run/secrets/turbo_token)"; fi && \
-    if [ -f /run/secrets/payload_secret ]; then export PAYLOAD_SECRET="$(cat /run/secrets/payload_secret)"; fi && \
-    if [ -f /run/secrets/database_uri ]; then export DATABASE_URI="$(cat /run/secrets/database_uri)"; fi && \
+    # if APP_VERSION provided, write into apps/web/package.json (safe no-op if missing) \
+    if [ -n "$APP_VERSION" ]; then \
+    if [ -f ./apps/web/package.json ]; then \
+    node -e "const fs=require(\"fs\"); const p=\"./apps/web/package.json\"; const pkg=JSON.parse(fs.readFileSync(p)); pkg.version=process.env.APP_VERSION; fs.writeFileSync(p,JSON.stringify(pkg,null,2)); console.log(\"wrote version\",pkg.version);" ; \
+    fi ; \
+    fi && \
+    if [ -f /run/secrets/turbo_token ]; then export TURBO_TOKEN=\"$(cat /run/secrets/turbo_token)\"; fi && \
+    if [ -f /run/secrets/payload_secret ]; then export PAYLOAD_SECRET=\"$(cat /run/secrets/payload_secret)\"; fi && \
+    if [ -f /run/secrets/database_uri ]; then export DATABASE_URI=\"$(cat /run/secrets/database_uri)\"; fi && \
     pnpm dlx turbo@latest run build --filter=@repo/web... \
     '
 
