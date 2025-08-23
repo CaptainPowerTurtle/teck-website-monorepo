@@ -17,9 +17,9 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     # To use Turbo Cloud remote caching (optional):
-    # env:
-    #   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-    #   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
     container: node:22-bookworm-slim
 
@@ -46,10 +46,12 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .turbo
-          key: ${{ runner.os }}-turbo-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ github.sha }}
+          # use lockfile-only key so cache can be reused across commits; restore-keys provide fallbacks
+          key: ${{ runner.os }}-turbo-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-turbo-${{ hashFiles('**/pnpm-lock.yaml') }}-
             ${{ runner.os }}-turbo-
+
 
       - name: Restore pnpm store
         uses: actions/cache@v4

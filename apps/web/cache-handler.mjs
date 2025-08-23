@@ -3,6 +3,7 @@ import createRedisHandler from "@fortedigital/nextjs-cache-handler/redis-strings
 import { createClient } from "redis";
 import { CacheHandler } from "@fortedigital/nextjs-cache-handler";
 import createCompositeHandler from "@fortedigital/nextjs-cache-handler/composite";
+import { PHASE_PRODUCTION_BUILD } from "next/constants.js";
 
 const isSingleConnectionModeEnabled = !!process.env.REDIS_SINGLE_CONNECTION;
 

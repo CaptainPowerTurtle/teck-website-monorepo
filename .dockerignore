@@ -1,1 +1,40 @@
+# Ignore VCS + IDE
+.git
+.gitattributes
+.github
+.vscode
+.idea
+
+# Node / pnpm
 node_modules
+**/node_modules
+.pnpm-store
+.pnpm
+
+# Monorepo caches & build artifacts
+.turbo
+.next
+out
+dist
+build
+coverage
+
+# Local env / logs / OS files
+.env
+.env.*.local
+*.log
+tmp
+temp
+.DS_Store
+
+# Ignore packaged artifacts and generated bundles
+**/*.tgz
+**/*.zip
+
+# Keep workspace sources but avoid copying local dev-only files
+!.github/workflows/**
+
+# If you prefer to reduce context to the app only, optionally:
+# (uncomment if you switch build context to apps/web)
+# *
+# !apps/web/**
