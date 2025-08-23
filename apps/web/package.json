@@ -81,7 +81,7 @@
     "@types/react": "19.1.10",
     "@types/react-dom": "19.1.7"
   },
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.15.0",
   "engines": {
     "node": "^18.20.2 || >=20.9.0"
   }
