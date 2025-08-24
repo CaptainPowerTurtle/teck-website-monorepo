@@ -63,7 +63,6 @@ jobs:
             echo "image-tag=" >> $GITHUB_OUTPUT
             echo "app_version=dev-$(date -u +%Y%m%dT%H%M%SZ)" >> $GITHUB_OUTPUT
           fi
-          fi
 
   prepare-release:
     runs-on: ubuntu-latest
