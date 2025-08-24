@@ -33,11 +33,12 @@ jobs:
       is-preview: ${{ steps.check.outputs.is-preview }}
       tag-name: ${{ steps.check.outputs.tag-name }}
       image-tag: ${{ steps.check.outputs.image-tag }}
-      app-version: ${{ steps.check.outputs.app_version }} 
+      app-version: ${{ steps.check.outputs.app_version }}
     steps:
       - name: Determine build type
         id: check
         run: |
+          # Release tag format: web@vX.Y.Z
           if [[ "${{ github.event_name }}" == "push" && "${{ startsWith(github.ref, 'refs/tags/web@v') }}" == "true" ]]; then
             ref='${{ github.ref_name }}'
             sanitized="${ref#web@}"
@@ -79,27 +80,13 @@ jobs:
         with:
           string: ${{ env.REPOSITORY }}
 
-  prepare-preview:
-    runs-on: ubuntu-latest
-    needs: check-build-type
-    if: needs.check-build-type.outputs.is-preview == 'true'
-    outputs:
-      repository-lowercase: ${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/${{ env.PROJECT }}
-    steps:
-      - uses: ASzc/change-string-case-action@v6
-        id: string
-        with:
-          string: ${{ env.REPOSITORY }}
-
   build-web:
     runs-on: ${{ matrix.builder.runner-image }}
-    needs: [check-build-type, prepare-release, prepare-preview]
+    needs: [check-build-type, prepare-release]
     if: |
-      always() && 
+      always() &&
       (needs.check-build-type.outputs.is-release == 'true' || needs.check-build-type.outputs.is-preview == 'true') &&
-      (needs.prepare-release.result == 'success' || needs.prepare-release.result == 'skipped') &&
-      (needs.prepare-preview.result == 'success' || needs.prepare-preview.result == 'skipped')
-
+      (needs.prepare-release.result == 'success' || needs.prepare-release.result == 'skipped')
     strategy:
       fail-fast: false
       matrix:
@@ -110,30 +97,28 @@ jobs:
             platform: linux/arm64
 
     services:
-      # Label used to access the service container
       postgres:
-        # Docker Hub image
         image: postgres
-        # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
           POSTGRES_DB: postgres
         ports:
-          # Maps tcp port 5432 on service container to the host
           - 5432:5432
-        # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
     steps:
       - name: Prepare
         run: |
           platform=${{ matrix.builder.platform }}
           echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
+
       - uses: actions/checkout@v4
+
       - name: Cache turbo build setup
         uses: actions/cache@v4
         with:
@@ -166,15 +151,16 @@ jobs:
           if [[ "${{ needs.check-build-type.outputs.is-release }}" == "true" ]]; then
             echo "lowercase=${{ needs.prepare-release.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
           else
-            echo "lowercase=${{ needs.prepare-preview.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
+            repo_lower=$(echo "${{ env.REPOSITORY }}" | tr '[:upper:]' '[:lower:]')
+            echo "lowercase=${{ env.REGISTRY }}/${repo_lower}/${{ env.PROJECT }}" >> $GITHUB_OUTPUT
           fi
 
       - name: Inject preview APP version into package.json (no build-arg)
         if: needs.check-build-type.outputs.is-preview == 'true'
         env:
-          APP_VERSION: ${{ needs.check-build-type.outputs.app-version }}
+          APP_VERSION: ${{ needs.check-build-type.outputs.app_version }}
         run: |
-          node -e 'const fs=require("fs"), p="apps/web/package.json"; if(fs.existsSync(p)){ const pkg=JSON.parse(fs.readFileSync(p,"utf8")); pkg.version=process.env.APP_VERSION; fs.writeFileSync(p,JSON.stringify(pkg,null,2)); console.log("wrote version",pkg.version); } else { echo="no-package"; console.log("package.json not found, skipping"); }'
+          node -e 'const fs=require("fs"), p="apps/web/package.json"; if(fs.existsSync(p)){ const pkg=JSON.parse(fs.readFileSync(p,"utf8")); pkg.version=process.env.APP_VERSION; fs.writeFileSync(p,JSON.stringify(pkg,null,2)); console.log("wrote version",pkg.version); } else { console.log("package.json not found, skipping"); }'
 
       - name: Docker meta
         id: meta
@@ -183,14 +169,17 @@ jobs:
           images: ${{ steps.repo.outputs.lowercase }}
           tags: |
             type=raw,value=${{ needs.check-build-type.outputs.image-tag }}
+
       - name: Log in to GitHub container registry
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
+
       - name: Set up Docker Buildx (container builder to enable cache export)
         uses: docker/setup-buildx-action@v3
         with:
@@ -208,7 +197,6 @@ jobs:
           tags: ${{ steps.repo.outputs.lowercase }}
           labels: ${{ steps.meta.outputs.labels }}
           provenance: false
-          # Keep both gha + registry caches (good for matrix multi-arch)
           cache-from: |
             type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }}
             type=registry,ref=${{ steps.repo.outputs.lowercase }}-cache:dockercache-${{ env.PLATFORM_PAIR }}
@@ -232,6 +220,7 @@ jobs:
           mkdir -p ${{ runner.temp }}/digests
           digest="${{ steps.build.outputs.digest }}"
           touch "${{ runner.temp }}/digests/${digest#sha256:}"
+
       - name: Upload digest
         uses: actions/upload-artifact@v4
         with:
@@ -242,13 +231,12 @@ jobs:
 
   merge:
     runs-on: ubuntu-latest
-    needs: [check-build-type, build-web, prepare-release, prepare-preview]
+    needs: [check-build-type, build-web, prepare-release]
     if: |
-      always() && 
+      always() &&
       needs.build-web.result == 'success' &&
       (needs.check-build-type.outputs.is-release == 'true' || needs.check-build-type.outputs.is-preview == 'true') &&
-      (needs.prepare-release.result == 'success' || needs.prepare-release.result == 'skipped') &&
-      (needs.prepare-preview.result == 'success' || needs.prepare-preview.result == 'skipped')
+      (needs.prepare-release.result == 'success' || needs.prepare-release.result == 'skipped')
     steps:
       - name: Set repository info
         id: repo
@@ -256,7 +244,8 @@ jobs:
           if [[ "${{ needs.check-build-type.outputs.is-release }}" == "true" ]]; then
             echo "lowercase=${{ needs.prepare-release.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
           else
-            echo "lowercase=${{ needs.prepare-preview.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
+            repo_lower=$(echo "${{ env.REPOSITORY }}" | tr '[:upper:]' '[:lower:]')
+            echo "lowercase=${{ env.REGISTRY }}/${repo_lower}/${{ env.PROJECT }}" >> $GITHUB_OUTPUT
           fi
 
       - name: Download digests
@@ -272,6 +261,7 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -281,11 +271,12 @@ jobs:
         with:
           images: ${{ steps.repo.outputs.lowercase }}
           tags: |
-              type=raw,value=${{ needs.check-build-type.outputs.image-tag }},enable=${{ needs.check-build-type.outputs.is-preview == 'true' }}
-              type=raw,value=preview-${{ github.event.pull_request.number }},enable=${{ needs.check-build-type.outputs.is-preview == 'true' }}
-              type=semver,pattern={{version}},value=${{ needs.check-build-type.outputs.image-tag }},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
-              type=semver,pattern={{major}}.{{minor}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
-              type=semver,pattern={{major}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
+            type=raw,value=${{ needs.check-build-type.outputs.image-tag }},enable=${{ needs.check-build-type.outputs.is-preview == 'true' }}
+            type=raw,value=preview-${{ github.event.pull_request.number }},enable=${{ needs.check-build-type.outputs.is-preview == 'true' }}
+            type=semver,pattern={{version}},value=${{ needs.prepare-release.outputs.release-version }},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
+            type=semver,pattern={{major}}.{{minor}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
+            type=semver,pattern={{major}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
+
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
         run: |
@@ -294,302 +285,7 @@ jobs:
 
       - name: Inspect image
         run: |
-          docker buildx imagetools inspect ${{ steps.repo.outputs.lowercase }}:${{ needs.check-build-type.outputs.image-tag }}
-```// filepath: /workspaces/teck-website-monorepo/.github/workflows/release-web.yml
-on:
-  push:
-    tags:
-      - "web@v**"
-  pull_request:
-    types: [labeled, synchronize]
-    branches:
-      - main
-      - feature/**
-      - bugfix/**
-    paths:
-      - 'apps/web/**'
-      - 'packages/**'
-      - 'deployment/**'
-
-permissions:
-  contents: write
-  pull-requests: write
-  packages: write
-
-env:
-  REGISTRY: ghcr.io
-  REPOSITORY: ${{ github.repository }}
-  PROJECT: web
-
-name: release-web
-
-jobs:
-  check-build-type:
-    runs-on: ubuntu-latest
-    outputs:
-      is-release: ${{ steps.check.outputs.is-release }}
-      is-preview: ${{ steps.check.outputs.is-preview }}
-      tag-name: ${{ steps.check.outputs.tag-name }}
-      image-tag: ${{ steps.check.outputs.image-tag }}
-      app-version: ${{ steps.check.outputs.app_version }} 
-    steps:
-      - name: Determine build type
-        id: check
-        run: |
-          if [[ "${{ github.event_name }}" == "push" && "${{ startsWith(github.ref, 'refs/tags/web@v') }}" == "true" ]]; then
-            ref='${{ github.ref_name }}'
-            sanitized="${ref#web@}"
-            echo "is-release=true" >> $GITHUB_OUTPUT
-            echo "is-preview=false" >> $GITHUB_OUTPUT
-            echo "tag-name=${ref}" >> $GITHUB_OUTPUT
-            echo "image-tag=${sanitized}" >> $GITHUB_OUTPUT
-            echo "app_version=${sanitized}" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.event_name }}" == "pull_request" && "${{ contains(github.event.pull_request.labels.*.name, 'preview') }}" == "true" ]]; then
-            sha='${{ github.event.pull_request.head.sha }}'
-            short_sha="$(echo "$sha" | cut -c1-7)"
-            echo "is-release=false" >> $GITHUB_OUTPUT
-            echo "is-preview=true" >> $GITHUB_OUTPUT
-            echo "tag-name=preview-${{ github.event.number }}" >> $GITHUB_OUTPUT
-            echo "image-tag=${sha}" >> $GITHUB_OUTPUT
-            echo "app_version=preview-${short_sha}" >> $GITHUB_OUTPUT
-          else
-            echo "is-release=false" >> $GITHUB_OUTPUT
-            echo "is-preview=false" >> $GITHUB_OUTPUT
-            echo "tag-name=" >> $GITHUB_OUTPUT
-            echo "image-tag=" >> $GITHUB_OUTPUT
-            echo "app_version=dev-$(date -u +%Y%m%dT%H%M%SZ)" >> $GITHUB_OUTPUT
-          fi
-
-  prepare-release:
-    runs-on: ubuntu-latest
-    needs: check-build-type
-    if: needs.check-build-type.outputs.is-release == 'true'
-    outputs:
-      release-version: ${{ steps.version.outputs.full_without_prefix }}
-      repository-lowercase: ${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/${{ env.PROJECT }}
-    steps:
-      - uses: nowsprinting/check-version-format-action@v4
-        id: version
-        with:
-          prefix: "web@v"
-      - uses: ASzc/change-string-case-action@v6
-        id: string
-        with:
-          string: ${{ env.REPOSITORY }}
-
-  prepare-preview:
-    runs-on: ubuntu-latest
-    needs: check-build-type
-    if: needs.check-build-type.outputs.is-preview == 'true'
-    outputs:
-      repository-lowercase: ${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/${{ env.PROJECT }}
-    steps:
-      - uses: ASzc/change-string-case-action@v6
-        id: string
-        with:
-          string: ${{ env.REPOSITORY }}
-
-  build-web:
-    runs-on: ${{ matrix.builder.runner-image }}
-    needs: [check-build-type, prepare-release, prepare-preview]
-    if: |
-      always() && 
-      (needs.check-build-type.outputs.is-release == 'true' || needs.check-build-type.outputs.is-preview == 'true') &&
-      (needs.prepare-release.result == 'success' || needs.prepare-release.result == 'skipped') &&
-      (needs.prepare-preview.result == 'success' || needs.prepare-preview.result == 'skipped')
-
-    strategy:
-      fail-fast: false
-      matrix:
-        builder:
-          - runner-image: ubuntu-24.04
-            platform: linux/amd64
-          - runner-image: ubuntu-24.04-arm
-            platform: linux/arm64
-
-    services:
-      # Label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres
-        # Provide the password for postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_USER: postgres
-          POSTGRES_DB: postgres
-        ports:
-          # Maps tcp port 5432 on service container to the host
-          - 5432:5432
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    steps:
-      - name: Prepare
-        run: |
-          platform=${{ matrix.builder.platform }}
-          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
-      - uses: actions/checkout@v4
-      - name: Cache turbo build setup
-        uses: actions/cache@v4
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
-
-      - uses: pnpm/action-setup@v4
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Migrate payload
-        run: pnpm payload:migrate
-        env:
-          SKIP_ENV_VALIDATION: true
-          DATABASE_URI: "postgres://postgres:postgres@localhost:5432/postgres"
-          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
-
-      - name: Set repository info
-        id: repo
-        run: |
-          if [[ "${{ needs.check-build-type.outputs.is-release }}" == "true" ]]; then
-            echo "lowercase=${{ needs.prepare-release.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
-          else
-            echo "lowercase=${{ needs.prepare-preview.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Inject preview APP version into package.json (no build-arg)
-        if: needs.check-build-type.outputs.is-preview == 'true'
-        env:
-          APP_VERSION: ${{ needs.check-build-type.outputs.app-version }}
-        run: |
-          node -e 'const fs=require("fs"), p="apps/web/package.json"; if(fs.existsSync(p)){ const pkg=JSON.parse(fs.readFileSync(p,"utf8")); pkg.version=process.env.APP_VERSION; fs.writeFileSync(p,JSON.stringify(pkg,null,2)); console.log("wrote version",pkg.version); } else { echo="no-package"; console.log("package.json not found, skipping"); }'
-
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ steps.repo.outputs.lowercase }}
-          tags: |
-            type=raw,value=${{ needs.check-build-type.outputs.image-tag }}
-      - name: Log in to GitHub container registry
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx (container builder to enable cache export)
-        uses: docker/setup-buildx-action@v3
-        with:
-          driver: docker-container
-          use: true
-          install: true
-
-      - name: Build and push container image to registry
-        id: build
-        uses: docker/build-push-action@v6
-        with:
-          platforms: ${{ matrix.builder.platform }}
-          context: .
-          file: apps/web/Dockerfile
-          tags: ${{ steps.repo.outputs.lowercase }}
-          labels: ${{ steps.meta.outputs.labels }}
-          provenance: false
-          # Keep both gha + registry caches (good for matrix multi-arch)
-          cache-from: |
-            type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }}
-            type=registry,ref=${{ steps.repo.outputs.lowercase }}-cache:dockercache-${{ env.PLATFORM_PAIR }}
-          cache-to: |
-            type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }},mode=max
-            type=registry,ref=${{ steps.repo.outputs.lowercase }}-cache:dockercache-${{ env.PLATFORM_PAIR }},mode=max
-          outputs: type=image,name=${{ steps.repo.outputs.lowercase }},push-by-digest=true,name-canonical=true,push=true
-          secrets: |
-            "database_uri=postgres://postgres:postgres@172.17.0.1:5432/postgres"
-            "payload_secret=${{ secrets.PAYLOAD_SECRET }}"
-            "turbo_token=${{ secrets.TURBO_TOKEN }}"
-          build-args: |
-            "NEXT_PUBLIC_SERVER_URL=${{ vars.NEXT_PUBLIC_SERVER_URL }}"
-            "REDIS_AVAILABLE=false"
-            "TURBO_TEAM=${{ vars.TURBO_TEAM }}"
-            "BUILDPLATFORM=${{ matrix.builder.platform }}"
-            "TARGETPLATFORM=${{ matrix.builder.platform }}"
-
-      - name: Export digest
-        run: |
-          mkdir -p ${{ runner.temp }}/digests
-          digest="${{ steps.build.outputs.digest }}"
-          touch "${{ runner.temp }}/digests/${digest#sha256:}"
-      - name: Upload digest
-        uses: actions/upload-artifact@v4
-        with:
-          name: digests-${{ env.PLATFORM_PAIR }}
-          path: ${{ runner.temp }}/digests/*
-          if-no-files-found: error
-          retention-days: 1
-
-  merge:
-    runs-on: ubuntu-latest
-    needs: [check-build-type, build-web, prepare-release, prepare-preview]
-    if: |
-      always() && 
-      needs.build-web.result == 'success' &&
-      (needs.check-build-type.outputs.is-release == 'true' || needs.check-build-type.outputs.is-preview == 'true') &&
-      (needs.prepare-release.result == 'success' || needs.prepare-release.result == 'skipped') &&
-      (needs.prepare-preview.result == 'success' || needs.prepare-preview.result == 'skipped')
-    steps:
-      - name: Set repository info
-        id: repo
-        run: |
-          if [[ "${{ needs.check-build-type.outputs.is-release }}" == "true" ]]; then
-            echo "lowercase=${{ needs.prepare-release.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
-          else
-            echo "lowercase=${{ needs.prepare-preview.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Download digests
-        uses: actions/download-artifact@v4
-        with:
-          path: ${{ runner.temp }}/digests
-          pattern: digests-*
-          merge-multiple: true
-
-      - name: Log in to GitHub container registry
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ steps.repo.outputs.lowercase }}
-          tags: |
-              type=raw,value=${{ needs.check-build-type.outputs.image-tag }},enable=${{ needs.check-build-type.outputs.is-preview == 'true' }}
-              type=raw,value=preview-${{ github.event.pull_request.number }},enable=${{ needs.check-build-type.outputs.is-preview == 'true' }}
-              type=semver,pattern={{version}},value=${{ needs.check-build-type.outputs.image-tag }},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
-              type=semver,pattern={{major}}.{{minor}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
-              type=semver,pattern={{major}},enable=${{ needs.check-build-type.outputs.is-release == 'true' }}
-      - name: Create manifest list and push
-        working-directory: ${{ runner.temp }}/digests
-        run: |
-          docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
-            $(printf '${{ steps.repo.outputs.lowercase }}@sha256:%s ' *)
-
-      - name: Inspect image
-        run: |
-          docker buildx imagetools inspect ${{ steps.repo.outputs.lowercase }}:${{ needs.check-build-type.outputs.image-tag }}
+          tag='${{ needs.check-build-type.outputs.image-tag }}'
+          tag="${tag#web@}"
+          echo "Inspecting ${{ steps.repo.outputs.lowercase }}:$tag"
+          docker buildx imagetools inspect ${{ steps.repo.outputs.lowercase }}:${tag}
