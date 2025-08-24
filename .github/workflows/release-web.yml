@@ -38,15 +38,16 @@ jobs:
       - name: Determine build type
         id: check
         run: |
-          # Release tag format: web@vX.Y.Z
+          # ref example: "web@v1.10.0"
           if [[ "${{ github.event_name }}" == "push" && "${{ startsWith(github.ref, 'refs/tags/web@v') }}" == "true" ]]; then
             ref='${{ github.ref_name }}'
             sanitized="${ref#web@}"
+            image_tag="${sanitized#v}"
             echo "is-release=true" >> $GITHUB_OUTPUT
             echo "is-preview=false" >> $GITHUB_OUTPUT
             echo "tag-name=${ref}" >> $GITHUB_OUTPUT
-            echo "image-tag=${sanitized}" >> $GITHUB_OUTPUT
-            echo "app_version=${sanitized}" >> $GITHUB_OUTPUT
+            echo "image-tag=${image_tag}" >> $GITHUB_OUTPUT
+            echo "app_version=${image_tag}" >> $GITHUB_OUTPUT
           elif [[ "${{ github.event_name }}" == "pull_request" && "${{ contains(github.event.pull_request.labels.*.name, 'preview') }}" == "true" ]]; then
             sha='${{ github.event.pull_request.head.sha }}'
             short_sha="$(echo "$sha" | cut -c1-7)"
@@ -61,6 +62,7 @@ jobs:
             echo "tag-name=" >> $GITHUB_OUTPUT
             echo "image-tag=" >> $GITHUB_OUTPUT
             echo "app_version=dev-$(date -u +%Y%m%dT%H%M%SZ)" >> $GITHUB_OUTPUT
+          fi
           fi
 
   prepare-release:
