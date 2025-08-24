@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.9.0...web@v1.10.0) (2025-08-24)
+
+
+### 🚀 Features
+
+* Refactor code structure and enhance Docker configurations ([#760](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/760)) ([1898021](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/189802117452c18e15cb125d674ac0070755b3ff))
+
 ## [1.9.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.8.0...web@v1.9.0) (2025-08-24)
 
 
