@@ -172,6 +172,13 @@ jobs:
             echo "lowercase=${{ needs.prepare-preview.outputs.repository-lowercase }}" >> $GITHUB_OUTPUT
           fi
 
+      - name: Inject preview APP version into package.json (no build-arg)
+        if: needs.check-build-type.outputs.is-preview == 'true'
+        env:
+          APP_VERSION: ${{ needs.check-build-type.outputs.app-version }}
+        run: |
+          node -e 'const fs=require("fs"), p="apps/web/package.json"; if(fs.existsSync(p)){ const pkg=JSON.parse(fs.readFileSync(p,"utf8")); pkg.version=process.env.APP_VERSION; fs.writeFileSync(p,JSON.stringify(pkg,null,2)); console.log("wrote version",pkg.version); } else { echo="no-package"; console.log("package.json not found, skipping"); }'
+
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
@@ -216,14 +223,12 @@ jobs:
             "database_uri=postgres://postgres:postgres@172.17.0.1:5432/postgres"
             "payload_secret=${{ secrets.PAYLOAD_SECRET }}"
             "turbo_token=${{ secrets.TURBO_TOKEN }}"
-            "turbo_token=${{ secrets.TURBO_TOKEN }}"
           build-args: |
             "NEXT_PUBLIC_SERVER_URL=${{ vars.NEXT_PUBLIC_SERVER_URL }}"
             "REDIS_AVAILABLE=false"
             "TURBO_TEAM=${{ vars.TURBO_TEAM }}"
             "BUILDPLATFORM=${{ matrix.builder.platform }}"
             "TARGETPLATFORM=${{ matrix.builder.platform }}"
-            "APP_VERSION=${{ needs.check-build-type.outputs.app-version }}"
 
       - name: Export digest
         run: |
