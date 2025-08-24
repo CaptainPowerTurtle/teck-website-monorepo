@@ -27,6 +27,7 @@ FROM base AS builder
 WORKDIR /work
 ARG TURBO_TEAM
 ENV TURBO_TEAM=${TURBO_TEAM:-}
+
 # Copy pruned artifacts created by prune step
 COPY --from=pruner /work/out/full/ ./
 COPY --from=pruner /work/out/pnpm-lock.yaml ./pnpm-lock.yaml
