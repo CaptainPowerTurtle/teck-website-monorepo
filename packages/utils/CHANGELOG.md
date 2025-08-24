@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/utils@v0.1.6...utils@v0.2.0) (2025-08-24)
+
+
+### 🚀 Features
+
+* Refactor code structure for improved readability and maintainability ([#749](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/749)) ([4c0fe50](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/4c0fe50e086f6f4aa0884d95a739a17998bd6038))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @repo/eslint-config bumped to 0.2.0
+
 ## [0.1.6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/utils@v0.1.5...utils@v0.1.6) (2025-08-18)
 
 

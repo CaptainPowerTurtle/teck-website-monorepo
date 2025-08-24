@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/tailwind-config@v0.1.5...tailwind-config@v0.2.0) (2025-08-24)
+
+
+### 🚀 Features
+
+* Refactor code structure for improved readability and maintainability ([#749](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/749)) ([4c0fe50](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/4c0fe50e086f6f4aa0884d95a739a17998bd6038))
+
 ## [0.1.5](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/tailwind-config@v0.1.4...tailwind-config@v0.1.5) (2025-05-08)
 
 
