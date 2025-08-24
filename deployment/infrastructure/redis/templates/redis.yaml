@@ -10,11 +10,11 @@ spec:
     imagePullPolicy: IfNotPresent
     updateStrategy: {}
     resources:
-      limits:
-        cpu: 100m
-        memory: 256Mi
       requests:
         cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 100m
         memory: 128Mi
     redisSecret:
       key: password
@@ -37,10 +37,10 @@ spec:
     imagePullPolicy: IfNotPresent
     resources:
       requests:
-        cpu: 101m
-        memory: 128Mi
+        cpu: 50m
+        memory: 64Mi
       limits:
-        cpu: 101m
+        cpu: 100m
         memory: 128Mi
     redisSecret:
       name: redis-secret
@@ -52,10 +52,10 @@ spec:
     resources:
       requests:
         cpu: 50m
-        memory: 128Mi
+        memory: 64Mi
       limits:
         cpu: 100m
-        memory: 256Mi
+        memory: 128Mi
   storage:
     volumeClaimTemplate:
       spec:

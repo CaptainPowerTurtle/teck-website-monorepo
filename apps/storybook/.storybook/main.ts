@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     '../../../packages/ui/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
+    '@storybook/addon-docs',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
@@ -38,9 +39,6 @@ const config: StorybookConfig = {
   framework: {
     name: '@storybook/nextjs',
     options: {},
-  },
-  docs: {
-    autodocs: 'tag',
   },
   webpackFinal: async (config) => {
     if (config.resolve) {

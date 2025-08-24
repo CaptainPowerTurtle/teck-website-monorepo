@@ -1,62 +1,115 @@
-import { CacheHandler } from "@neshca/cache-handler";
-import createLruHandler from "@neshca/cache-handler/local-lru";
-import createRedisHandler from "@neshca/cache-handler/redis-strings";
+import createLruHandler from "@fortedigital/nextjs-cache-handler/local-lru";
+import createRedisHandler from "@fortedigital/nextjs-cache-handler/redis-strings";
 import { createClient } from "redis";
-import { Next15CacheHandler } from "@fortedigital/nextjs-cache-handler/next-15-cache-handler";
-import createBufferStringHandler from "@fortedigital/nextjs-cache-handler/buffer-string-decorator";
+import { CacheHandler } from "@fortedigital/nextjs-cache-handler";
+import createCompositeHandler from "@fortedigital/nextjs-cache-handler/composite";
+import { PHASE_PRODUCTION_BUILD } from "next/constants.js";
 
-// fortedigital should be removed when neshca supports nextjs 15+
+const isSingleConnectionModeEnabled = !!process.env.REDIS_SINGLE_CONNECTION;
 
-CacheHandler.onCreation(async ({ buildId }) => {
-  let client;
-
-  try {
-    client = createClient({
-      url: process.env.REDIS_URL ?? "redis://localhost:6379",
-    });
-
-    client.on("error", (error) => {
-      console.error("Redis error:", error.message);
-    });
-  } catch (error) {
-    console.warn("Failed to create Redis client:", error);
-  }
-
-  let redisHandler;
-
-  if (process.env.REDIS_AVAILABLE && buildId) {
+async function setupRedisClient(buildId) {
+  if (PHASE_PRODUCTION_BUILD !== process.env.NEXT_PHASE) {
     try {
+      const redisClient = createClient({
+        url: process.env.REDIS_URL,
+        pingInterval: 10000,
+      });
+
+      redisClient.on("error", (e) => {
+        if (process.env.NEXT_PRIVATE_DEBUG_CACHE !== undefined) {
+          console.warn("Redis error", e);
+        }
+        if (isSingleConnectionModeEnabled) {
+          global.cacheHandlerConfig = null;
+          global.cacheHandlerConfigPromise = null;
+        }
+      });
+
       console.info("Connecting Redis client...");
-
-      await client.connect();
-
+      await redisClient.connect();
       console.info("Redis client connected.");
 
-      redisHandler = await createRedisHandler({
-        client,
-        timeoutMs: 5000,
-        keyPrefix: `${buildId}:`,
-      });
+      if (!redisClient.isReady) {
+        console.error("Failed to initialize caching layer.");
+      }
+
+      return redisClient;
     } catch (error) {
       console.warn("Failed to connect Redis client:", error);
-      console.warn("Disconnecting the Redis client...");
-      client
-        .disconnect()
-        .then(() => {
-          console.info("Redis client disconnected.");
-        })
-        .catch(() => {
-          console.warn(
-            "Failed to quit the Redis client after failing to connect."
+      if (redisClient) {
+        try {
+          redisClient.destroy();
+        } catch (e) {
+          console.error(
+            "Failed to quit the Redis client after failing to connect.",
+            e
           );
-        });
+        }
+      }
     }
   }
 
-  const localHandler = createLruHandler();
+  return null;
+}
 
-  return {
-    handlers: [createBufferStringHandler(redisHandler), localHandler],
+async function createCacheConfig(buildId) {
+  const redisClient = await setupRedisClient();
+  const lruCache = createLruHandler();
+
+  if (!redisClient) {
+    const config = { handlers: [lruCache] };
+    if (isSingleConnectionModeEnabled) {
+      global.cacheHandlerConfigPromise = null;
+      global.cacheHandlerConfig = config;
+    }
+    return config;
+  }
+
+  const redisCacheHandler = createRedisHandler({
+    client: redisClient,
+    keyPrefix: buildId ? `${buildId}:nextjs:` : "nextjs:",
+  });
+
+  const config = {
+    handlers: [
+      createCompositeHandler({
+        handlers: [lruCache, redisCacheHandler],
+        setStrategy: (ctx) => (ctx?.tags.includes("memory-cache") ? 0 : 1),
+      }),
+    ],
   };
+
+  if (isSingleConnectionModeEnabled) {
+    global.cacheHandlerConfigPromise = null;
+    global.cacheHandlerConfig = config;
+  }
+
+  return config;
+}
+
+CacheHandler.onCreation(async ({ buildId }) => {
+  if (isSingleConnectionModeEnabled) {
+    if (global.cacheHandlerConfig) {
+      return global.cacheHandlerConfig;
+    }
+    if (global.cacheHandlerConfigPromise) {
+      return global.cacheHandlerConfigPromise;
+    }
+  }
+
+  if (process.env.NODE_ENV === "development") {
+    const config = { handlers: [createLruHandler()] };
+    if (isSingleConnectionModeEnabled) {
+      global.cacheHandlerConfig = config;
+    }
+    return config;
+  }
+
+  const promise = createCacheConfig(buildId);
+  if (isSingleConnectionModeEnabled) {
+    global.cacheHandlerConfigPromise = promise;
+  }
+  return promise;
 });
-export default new Next15CacheHandler();
+
+export default CacheHandler;

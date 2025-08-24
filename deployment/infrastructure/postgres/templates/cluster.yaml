@@ -10,6 +10,10 @@ spec:
   stopDelay: 10
   primaryUpdateStrategy: unsupervised
   enableSuperuserAccess: true
+  podTemplate:
+    spec:
+      nodeSelector:
+        role: worker
 
   bootstrap:
     initdb:
@@ -24,7 +28,7 @@ spec:
       # and password from the secret cluster-example-custom-app
       - host all all all scram-sha-256
 
-  {{- if eq (.Values.global.environment | default "production") "preview" }}
+  {{- if eq (.Values.global.environment | default "production")  "preview" }}
   # Use Longhorn storage for preview environments - will be cleaned up when namespace is deleted
   storage:
     storageClass: longhorn-postgres-storage
@@ -36,11 +40,19 @@ spec:
   # Use persistent storage for production
   storage:
     storageClass: longhorn-postgres-storage
-    size: 10Gi
+    size: 5Gi
   walStorage:
     storageClass: longhorn-postgres-storage
-    size: 10Gi
+    size: 5Gi
   {{- end }}
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "1"
+    limits:
+      memory: "1Gi"
+      cpu: "2"
+
 
   # prometheus
   monitoring:
@@ -54,7 +66,10 @@ metadata:
 spec:
   cluster:
     name: postgres
-
+  podTemplate:
+    spec:
+      nodeSelector:
+        role: worker
   instances: 1
   type: rw
   pgbouncer:

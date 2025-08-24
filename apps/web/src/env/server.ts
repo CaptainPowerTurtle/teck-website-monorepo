@@ -18,7 +18,7 @@ export const env = createEnv({
       .refine((s) => s === "true" || s === "false")
       // transform to boolean
       .transform((s) => s === "true")
-      .default("false"),
+      .default(false),
     GIT_HASH: z.string().optional().default(""), // Is being set during build
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually

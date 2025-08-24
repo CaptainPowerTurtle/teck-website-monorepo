@@ -10,9 +10,12 @@ import {
 } from "@ui/components/ui/tooltip";
 import { LogoCarousel } from "@ui/components/ui/logo-carousel";
 import { SiGithub } from "@icons-pack/react-simple-icons";
+import pkg from '../../../package.json';
 
 export async function Footer() {
   // return <FooterClient data={footerData} />;
+
+  const version = pkg.version;
 
   return (
     <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
@@ -104,9 +107,10 @@ export async function Footer() {
           </div>
         </div>
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row">
-          <p className="text-sm text-muted-foreground">
-            © 2025 Teck. All rights reserved.
-          </p>
+          <div className="flex justify-between items-center w-full">
+            <p className="text-sm text-muted-foreground">© 2025 Teck. All rights reserved.</p>
+            <span className="rounded bg-muted px-2 py-0.5 text-xs text-muted-foreground">v{version}</span>
+          </div>
           {/* <nav className="flex gap-4 text-sm">
             <a href="#" className="transition-colors hover:text-primary">
               Privacy Policy
