@@ -34,7 +34,6 @@ jobs:
       tag-name: ${{ steps.check.outputs.tag-name }}
       image-tag: ${{ steps.check.outputs.image-tag }}
       app-version: ${{ steps.check.outputs.app_version }} 
-      app-version: ${{ steps.check.outputs.app_version }} 
     steps:
       - name: Determine build type
         id: check
