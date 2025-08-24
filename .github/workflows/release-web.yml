@@ -212,13 +212,6 @@ jobs:
           cache-to: |
             type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }},mode=max
             type=registry,ref=${{ steps.repo.outputs.lowercase }}-cache:dockercache-${{ env.PLATFORM_PAIR }},mode=max
-          # Keep both gha + registry caches (good for matrix multi-arch)
-          cache-from: |
-            type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }}
-            type=registry,ref=${{ steps.repo.outputs.lowercase }}-cache:dockercache-${{ env.PLATFORM_PAIR }}
-          cache-to: |
-            type=gha,scope=${{ steps.repo.outputs.lowercase }}-${{ env.PLATFORM_PAIR }},mode=max
-            type=registry,ref=${{ steps.repo.outputs.lowercase }}-cache:dockercache-${{ env.PLATFORM_PAIR }},mode=max
           outputs: type=image,name=${{ steps.repo.outputs.lowercase }},push-by-digest=true,name-canonical=true,push=true
           secrets: |
             "database_uri=postgres://postgres:postgres@172.17.0.1:5432/postgres"
@@ -228,10 +221,6 @@ jobs:
           build-args: |
             "NEXT_PUBLIC_SERVER_URL=${{ vars.NEXT_PUBLIC_SERVER_URL }}"
             "REDIS_AVAILABLE=false"
-            "TURBO_TEAM=${{ vars.TURBO_TEAM }}"
-            "PLATFORM_PAIR=${{ env.PLATFORM_PAIR }}"
-            "APP_VERSION=${{ needs.check-build-type.outputs.app-version }}"
-
             "TURBO_TEAM=${{ vars.TURBO_TEAM }}"
             "PLATFORM_PAIR=${{ env.PLATFORM_PAIR }}"
             "APP_VERSION=${{ needs.check-build-type.outputs.app-version }}"
