@@ -3,7 +3,7 @@
 # Multi-arch friendly Dockerfile. Works with your existing matrix-based buildx runs.
 ARG BUILDPLATFORM=linux/amd64
 ARG TARGETPLATFORM=linux/amd64
-ARG TARGETARCH
+ARG TARGETARCH=amd64
 
 FROM --platform=$BUILDPLATFORM node:22-bullseye-slim AS base
 ENV PNPM_HOME="/pnpm" PATH="$PNPM_HOME:$PATH"
@@ -44,8 +44,6 @@ ENV NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL:-}
 ARG REDIS_AVAILABLE
 ENV REDIS_AVAILABLE=${REDIS_AVAILABLE:-false}
 ENV SKIP_ENV_VALIDATION=true
-ARG APP_VERSION
-ENV APP_VERSION=${APP_VERSION:-}
 
 # Build (turbo will respect TURBO_TOKEN/TURBO_TEAM if provided). Mount caches for speed.
 RUN --mount=type=secret,id=turbo_token \
@@ -54,15 +52,10 @@ RUN --mount=type=secret,id=turbo_token \
     --mount=type=cache,target=/root/.cache/pnpm \
     --mount=type=cache,target=/work/.turbo \
     /bin/sh -c '\
-    # if APP_VERSION provided, write into apps/web/package.json (safe no-op if missing) \
-    if [ -n "$APP_VERSION" ]; then \
-    if [ -f ./apps/web/package.json ]; then \
-    node -e "const fs=require(\"fs\"); const p=\"./apps/web/package.json\"; const pkg=JSON.parse(fs.readFileSync(p)); pkg.version=process.env.APP_VERSION; fs.writeFileSync(p,JSON.stringify(pkg,null,2)); console.log(\"wrote version\",pkg.version);" ; \
-    fi ; \
-    fi && \
-    if [ -f /run/secrets/turbo_token ]; then export TURBO_TOKEN=\"$(cat /run/secrets/turbo_token)\"; fi && \
-    if [ -f /run/secrets/payload_secret ]; then export PAYLOAD_SECRET=\"$(cat /run/secrets/payload_secret)\"; fi && \
-    if [ -f /run/secrets/database_uri ]; then export DATABASE_URI=\"$(cat /run/secrets/database_uri)\"; fi && \
+    # rely on the workflow to inject preview package.json values; do not mutate repo here. \
+    if [ -f /run/secrets/turbo_token ]; then export TURBO_TOKEN="$(cat /run/secrets/turbo_token)"; fi && \
+    if [ -f /run/secrets/payload_secret ]; then export PAYLOAD_SECRET="$(cat /run/secrets/payload_secret)"; fi && \
+    if [ -f /run/secrets/database_uri ]; then export DATABASE_URI="$(cat /run/secrets/database_uri)"; fi && \
     pnpm dlx turbo@latest run build --filter=@repo/web... \
     '
 
