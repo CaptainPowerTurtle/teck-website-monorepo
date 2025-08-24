@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.6.0...web@v1.7.0) (2025-08-24)
+
+
+### 🚀 Features
+
+* Feature/version-number-in-footer ([#754](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/754)) ([6ac3fc6](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/6ac3fc6102aa509109470108bf9f58ba5f3e4573))
+
 ## [1.6.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.5.1...web@v1.6.0) (2025-08-24)
 
 
