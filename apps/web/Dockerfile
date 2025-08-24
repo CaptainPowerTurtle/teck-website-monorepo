@@ -63,7 +63,6 @@ RUN --mount=type=secret,id=turbo_token \
 FROM --platform=$TARGETPLATFORM node:22-bullseye-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-
 # create non-root user
 RUN addgroup --system --gid 1001 nodejs \
     && adduser --system --uid 1001 --ingroup nodejs nextjs
