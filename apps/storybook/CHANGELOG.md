@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.3.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/storybook@v0.2.3...storybook@v0.3.0) (2025-08-24)
+
+
+### 🚀 Features
+
+* Refactor code structure for improved readability and maintainability ([#749](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/749)) ([4c0fe50](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/4c0fe50e086f6f4aa0884d95a739a17998bd6038))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @repo/ui bumped to 0.3.0
+    * @repo/utils bumped to 0.2.0
+    * @repo/web bumped to 1.6.0
+  * devDependencies
+    * @repo/eslint-config bumped to 0.2.0
+    * @repo/tailwind-config bumped to 0.2.0
+
 ## [0.2.3](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/storybook@v0.2.2...storybook@v0.2.3) (2025-08-18)
 
 
