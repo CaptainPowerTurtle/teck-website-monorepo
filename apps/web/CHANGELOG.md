@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.7.0...web@v1.8.0) (2025-08-24)
+
+
+### 🚀 Features
+
+* Refactor code structure and enhance build configurations ([#756](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/756)) ([c683d03](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/c683d03f20e2e3f0159ba86343ee3a09c042c24d))
+
 ## [1.7.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.6.0...web@v1.7.0) (2025-08-24)
 
 
