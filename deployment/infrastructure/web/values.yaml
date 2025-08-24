@@ -17,9 +17,11 @@ web:
 
     image:
       registry: ghcr.io
-      name: captainpowerturtle/teck-website-monorepo/web
-      tag: 1.5.1
-      imagePullPolicy: Always
+      name: captainpowerturtle/teck-website-monorepo/web   # image repository (no tag)
+      tag: "0.0.0"                                       # initial tag: image-updater will update this
+      pullPolicy: Always
+
+    imagePullPolicy: Always
     resources:
       limits:
         cpu: "500m"
