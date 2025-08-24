@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1.4
 
 # Multi-arch friendly Dockerfile. Works with your existing matrix-based buildx runs.
-ARG BUILDPLATFORM
-ARG TARGETPLATFORM
+ARG BUILDPLATFORM=linux/amd64
+ARG TARGETPLATFORM=linux/amd64
 ARG TARGETARCH
 
 FROM --platform=$BUILDPLATFORM node:22-bullseye-slim AS base

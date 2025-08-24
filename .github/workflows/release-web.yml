@@ -221,7 +221,8 @@ jobs:
             "NEXT_PUBLIC_SERVER_URL=${{ vars.NEXT_PUBLIC_SERVER_URL }}"
             "REDIS_AVAILABLE=false"
             "TURBO_TEAM=${{ vars.TURBO_TEAM }}"
-            "PLATFORM_PAIR=${{ env.PLATFORM_PAIR }}"
+            "BUILDPLATFORM=${{ matrix.builder.platform }}"
+            "TARGETPLATFORM=${{ matrix.builder.platform }}"
             "APP_VERSION=${{ needs.check-build-type.outputs.app-version }}"
 
       - name: Export digest
