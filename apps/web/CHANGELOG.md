@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.10.0...web@v1.10.1) (2025-08-24)
+
+
+### 🐛 Bug Fixes
+
+* Refactor code structure and enhance CI/CD workflows ([#763](https://github.com/CaptainPowerTurtle/teck-website-monorepo/issues/763)) ([ee98957](https://github.com/CaptainPowerTurtle/teck-website-monorepo/commit/ee989572bc0ffa207df8fa6224c0d6bb3e1d7890))
+
 ## [1.10.0](https://github.com/CaptainPowerTurtle/teck-website-monorepo/compare/web@v1.9.0...web@v1.10.0) (2025-08-24)
 
 
