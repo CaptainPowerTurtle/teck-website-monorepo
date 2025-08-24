@@ -37,6 +37,13 @@ jobs:
           --health-retries 5
 
     steps:
+      - name: Ensure pnpm store directory exists
+        run: |
+          mkdir -p ~/.pnpm-store
+          mkdir -p ~/.local/share/pnpm
+          # ensure proper ownership in container contexts
+          chmod -R u+rwX ~/.pnpm-store ~/.local/share/pnpm
+
       - name: Check out code
         uses: actions/checkout@v4
         with:
