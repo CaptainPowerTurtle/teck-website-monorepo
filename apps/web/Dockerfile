@@ -70,6 +70,7 @@ RUN addgroup --system --gid 1001 nodejs \
 # Copy only runtime output from builder
 # .next/standalone contains server.js and package.json and the required node_modules
 COPY --from=builder --chown=nextjs:nodejs /work/apps/web/.next/standalone/ ./
+
 # static & public assets
 COPY --from=builder --chown=nextjs:nodejs /work/apps/web/.next/static ./apps/web/.next/static
 COPY --from=builder --chown=nextjs:nodejs /work/apps/web/public ./apps/web/public
