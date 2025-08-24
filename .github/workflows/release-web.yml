@@ -47,7 +47,6 @@ jobs:
             echo "tag-name=${ref}" >> $GITHUB_OUTPUT
             echo "image-tag=${sanitized}" >> $GITHUB_OUTPUT
             echo "app_version=${sanitized}" >> $GITHUB_OUTPUT
-          # Preview PRs must be labeled "preview"
           elif [[ "${{ github.event_name }}" == "pull_request" && "${{ contains(github.event.pull_request.labels.*.name, 'preview') }}" == "true" ]]; then
             sha='${{ github.event.pull_request.head.sha }}'
             short_sha="$(echo "$sha" | cut -c1-7)"
@@ -159,7 +158,7 @@ jobs:
       - name: Inject preview APP version into package.json (no build-arg)
         if: needs.check-build-type.outputs.is-preview == 'true'
         env:
-          APP_VERSION: ${{ needs.check-build-type.outputs.app-version }}
+          APP_VERSION: ${{ needs.check-build-type.outputs.app_version }}
         run: |
           node -e 'const fs=require("fs"), p="apps/web/package.json"; if(fs.existsSync(p)){ const pkg=JSON.parse(fs.readFileSync(p,"utf8")); pkg.version=process.env.APP_VERSION; fs.writeFileSync(p,JSON.stringify(pkg,null,2)); console.log("wrote version",pkg.version); } else { console.log("package.json not found, skipping"); }'
 
