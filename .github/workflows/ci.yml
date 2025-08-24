@@ -37,6 +37,13 @@ jobs:
           --health-retries 5
 
     steps:
+      - name: Ensure pnpm store directory exists
+        run: |
+          mkdir -p ~/.pnpm-store
+          mkdir -p ~/.local/share/pnpm
+          # ensure proper ownership in container contexts
+          chmod -R u+rwX ~/.pnpm-store ~/.local/share/pnpm
+
       - name: Check out code
         uses: actions/checkout@v4
         with:
@@ -69,6 +76,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --store ~/.pnpm-store
