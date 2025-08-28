@@ -233,8 +233,8 @@ importers:
         specifier: 3.54.0
         version: 3.54.0(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))
       '@payloadcms/plugin-redirects':
-        specifier: 3.54.0-canary.1
-        version: 3.54.0-canary.1(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))
+        specifier: 3.54.0
+        version: 3.54.0(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))
       '@payloadcms/plugin-search':
         specifier: 3.54.0-canary.1
         version: 3.54.0-canary.1(@types/react@19.1.10)(graphql@16.10.0)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
@@ -3114,10 +3114,10 @@ packages:
     peerDependencies:
       payload: 3.54.0
 
-  '@payloadcms/plugin-redirects@3.54.0-canary.1':
-    resolution: {integrity: sha512-A+JHq/08baQXpjf0UP8REERyv8hv1Wc/xPN/WjSQxZHRv3qFRpn8BgKazGzkiShlmJRzJ6GuIoneKxCwjXcopA==}
+  '@payloadcms/plugin-redirects@3.54.0':
+    resolution: {integrity: sha512-UcUkkqS9GiuOI8rDArR49GWIAgHzXhYyfEHoWfuNnAcPXTcNz8ChS6YGU19rVmVgsYBKA/vL0K/rwLNA/bfJyw==}
     peerDependencies:
-      payload: 3.54.0-canary.1
+      payload: 3.54.0
 
   '@payloadcms/plugin-search@3.54.0-canary.1':
     resolution: {integrity: sha512-8psbsnOfHZ3S1O6CjkkRFLNnwEm/yfnHMlZPUUjFX02vlSApR4Jekb/Ka0QoobMNzklua2Z9SsKJB87mVOPijg==}
@@ -13952,7 +13952,7 @@ snapshots:
     dependencies:
       payload: 3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2)
 
-  '@payloadcms/plugin-redirects@3.54.0-canary.1(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))':
+  '@payloadcms/plugin-redirects@3.54.0(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))':
     dependencies:
       payload: 3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2)
 
