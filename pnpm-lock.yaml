@@ -215,8 +215,8 @@ importers:
         specifier: 3.54.0
         version: 3.54.0(@libsql/client@0.14.0)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))
       '@payloadcms/db-sqlite':
-        specifier: 3.54.0-canary.1
-        version: 3.54.0-canary.1(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)
+        specifier: 3.54.0
+        version: 3.54.0(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)
       '@payloadcms/live-preview-react':
         specifier: 3.54.0-canary.1
         version: 3.54.0-canary.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -3053,20 +3053,15 @@ packages:
     peerDependencies:
       payload: 3.54.0
 
-  '@payloadcms/db-sqlite@3.54.0-canary.1':
-    resolution: {integrity: sha512-lfJe8mNrE5u3uzwhAJyNd5dRS7vYkpJL25gUNDIW6I2SAh0EreYZQ5bePv8rZs3DNAuh/yFhR8JLXj1WX6fcmA==}
+  '@payloadcms/db-sqlite@3.54.0':
+    resolution: {integrity: sha512-dwH8EPTdkMKtty6yrgmAt94q4jtQkGx93SFecNFI/4GxqUBGzCpOTFKXmyKB2mBxngKQsp6NJ77VJk4NjOwffg==}
     peerDependencies:
-      payload: 3.54.0-canary.1
+      payload: 3.54.0
 
   '@payloadcms/drizzle@3.54.0':
     resolution: {integrity: sha512-nz3luQKWav/CGfPKIRMl9lwmgs11HYWvlTpsGUnni8/cJl4EZgi05/Z4yLz3T6RJLbzyCpqvV1D+8tmdRPIHBw==}
     peerDependencies:
       payload: 3.54.0
-
-  '@payloadcms/drizzle@3.54.0-canary.1':
-    resolution: {integrity: sha512-mqJhym/FOe4r+0avAml6bp0crq0XOMcjnkA52zEBb6K/Dw9oRC3R7Js/rhy18ga+sw1CHeLZVKY3giuu2ojaXA==}
-    peerDependencies:
-      payload: 3.54.0-canary.1
 
   '@payloadcms/email-nodemailer@3.54.0-canary.1':
     resolution: {integrity: sha512-InLoE5v98/UBlm/XfhgYhoIwUuiqy3wPG2G2b9kTUIRoPy7QC90FbcVQ6xe/iSn4/8idJk8Q1rIYZs8+WXB1hQ==}
@@ -7654,8 +7649,8 @@ packages:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
     engines: {node: '>=10'}
 
-  js-base64@3.7.7:
-    resolution: {integrity: sha512-7rCnleh0z2CkXhH67J8K1Ytz0b2Y+yxTPL+/KOJoa20hfnVQ/3/T6W/KflYI4bRHRagNeXeU2bkNGI3v1oS/lw==}
+  js-base64@3.7.8:
+    resolution: {integrity: sha512-hNngCeKxIUQiEUN3GPJOkz4wF/YvdUdbNL9hsBcMQTkKzboD7T/q3OYOuuPZLUE6dBxSGpwhk5mwuDud7JVAow==}
 
   js-cookie@2.2.1:
     resolution: {integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==}
@@ -10646,6 +10641,18 @@ packages:
       utf-8-validate:
         optional: true
 
+  ws@8.18.3:
+    resolution: {integrity: sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
   xml-name-validator@5.0.0:
     resolution: {integrity: sha512-EvGK8EJ3DhaHfbRlETOWAS5pO9MZITeauHKJyb8wyajUfQUenkIg2MvLDTZ4T/TgIcm3HU0TFBgWWboAZ30UHg==}
     engines: {node: '>=18'}
@@ -13487,7 +13494,7 @@ snapshots:
     dependencies:
       '@libsql/core': 0.14.0
       '@libsql/hrana-client': 0.7.0
-      js-base64: 3.7.7
+      js-base64: 3.7.8
       libsql: 0.4.7
       promise-limit: 2.7.0
     transitivePeerDependencies:
@@ -13496,7 +13503,7 @@ snapshots:
 
   '@libsql/core@0.14.0':
     dependencies:
-      js-base64: 3.7.7
+      js-base64: 3.7.8
 
   '@libsql/darwin-arm64@0.4.7':
     optional: true
@@ -13508,7 +13515,7 @@ snapshots:
     dependencies:
       '@libsql/isomorphic-fetch': 0.3.1
       '@libsql/isomorphic-ws': 0.1.5
-      js-base64: 3.7.7
+      js-base64: 3.7.8
       node-fetch: 3.3.2
     transitivePeerDependencies:
       - bufferutil
@@ -13519,7 +13526,7 @@ snapshots:
   '@libsql/isomorphic-ws@0.1.5':
     dependencies:
       '@types/ws': 8.18.1
-      ws: 8.18.2
+      ws: 8.18.3
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -13771,10 +13778,10 @@ snapshots:
       - sqlite3
       - supports-color
 
-  '@payloadcms/db-sqlite@3.54.0-canary.1(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)':
+  '@payloadcms/db-sqlite@3.54.0(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)':
     dependencies:
       '@libsql/client': 0.14.0
-      '@payloadcms/drizzle': 3.54.0-canary.1(@libsql/client@0.14.0)(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)
+      '@payloadcms/drizzle': 3.54.0(@libsql/client@0.14.0)(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)
       console-table-printer: 2.12.1
       drizzle-kit: 0.31.4
       drizzle-orm: 0.44.2(@libsql/client@0.14.0)(@types/pg@8.10.2)(pg@8.16.3)
@@ -13816,46 +13823,6 @@ snapshots:
       - utf-8-validate
 
   '@payloadcms/drizzle@3.54.0(@libsql/client@0.14.0)(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)':
-    dependencies:
-      console-table-printer: 2.12.1
-      dequal: 2.0.3
-      drizzle-orm: 0.44.2(@libsql/client@0.14.0)(@types/pg@8.10.2)(pg@8.16.3)
-      payload: 3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2)
-      prompts: 2.4.2
-      to-snake-case: 1.0.0
-      uuid: 9.0.0
-    transitivePeerDependencies:
-      - '@aws-sdk/client-rds-data'
-      - '@cloudflare/workers-types'
-      - '@electric-sql/pglite'
-      - '@libsql/client'
-      - '@libsql/client-wasm'
-      - '@neondatabase/serverless'
-      - '@op-engineering/op-sqlite'
-      - '@opentelemetry/api'
-      - '@planetscale/database'
-      - '@prisma/client'
-      - '@tidbcloud/serverless'
-      - '@types/better-sqlite3'
-      - '@types/pg'
-      - '@types/sql.js'
-      - '@upstash/redis'
-      - '@vercel/postgres'
-      - '@xata.io/client'
-      - better-sqlite3
-      - bun-types
-      - expo-sqlite
-      - gel
-      - knex
-      - kysely
-      - mysql2
-      - pg
-      - postgres
-      - prisma
-      - sql.js
-      - sqlite3
-
-  '@payloadcms/drizzle@3.54.0-canary.1(@libsql/client@0.14.0)(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)':
     dependencies:
       console-table-printer: 2.12.1
       dequal: 2.0.3
@@ -19253,7 +19220,7 @@ snapshots:
 
   joycon@3.1.1: {}
 
-  js-base64@3.7.7: {}
+  js-base64@3.7.8: {}
 
   js-cookie@2.2.1: {}
 
@@ -22972,6 +22939,8 @@ snapshots:
   ws@7.5.10: {}
 
   ws@8.18.2: {}
+
+  ws@8.18.3: {}
 
   xml-name-validator@5.0.0: {}
 
