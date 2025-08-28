@@ -212,8 +212,8 @@ importers:
         specifier: ^12.0.0
         version: 12.1.0(react@19.1.1)
       '@payloadcms/db-postgres':
-        specifier: 3.54.0-canary.1
-        version: 3.54.0-canary.1(@libsql/client@0.14.0)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))
+        specifier: 3.54.0
+        version: 3.54.0(@libsql/client@0.14.0)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))
       '@payloadcms/db-sqlite':
         specifier: 3.54.0-canary.1
         version: 3.54.0-canary.1(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)
@@ -3048,15 +3048,20 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@payloadcms/db-postgres@3.54.0-canary.1':
-    resolution: {integrity: sha512-TUeg5w3942SAfHFQTc9Wm32KDR6EqYAcrB0WfZwJzqD2hXLgLGnfs0Gy7NI0mjP/fGeVml/otTs0JMmuaEy/XQ==}
+  '@payloadcms/db-postgres@3.54.0':
+    resolution: {integrity: sha512-C1tADNHHRTfXyJ6UXTPrHhDVji8kQFKPmT3R/LxOfXwMX5SQanfGx4dGotug647EuZCLgP9YH/ASmGgSFG2RjQ==}
     peerDependencies:
-      payload: 3.54.0-canary.1
+      payload: 3.54.0
 
   '@payloadcms/db-sqlite@3.54.0-canary.1':
     resolution: {integrity: sha512-lfJe8mNrE5u3uzwhAJyNd5dRS7vYkpJL25gUNDIW6I2SAh0EreYZQ5bePv8rZs3DNAuh/yFhR8JLXj1WX6fcmA==}
     peerDependencies:
       payload: 3.54.0-canary.1
+
+  '@payloadcms/drizzle@3.54.0':
+    resolution: {integrity: sha512-nz3luQKWav/CGfPKIRMl9lwmgs11HYWvlTpsGUnni8/cJl4EZgi05/Z4yLz3T6RJLbzyCpqvV1D+8tmdRPIHBw==}
+    peerDependencies:
+      payload: 3.54.0
 
   '@payloadcms/drizzle@3.54.0-canary.1':
     resolution: {integrity: sha512-mqJhym/FOe4r+0avAml6bp0crq0XOMcjnkA52zEBb6K/Dw9oRC3R7Js/rhy18ga+sw1CHeLZVKY3giuu2ojaXA==}
@@ -8766,8 +8771,8 @@ packages:
     resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
     engines: {node: '>=4'}
 
-  pg-types@4.0.2:
-    resolution: {integrity: sha512-cRL3JpS3lKMGsKaWndugWQoLOCoP+Cic8oseVcbr0qhPzYD5DWXK+RZ9LY9wxRf7RQia4SCwQlXk0q6FCPrVng==}
+  pg-types@4.1.0:
+    resolution: {integrity: sha512-o2XFanIMy/3+mThw69O8d4n1E5zsLhdO+OPqswezu7Z5ekP4hYDqlDjlmOpYMbzY2Br0ufCwJLdDIXeNVwcWFg==}
     engines: {node: '>=10'}
 
   pg@8.16.3:
@@ -13747,9 +13752,9 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@payloadcms/db-postgres@3.54.0-canary.1(@libsql/client@0.14.0)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))':
+  '@payloadcms/db-postgres@3.54.0(@libsql/client@0.14.0)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))':
     dependencies:
-      '@payloadcms/drizzle': 3.54.0-canary.1(@libsql/client@0.14.0)(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)
+      '@payloadcms/drizzle': 3.54.0(@libsql/client@0.14.0)(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)
       '@types/pg': 8.10.2
       console-table-printer: 2.12.1
       drizzle-kit: 0.31.4
@@ -13833,6 +13838,46 @@ snapshots:
       - sqlite3
       - supports-color
       - utf-8-validate
+
+  '@payloadcms/drizzle@3.54.0(@libsql/client@0.14.0)(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)':
+    dependencies:
+      console-table-printer: 2.12.1
+      dequal: 2.0.3
+      drizzle-orm: 0.44.2(@libsql/client@0.14.0)(@types/pg@8.10.2)(pg@8.16.3)
+      payload: 3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2)
+      prompts: 2.4.2
+      to-snake-case: 1.0.0
+      uuid: 9.0.0
+    transitivePeerDependencies:
+      - '@aws-sdk/client-rds-data'
+      - '@cloudflare/workers-types'
+      - '@electric-sql/pglite'
+      - '@libsql/client'
+      - '@libsql/client-wasm'
+      - '@neondatabase/serverless'
+      - '@op-engineering/op-sqlite'
+      - '@opentelemetry/api'
+      - '@planetscale/database'
+      - '@prisma/client'
+      - '@tidbcloud/serverless'
+      - '@types/better-sqlite3'
+      - '@types/pg'
+      - '@types/sql.js'
+      - '@upstash/redis'
+      - '@vercel/postgres'
+      - '@xata.io/client'
+      - better-sqlite3
+      - bun-types
+      - expo-sqlite
+      - gel
+      - knex
+      - kysely
+      - mysql2
+      - pg
+      - postgres
+      - prisma
+      - sql.js
+      - sqlite3
 
   '@payloadcms/drizzle@3.54.0-canary.1(@libsql/client@0.14.0)(@types/pg@8.10.2)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(pg@8.16.3)':
     dependencies:
@@ -16423,7 +16468,7 @@ snapshots:
     dependencies:
       '@types/node': 22.13.17
       pg-protocol: 1.10.3
-      pg-types: 4.0.2
+      pg-types: 4.1.0
 
   '@types/prismjs@1.26.5': {}
 
@@ -20852,7 +20897,7 @@ snapshots:
       postgres-date: 1.0.7
       postgres-interval: 1.2.0
 
-  pg-types@4.0.2:
+  pg-types@4.1.0:
     dependencies:
       pg-int8: 1.0.1
       pg-numeric: 1.0.2
