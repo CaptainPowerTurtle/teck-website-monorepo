@@ -31,7 +31,7 @@
     "@payloadcms/next": "3.54.0-canary.1",
     "@payloadcms/payload-cloud": "3.54.0-canary.1",
     "@payloadcms/plugin-form-builder": "3.54.0-canary.1",
-    "@payloadcms/plugin-nested-docs": "3.54.0-canary.1",
+    "@payloadcms/plugin-nested-docs": "3.54.0",
     "@payloadcms/plugin-redirects": "3.54.0-canary.1",
     "@payloadcms/plugin-search": "3.54.0-canary.1",
     "@payloadcms/plugin-seo": "3.54.0",
