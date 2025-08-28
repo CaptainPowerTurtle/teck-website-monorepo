@@ -236,8 +236,8 @@ importers:
         specifier: 3.54.0
         version: 3.54.0(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))
       '@payloadcms/plugin-search':
-        specifier: 3.54.0-canary.1
-        version: 3.54.0-canary.1(@types/react@19.1.10)(graphql@16.10.0)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
+        specifier: 3.54.0
+        version: 3.54.0(@types/react@19.1.10)(graphql@16.10.0)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
       '@payloadcms/plugin-seo':
         specifier: 3.54.0
         version: 3.54.0(@types/react@19.1.10)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
@@ -3081,13 +3081,6 @@ packages:
       graphql: ^16.8.1
       payload: 3.54.0
 
-  '@payloadcms/graphql@3.54.0-canary.1':
-    resolution: {integrity: sha512-hTYjSHPiJC3toewGOnRn0J5qTyaLdrBeZeAirg1ehyH4r8OmpJNVbxAZ6wfW25JG6f+jRB+st+XYDkZOrkEodw==}
-    hasBin: true
-    peerDependencies:
-      graphql: ^16.8.1
-      payload: 3.54.0-canary.1
-
   '@payloadcms/live-preview-react@3.54.0-canary.1':
     resolution: {integrity: sha512-chkqeVNMs8hu+fYZByWXvphKgHkPODQNvcNdYbU5uR4Lj9G0+3/KpfpU+b1Zx+SGjRZU4VVo7UgKcZbhXkUmZA==}
     peerDependencies:
@@ -3104,14 +3097,6 @@ packages:
       graphql: ^16.8.1
       next: ^15.2.3
       payload: 3.54.0
-
-  '@payloadcms/next@3.54.0-canary.1':
-    resolution: {integrity: sha512-3pESBIQXfL1dxNuTCW3CMI3vo/P+5MfFDYaSLr+pf57SWTdX2WYhVgk++xfsUh9oJWWs7YW5SRdKzXID7emlJw==}
-    engines: {node: ^18.20.2 || >=20.9.0}
-    peerDependencies:
-      graphql: ^16.8.1
-      next: ^15.2.3
-      payload: 3.54.0-canary.1
 
   '@payloadcms/payload-cloud@3.54.0-canary.1':
     resolution: {integrity: sha512-+hpwWQkWlWHzJQtN9/whmpEkx0vBOf1gmPWWj8swVy3QrSuBNrrcVg/7BgsAV6uLorxpLMpU5WkRgqN5fPKXRA==}
@@ -3142,10 +3127,10 @@ packages:
     peerDependencies:
       payload: 3.54.0
 
-  '@payloadcms/plugin-search@3.54.0-canary.1':
-    resolution: {integrity: sha512-8psbsnOfHZ3S1O6CjkkRFLNnwEm/yfnHMlZPUUjFX02vlSApR4Jekb/Ka0QoobMNzklua2Z9SsKJB87mVOPijg==}
+  '@payloadcms/plugin-search@3.54.0':
+    resolution: {integrity: sha512-ZM641HtwGBZ/DHlrUFHpLEnQaZsRIJecG8LlOg3Fwpw34KQXOfr0+F7cXdbdiNUt8/IM4UmfKy57DfmdHWswBQ==}
     peerDependencies:
-      payload: 3.54.0-canary.1
+      payload: 3.54.0
       react: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
       react-dom: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
 
@@ -13935,17 +13920,6 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@payloadcms/graphql@3.54.0-canary.1(graphql@16.10.0)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(typescript@5.9.2)':
-    dependencies:
-      graphql: 16.10.0
-      graphql-scalars: 1.22.2(graphql@16.10.0)
-      payload: 3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2)
-      pluralize: 8.0.0
-      ts-essentials: 10.0.3(typescript@5.9.2)
-      tsx: 4.19.2
-    transitivePeerDependencies:
-      - typescript
-
   '@payloadcms/live-preview-react@3.54.0-canary.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@payloadcms/live-preview': 3.54.0-canary.1
@@ -13960,33 +13934,6 @@ snapshots:
       '@payloadcms/graphql': 3.54.0(graphql@16.10.0)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(typescript@5.9.2)
       '@payloadcms/translations': 3.54.0
       '@payloadcms/ui': 3.54.0(@types/react@19.1.10)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
-      busboy: 1.6.0
-      dequal: 2.0.3
-      file-type: 19.3.0
-      graphql: 16.10.0
-      graphql-http: 1.22.4(graphql@16.10.0)
-      graphql-playground-html: 1.6.30
-      http-status: 2.1.0
-      next: 15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4)
-      path-to-regexp: 6.3.0
-      payload: 3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2)
-      qs-esm: 7.0.2
-      sass: 1.77.4
-      uuid: 10.0.0
-    transitivePeerDependencies:
-      - '@types/react'
-      - monaco-editor
-      - react
-      - react-dom
-      - supports-color
-      - typescript
-
-  '@payloadcms/next@3.54.0-canary.1(@types/react@19.1.10)(graphql@16.10.0)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)':
-    dependencies:
-      '@dnd-kit/core': 6.0.8(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      '@payloadcms/graphql': 3.54.0-canary.1(graphql@16.10.0)(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(typescript@5.9.2)
-      '@payloadcms/translations': 3.54.0-canary.1
-      '@payloadcms/ui': 3.54.0-canary.1(@types/react@19.1.10)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
       busboy: 1.6.0
       dequal: 2.0.3
       file-type: 19.3.0
@@ -14059,10 +14006,10 @@ snapshots:
     dependencies:
       payload: 3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2)
 
-  '@payloadcms/plugin-search@3.54.0-canary.1(@types/react@19.1.10)(graphql@16.10.0)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)':
+  '@payloadcms/plugin-search@3.54.0(@types/react@19.1.10)(graphql@16.10.0)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)':
     dependencies:
-      '@payloadcms/next': 3.54.0-canary.1(@types/react@19.1.10)(graphql@16.10.0)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
-      '@payloadcms/ui': 3.54.0-canary.1(@types/react@19.1.10)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
+      '@payloadcms/next': 3.54.0(@types/react@19.1.10)(graphql@16.10.0)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
+      '@payloadcms/ui': 3.54.0(@types/react@19.1.10)(monaco-editor@0.52.2)(next@15.5.1-canary.0(@babel/core@7.28.3)(@playwright/test@1.55.0)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(payload@3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2)
       payload: 3.54.0-canary.1(graphql@16.10.0)(typescript@5.9.2)
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
