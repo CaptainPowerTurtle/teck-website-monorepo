@@ -122,8 +122,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@storybook/addon-docs':
-        specifier: 9.1.5
-        version: 9.1.5(@types/react@19.1.10)(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
+        specifier: 9.1.6
+        version: 9.1.6(@types/react@19.1.10)(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
       '@storybook/addon-essentials':
         specifier: ^9.0.0-alpha.12
         version: 9.0.0-alpha.12(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
@@ -4315,10 +4315,10 @@ packages:
     peerDependencies:
       storybook: ^9.0.0-alpha.12
 
-  '@storybook/addon-docs@9.1.5':
-    resolution: {integrity: sha512-q1j5RRElxFSnHOh60eS3dS2TAyAHzcQeH/2B9UXo6MUHu7HmhNpw3qt2YibIw0zEogHCvZhLNx6TNzSy+7wRUw==}
+  '@storybook/addon-docs@9.1.6':
+    resolution: {integrity: sha512-4ZE/T2Ayw77/v2ersAk/VM7vlvqV2zCNFwt0uvOzUR1VZ9VqZCHhsfy/IyBPeKt6Otax3EpfE1LkH4slfceB0g==}
     peerDependencies:
-      storybook: ^9.1.5
+      storybook: ^9.1.6
 
   '@storybook/addon-essentials@9.0.0-alpha.12':
     resolution: {integrity: sha512-wmUT9Q4rl6SvVgrIYDj97uHHkMSGba1A+/rMHypIw7OtrdUp+w1OKZRDNVrU0AfqfbaptT5dRrBsDr/eFZ9v8Q==}
@@ -4406,11 +4406,6 @@ packages:
 
   '@storybook/core-webpack@9.1.5':
     resolution: {integrity: sha512-zlbByMcJPU5us4D1lmEO3U0rG/waheabPHbaPwmwIoMojG25E1aq3BUtnAJLMMRRrBgdO5n6NRwR7e3SMizqig==}
-    peerDependencies:
-      storybook: ^9.1.5
-
-  '@storybook/csf-plugin@9.1.5':
-    resolution: {integrity: sha512-PmHuF+j11Z7BxAI2/4wQYn0gH1d67gNvycyR+EWgp4P/AWam9wFbuI/T1R45CRQTV2/VrfGdts/tFrvo5kXWig==}
     peerDependencies:
       storybook: ^9.1.5
 
@@ -15149,12 +15144,12 @@ snapshots:
       storybook: 9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
       ts-dedent: 2.2.0
 
-  '@storybook/addon-docs@9.1.5(@types/react@19.1.10)(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))':
+  '@storybook/addon-docs@9.1.6(@types/react@19.1.10)(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))':
     dependencies:
       '@mdx-js/react': 3.1.1(@types/react@19.1.10)(react@19.1.1)
-      '@storybook/csf-plugin': 9.1.5(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
+      '@storybook/csf-plugin': 9.1.6(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
       '@storybook/icons': 1.4.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      '@storybook/react-dom-shim': 9.1.5(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
+      '@storybook/react-dom-shim': 9.1.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
       storybook: 9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
@@ -15302,11 +15297,6 @@ snapshots:
     dependencies:
       storybook: 9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
       ts-dedent: 2.2.0
-
-  '@storybook/csf-plugin@9.1.5(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))':
-    dependencies:
-      storybook: 9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
-      unplugin: 1.16.1
 
   '@storybook/csf-plugin@9.1.6(storybook@9.1.5(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.5(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))':
     dependencies:
