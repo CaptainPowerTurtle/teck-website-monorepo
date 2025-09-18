@@ -152,8 +152,8 @@ importers:
         specifier: ^9.1.6
         version: 9.1.6(esbuild@0.25.9)(next@15.4.2-canary.52(@babel/core@7.28.4)(@playwright/test@1.55.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4)(storybook@9.1.6(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(type-fest@2.19.0)(typescript@5.9.2)(webpack-hot-middleware@2.26.1)(webpack@5.101.3(esbuild@0.25.9))
       '@storybook/react':
-        specifier: ^9.1.6
-        version: 9.1.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.6(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(typescript@5.9.2)
+        specifier: ^9.1.7
+        version: 9.1.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.6(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(typescript@5.9.2)
       '@storybook/react-vite':
         specifier: ^9.1.6
         version: 9.1.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(rollup@4.50.2)(storybook@9.1.6(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(typescript@5.9.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
@@ -4771,6 +4771,18 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       storybook: ^9.1.6
+      typescript: '>= 4.9.x'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  '@storybook/react@9.1.7':
+    resolution: {integrity: sha512-GxuA2Eh3LlkEF4HHDKFGP+bqQ1+7VtABVacSXukMu82WV4VAOXhhHEDII8R9AVl2Fbs/iPJnNVj06wnkDeUZhA==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
+      storybook: ^9.1.7
       typescript: '>= 4.9.x'
     peerDependenciesMeta:
       typescript:
@@ -15868,6 +15880,16 @@ snapshots:
     dependencies:
       '@storybook/global': 5.0.0
       '@storybook/react-dom-shim': 9.1.6(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.6(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+      storybook: 9.1.6(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
+    optionalDependencies:
+      typescript: 5.9.2
+
+  '@storybook/react@9.1.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.6(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(typescript@5.9.2)':
+    dependencies:
+      '@storybook/global': 5.0.0
+      '@storybook/react-dom-shim': 9.1.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.6(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
       storybook: 9.1.6(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
