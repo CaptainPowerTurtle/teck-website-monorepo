@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@repo/tsconfig": "workspace:*",
-    "@tailwindcss/typography": "^0.5.17",
+    "@tailwindcss/typography": "^0.5.19",
     "tailwindcss": "^4.1.13"
   },
   "dependencies": {
