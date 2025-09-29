@@ -36,7 +36,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Container Retention Policy
-        uses: snok/container-retention-policy@v3.0.0
+        uses: snok/container-retention-policy@v3.0.1
         with:
           account: user
           image-names: teck-website-monorepo/web
