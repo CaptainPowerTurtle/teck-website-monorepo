@@ -140,8 +140,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0(storybook@9.1.9(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(webpack@5.102.0(esbuild@0.25.10))
       '@storybook/addon-themes':
-        specifier: ^9.1.9
-        version: 9.1.9(storybook@9.1.9(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
+        specifier: ^9.1.10
+        version: 9.1.10(storybook@9.1.9(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
       '@storybook/blocks':
         specifier: ^9.0.0-alpha.17
         version: 9.0.0-alpha.17(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.9(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
@@ -4480,10 +4480,10 @@ packages:
       storybook: ^9.0.0
       webpack: ^5.0.0
 
-  '@storybook/addon-themes@9.1.9':
-    resolution: {integrity: sha512-XcK8hYJlGnIcX3vjAzE9drJ4f5HqHC2yonIggiO8hR8cwtF81DwnSttxDwnqEMLdqhosTssGuFWn7yau21WfnQ==}
+  '@storybook/addon-themes@9.1.10':
+    resolution: {integrity: sha512-COBofdSDHDyms256l4nsLPkhYwQneSJNir3YtcRThkfdyP3clgNkUICClU3VlGwr3d9tFJNjs4A8P0xFTo7byw==}
     peerDependencies:
-      storybook: ^9.1.9
+      storybook: ^9.1.10
 
   '@storybook/blocks@9.0.0-alpha.17':
     resolution: {integrity: sha512-gP2aISvvl98K8B7T9qKWv0rUx3ZaT5oGlBDtfjtn4ZZtdj1XXLvdK1gOmjzTJX2GksOTUWMnwAumMHqbtvsFLQ==}
@@ -15377,7 +15377,7 @@ snapshots:
       storybook: 9.1.9(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
       webpack: 5.102.0(esbuild@0.25.10)
 
-  '@storybook/addon-themes@9.1.9(storybook@9.1.9(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))':
+  '@storybook/addon-themes@9.1.10(storybook@9.1.9(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))':
     dependencies:
       storybook: 9.1.9(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.6(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
       ts-dedent: 2.2.0
