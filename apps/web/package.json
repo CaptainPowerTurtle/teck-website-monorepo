@@ -56,7 +56,7 @@
     "react-dom": "19.1.1",
     "react-hook-form": "7.62.0",
     "sharp": "^0.34.4",
-    "zod": "4.1.11"
+    "zod": "4.1.12"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "15.4.7",
