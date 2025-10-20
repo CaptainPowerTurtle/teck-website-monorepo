@@ -152,8 +152,8 @@ importers:
         specifier: ^9.1.13
         version: 9.1.13(esbuild@0.25.10)(next@15.4.2-canary.52(@babel/core@7.28.4)(@playwright/test@1.55.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4)(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(type-fest@2.19.0)(typescript@5.9.2)(webpack-hot-middleware@2.26.1)(webpack@5.102.1(esbuild@0.25.10))
       '@storybook/react':
-        specifier: ^9.1.10
-        version: 9.1.10(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(typescript@5.9.2)
+        specifier: ^9.1.13
+        version: 9.1.13(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(typescript@5.9.2)
       '@storybook/react-vite':
         specifier: ^9.1.13
         version: 9.1.13(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(rollup@4.52.4)(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(typescript@5.9.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
@@ -4585,13 +4585,6 @@ packages:
       typescript: '>= 4.x'
       webpack: '>= 4'
 
-  '@storybook/react-dom-shim@9.1.10':
-    resolution: {integrity: sha512-cxy8GTj73RMJIFPrgqdnMXePGX5iFohM5pDCZ63Te5m5GtzKqsILRXtBBLO6Ouexm/ZYRVznkKiwNKX/Fu24fQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^9.1.10
-
   '@storybook/react-dom-shim@9.1.13':
     resolution: {integrity: sha512-/tMr9TmV3+98GEQO0S03k4gtKHGCpv9+k9Dmnv+TJK3TBz7QsaFEzMwe3gCgoTaebLACyVveDiZkWnCYAWB6NA==}
     peerDependencies:
@@ -4607,18 +4600,6 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       storybook: ^9.1.13
       vite: ^5.0.0 || ^6.0.0 || ^7.0.0
-
-  '@storybook/react@9.1.10':
-    resolution: {integrity: sha512-flG3Gn3EHZnxn92C7vrA2U4aGqpOKdf85fL43+J/2k9HF5AIyOFGlcv4LGVyKZ3LOAow/nGBVSXL9961h+ICRA==}
-    engines: {node: '>=20.0.0'}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^9.1.10
-      typescript: '>= 4.9.x'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
 
   '@storybook/react@9.1.13':
     resolution: {integrity: sha512-B0UpYikKf29t8QGcdmumWojSQQ0phSDy/Ne2HYdrpNIxnUvHHUVOlGpq4lFcIDt52Ip5YG5GuAwJg3+eR4LCRg==}
@@ -15598,12 +15579,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@storybook/react-dom-shim@9.1.10(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))':
-    dependencies:
-      react: 19.1.1
-      react-dom: 19.1.1(react@19.1.1)
-      storybook: 9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
-
   '@storybook/react-dom-shim@9.1.13(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))':
     dependencies:
       react: 19.1.1
@@ -15629,16 +15604,6 @@ snapshots:
       - rollup
       - supports-color
       - typescript
-
-  '@storybook/react@9.1.10(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(typescript@5.9.2)':
-    dependencies:
-      '@storybook/global': 5.0.0
-      '@storybook/react-dom-shim': 9.1.10(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
-      react: 19.1.1
-      react-dom: 19.1.1(react@19.1.1)
-      storybook: 9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
-    optionalDependencies:
-      typescript: 5.9.2
 
   '@storybook/react@9.1.13(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@7.1.10(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))(typescript@5.9.2)':
     dependencies:
