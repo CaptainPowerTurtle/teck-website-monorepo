@@ -45,7 +45,7 @@
     "style-loader": "^4.0.0",
     "tailwindcss": "^4.1.15",
     "typescript": "^5.9.2",
-    "vite": "^7.1.11"
+    "vite": "^7.1.12"
   },
   "overrides": {
     "@types/react": "19.1.10",
