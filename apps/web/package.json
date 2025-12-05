@@ -59,7 +59,7 @@
     "zod": "4.1.13"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "15.4.7",
+    "@next/bundle-analyzer": "15.4.8",
     "@repo/eslint-config": "workspace:*",
     "@repo/tailwind-config": "workspace:*",
     "@repo/tsconfig": "workspace:*",
