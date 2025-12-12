@@ -309,8 +309,8 @@ importers:
         version: 4.1.13
     devDependencies:
       '@next/bundle-analyzer':
-        specifier: 15.4.8
-        version: 15.4.8
+        specifier: 15.4.10
+        version: 15.4.10
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
@@ -2903,8 +2903,8 @@ packages:
   '@neon-rs/load@0.0.4':
     resolution: {integrity: sha512-kTPhdZyTQxB+2wpiRcFWrDcejc4JI6tkPuS7UZCG4l6Zvc5kU/gGQ/ozvHTh1XR5tS+UlfAfGuPajjzQjCiHCw==}
 
-  '@next/bundle-analyzer@15.4.8':
-    resolution: {integrity: sha512-3JHzGmV1VTtWYlCWjIEUSSw8CxAM2AG9uLPuUgzMyDq9XEL16HOFTou245aCF9yevk52THGZuvH1Ju2q2Xldzg==}
+  '@next/bundle-analyzer@15.4.10':
+    resolution: {integrity: sha512-I+nsSr8eS9n4ggjmFL6UHgbEqb9+TBeRxt6Q5PBxTJYtm9HvJnrAbrLajz/nDdnisqtXrn4qWjCio8CZ9OQgOQ==}
 
   '@next/env@15.4.2-canary.52':
     resolution: {integrity: sha512-XftBBe1BDGq1L7xKIyRPzX8RZUD9UlIdcjFmBG5+IXG6du1cjMHHhxouXsHRCRmUeZfaChEX91LLfl4gKK1+YQ==}
@@ -13636,7 +13636,7 @@ snapshots:
 
   '@neon-rs/load@0.0.4': {}
 
-  '@next/bundle-analyzer@15.4.8':
+  '@next/bundle-analyzer@15.4.10':
     dependencies:
       webpack-bundle-analyzer: 4.10.1
     transitivePeerDependencies:
