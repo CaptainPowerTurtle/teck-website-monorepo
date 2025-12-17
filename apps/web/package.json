@@ -40,7 +40,7 @@
     "@payloadcms/ui": "3.54.0",
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
-    "@t3-oss/env-nextjs": "0.13.8",
+    "@t3-oss/env-nextjs": "0.13.10",
     "babel-plugin-react-compiler": "^19.1.0-rc.3",
     "clsx": "2.1.1",
     "jiti": "^2.5.1",
