@@ -131,8 +131,8 @@ importers:
         specifier: ^9.0.0-alpha.10
         version: 9.0.0-alpha.10(storybook@9.1.16(@testing-library/dom@10.4.0)(prettier@3.7.4)(vite@7.1.12(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
       '@storybook/addon-links':
-        specifier: ^9.1.16
-        version: 9.1.16(react@19.1.1)(storybook@9.1.16(@testing-library/dom@10.4.0)(prettier@3.7.4)(vite@7.1.12(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
+        specifier: ^9.1.17
+        version: 9.1.17(react@19.1.1)(storybook@9.1.16(@testing-library/dom@10.4.0)(prettier@3.7.4)(vite@7.1.12(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
       '@storybook/addon-onboarding':
         specifier: ^9.1.17
         version: 9.1.17(storybook@9.1.16(@testing-library/dom@10.4.0)(prettier@3.7.4)(vite@7.1.12(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))
@@ -4669,11 +4669,11 @@ packages:
     peerDependencies:
       storybook: ^9.0.0-alpha.10
 
-  '@storybook/addon-links@9.1.16':
-    resolution: {integrity: sha512-21SJAEuOX4Fh/5VSeakuiJJeSH2ezXBia0cZMTkKYz6GOtoojeGigo3tuebVlsn9myqnkMZxiufnnRa7Zne8vg==}
+  '@storybook/addon-links@9.1.17':
+    resolution: {integrity: sha512-LqtrDXRJrdMfZJ0om38SjmY2lQUGmpL8Zt2xTZtQjUy1V+ZiQpuUx7+TJZIOWujzRp75fxhM4AB0HuLDsemlcA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
-      storybook: ^9.1.16
+      storybook: ^9.1.17
     peerDependenciesMeta:
       react:
         optional: true
@@ -15748,7 +15748,7 @@ snapshots:
       storybook: 9.1.16(@testing-library/dom@10.4.0)(prettier@3.7.4)(vite@7.1.12(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
       ts-dedent: 2.2.0
 
-  '@storybook/addon-links@9.1.16(react@19.1.1)(storybook@9.1.16(@testing-library/dom@10.4.0)(prettier@3.7.4)(vite@7.1.12(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))':
+  '@storybook/addon-links@9.1.17(react@19.1.1)(storybook@9.1.16(@testing-library/dom@10.4.0)(prettier@3.7.4)(vite@7.1.12(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0)))':
     dependencies:
       '@storybook/global': 5.0.0
       storybook: 9.1.16(@testing-library/dom@10.4.0)(prettier@3.7.4)(vite@7.1.12(@types/node@22.13.17)(jiti@2.5.1)(lightningcss@1.29.2)(sass@1.77.4)(terser@5.44.0)(tsx@4.20.3)(yaml@2.7.0))
