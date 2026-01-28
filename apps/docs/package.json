@@ -17,7 +17,7 @@
     "nextra": "4.4.0",
     "nextra-theme-blog": "4.4.0",
     "nextra-theme-docs": "4.4.0",
-    "react": "19.1.1",
+    "react": "19.0.4",
     "react-dom": "19.1.1"
   },
   "devDependencies": {
