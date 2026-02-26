@@ -13,7 +13,7 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
-    "next": "15.4.2-canary.52",
+    "next": "15.4.11",
     "nextra": "4.4.0",
     "nextra-theme-blog": "4.4.0",
     "nextra-theme-docs": "4.4.0",
