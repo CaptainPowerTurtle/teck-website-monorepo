@@ -38,7 +38,7 @@
     "@vitejs/plugin-react-swc": "^4.0.1",
     "autoprefixer": "10.4.27",
     "css-loader": "^7.1.4",
-    "eslint-plugin-storybook": "^9.1.19",
+    "eslint-plugin-storybook": "^9.1.20",
     "postcss": "^8.5.8",
     "postcss-loader": "^8.1.1",
     "storybook": "^9.1.20",
