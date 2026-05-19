@@ -8632,8 +8632,8 @@ packages:
     peerDependencies:
       webpack: '>=5'
 
-  node-releases@2.0.27:
-    resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
+  node-releases@2.0.44:
+    resolution: {integrity: sha512-5WUyunoPMsvvEhS8AxHtRzP+oA8UCkJ7YRxatWKjngndhDGLiqEVAQKWjFAiAiuL8zMRGzGSJxFnLetoa43qGQ==}
 
   nodemailer@6.9.16:
     resolution: {integrity: sha512-psAuZdTIRN08HKVd/E8ObdV6NO7NTBY3KsC30F7M4H1OnmLCUNaS56FpYxyb26zWLSyYF9Ozch9KYHhHegsiOQ==}
@@ -17282,7 +17282,7 @@ snapshots:
       baseline-browser-mapping: 2.10.0
       caniuse-lite: 1.0.30001774
       electron-to-chromium: 1.5.302
-      node-releases: 2.0.27
+      node-releases: 2.0.44
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
 
   bson-objectid@2.0.4: {}
@@ -20745,7 +20745,7 @@ snapshots:
       vm-browserify: 1.1.2
       webpack: 5.105.4(esbuild@0.25.12)
 
-  node-releases@2.0.27: {}
+  node-releases@2.0.44: {}
 
   nodemailer@6.9.16: {}
 
