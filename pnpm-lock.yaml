@@ -4631,12 +4631,8 @@ packages:
     resolution: {integrity: sha512-i/Fu6AFT5014VJNgWxKomBJP/GB5uuOsM4iHdcmplLm8B1eAqnRItw4lT2qpdO+mf+6TFmf6dGcggGLAVMZJsQ==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/util-defaults-mode-node@4.0.26':
-    resolution: {integrity: sha512-z81yyIkGiLLYVDetKTUeCZQ8x20EEzvQjrqJtb/mXnevLq2+w3XCEWTJ2pMp401b6BkEkHVfXb/cROBpVauLMQ==}
-    engines: {node: '>=18.0.0'}
-
-  '@smithy/util-defaults-mode-node@4.0.27':
-    resolution: {integrity: sha512-3W0qClMyxl/ELqTA39aNw1N+pN0IjpXT7lPFvZ8zTxqVFP7XCpACB9QufmN4FQtd39xbgS7/Lekn7LmDa63I5w==}
+  '@smithy/util-defaults-mode-node@4.3.3':
+    resolution: {integrity: sha512-RYj+8gr95WiiBqvVghoRvL12NS9ryvLyufp7FOs7EzKwGX0W5gOVlXdCrFkJScSf8gxdjQMRyIZ3Y82/MvXQ3Q==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/util-endpoints@3.0.7':
@@ -11101,7 +11097,7 @@ snapshots:
       '@smithy/util-body-length-browser': 4.0.0
       '@smithy/util-body-length-node': 4.0.0
       '@smithy/util-defaults-mode-browser': 4.0.27
-      '@smithy/util-defaults-mode-node': 4.0.27
+      '@smithy/util-defaults-mode-node': 4.3.3
       '@smithy/util-endpoints': 3.0.7
       '@smithy/util-middleware': 4.0.5
       '@smithy/util-retry': 4.0.7
@@ -11160,7 +11156,7 @@ snapshots:
       '@smithy/util-body-length-browser': 4.0.0
       '@smithy/util-body-length-node': 4.0.0
       '@smithy/util-defaults-mode-browser': 4.0.26
-      '@smithy/util-defaults-mode-node': 4.0.26
+      '@smithy/util-defaults-mode-node': 4.3.3
       '@smithy/util-endpoints': 3.0.7
       '@smithy/util-middleware': 4.0.5
       '@smithy/util-retry': 4.0.7
@@ -11207,7 +11203,7 @@ snapshots:
       '@smithy/util-body-length-browser': 4.0.0
       '@smithy/util-body-length-node': 4.0.0
       '@smithy/util-defaults-mode-browser': 4.0.27
-      '@smithy/util-defaults-mode-node': 4.0.27
+      '@smithy/util-defaults-mode-node': 4.3.3
       '@smithy/util-endpoints': 3.0.7
       '@smithy/util-middleware': 4.0.5
       '@smithy/util-retry': 4.0.7
@@ -11250,7 +11246,7 @@ snapshots:
       '@smithy/util-body-length-browser': 4.0.0
       '@smithy/util-body-length-node': 4.0.0
       '@smithy/util-defaults-mode-browser': 4.0.27
-      '@smithy/util-defaults-mode-node': 4.0.27
+      '@smithy/util-defaults-mode-node': 4.3.3
       '@smithy/util-endpoints': 3.0.7
       '@smithy/util-middleware': 4.0.5
       '@smithy/util-retry': 4.0.7
@@ -11688,7 +11684,7 @@ snapshots:
       '@smithy/util-body-length-browser': 4.0.0
       '@smithy/util-body-length-node': 4.0.0
       '@smithy/util-defaults-mode-browser': 4.0.27
-      '@smithy/util-defaults-mode-node': 4.0.27
+      '@smithy/util-defaults-mode-node': 4.3.3
       '@smithy/util-endpoints': 3.0.7
       '@smithy/util-middleware': 4.0.5
       '@smithy/util-retry': 4.0.7
@@ -11731,7 +11727,7 @@ snapshots:
       '@smithy/util-body-length-browser': 4.0.0
       '@smithy/util-body-length-node': 4.0.0
       '@smithy/util-defaults-mode-browser': 4.0.27
-      '@smithy/util-defaults-mode-node': 4.0.27
+      '@smithy/util-defaults-mode-node': 4.3.3
       '@smithy/util-endpoints': 3.0.7
       '@smithy/util-middleware': 4.0.5
       '@smithy/util-retry': 4.0.7
@@ -15737,24 +15733,9 @@ snapshots:
       bowser: 2.12.1
       tslib: 2.8.1
 
-  '@smithy/util-defaults-mode-node@4.0.26':
+  '@smithy/util-defaults-mode-node@4.3.3':
     dependencies:
-      '@smithy/config-resolver': 4.1.5
-      '@smithy/credential-provider-imds': 4.0.7
-      '@smithy/node-config-provider': 4.1.4
-      '@smithy/property-provider': 4.0.5
-      '@smithy/smithy-client': 4.4.10
-      '@smithy/types': 4.3.2
-      tslib: 2.8.1
-
-  '@smithy/util-defaults-mode-node@4.0.27':
-    dependencies:
-      '@smithy/config-resolver': 4.1.5
-      '@smithy/credential-provider-imds': 4.0.7
-      '@smithy/node-config-provider': 4.1.4
-      '@smithy/property-provider': 4.0.5
-      '@smithy/smithy-client': 4.5.0
-      '@smithy/types': 4.3.2
+      '@smithy/core': 3.24.3
       tslib: 2.8.1
 
   '@smithy/util-endpoints@3.0.7':
