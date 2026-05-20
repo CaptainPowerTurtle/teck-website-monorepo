@@ -2479,8 +2479,8 @@ packages:
   '@floating-ui/utils@0.2.11':
     resolution: {integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==}
 
-  '@formatjs/intl-localematcher@0.6.0':
-    resolution: {integrity: sha512-4rB4g+3hESy1bHSBG3tDFaMY2CH67iT7yne1e+0CLTsGLDcmoEWWpJjjpWVaYgYfYuohIRuo0E+N536gd2ZHZA==}
+  '@formatjs/intl-localematcher@0.6.2':
+    resolution: {integrity: sha512-XOMO2Hupl0wdd172Y06h6kLpBz6Dv+J4okPLl4LPtzbr8f66WbIoy4ev98EBuZ6ZK4h5ydTN6XneT4QVpD7cdA==}
 
   '@fortedigital/nextjs-cache-handler@2.0.3':
     resolution: {integrity: sha512-YKazzRodpVHKN/gKSMLwiZ2/xhJA8mmHMnqcTdH0xvCUwo4BwwfSeaGVsLCjcpWE2WoPv7DktW11J8bZYvLpUQ==}
@@ -13372,7 +13372,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.11': {}
 
-  '@formatjs/intl-localematcher@0.6.0':
+  '@formatjs/intl-localematcher@0.6.2':
     dependencies:
       tslib: 2.8.1
 
@@ -20640,7 +20640,7 @@ snapshots:
 
   nextra@4.4.0(acorn@8.16.0)(next@15.4.2-canary.52(@playwright/test@1.55.1)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(sass@1.77.4))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.2):
     dependencies:
-      '@formatjs/intl-localematcher': 0.6.0
+      '@formatjs/intl-localematcher': 0.6.2
       '@headlessui/react': 2.2.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@mdx-js/mdx': 3.1.0(acorn@8.16.0)
       '@napi-rs/simple-git': 0.1.19
